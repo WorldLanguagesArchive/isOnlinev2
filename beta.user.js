@@ -14,7 +14,7 @@ var url = window.location.href;
 var user = window.location.href.substring(30,100).substring(0, window.location.href.substring(30,100).indexOf('/'));
 var localuser = Scratch.INIT_DATA.LOGGED_IN_USER.model.username;
 iOlog("Possible username: " + user);
-iOlog("Local username: " + user);
+iOlog("Local username: " + localuser);
 
 if (localStorage.getItem("iOlastAbs") == null) {
     localStorage.setItem("iOlastAbs", 0);}
