@@ -139,15 +139,15 @@ function isOnline() {
 
 function isOffline() {
     iOlog("Detected that the user is offline");
-    document.getElementsByClassName("iOstatus").innerHTML = '<img src="https://raw.githubusercontent.com/WorldLanguages/isOnline/master/offline%20skype.png" height="16" width="16"> <h4><font color="red">Offline</font></h4>';}
+    document.getElementById("iOstatus").innerHTML = '<img src="https://raw.githubusercontent.com/WorldLanguages/isOnline/master/offline%20skype.png" height="16" width="16"> <h4><font color="red">Offline</font></h4>';}
 
 function isAbsent() {
     iOlog("Detected that the user is absent");
-    document.getElementsByClassName("iOstatus").innerHTML = '<img src="https://raw.githubusercontent.com/WorldLanguages/isOnline/master/absent%20skype.png" height="16" width="16"> <h4><font color="Orange">Absent</font></h4>';}
+    document.getElementById("iOstatus").innerHTML = '<img src="https://raw.githubusercontent.com/WorldLanguages/isOnline/master/absent%20skype.png" height="16" width="16"> <h4><font color="Orange">Absent</font></h4>';}
 
 function noiO() {
     iOlog("Detected that the user didn't install isOnline, stopped status finding until page is refreshed");
-    document.getElementsByClassName("iOstatus").innerHTML = '<span title="This user has to install isOnline in order to show their status">Not iO user</span>';}
+    document.getElementById("iOstatus").innerHTML = '<span title="This user has to install isOnline in order to show their status">Not iO user</span>';}
 
 
 
