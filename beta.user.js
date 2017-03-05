@@ -1,28 +1,29 @@
 // ==UserScript==
-// @name         isOnline TESTING V2
+// @name         isOnline v2
 // @namespace    http://isonline.cf/
 // @version      0.1.0
 // @description  Know who is online on Scratch!
-// @author       @World_Languages with help from @JuegOStrower and alpha testers
+// @author       @World_Languages & @chooper100
 // @match        https://scratch.mit.edu/*
-// @icon         https://raw.githubusercontent.com/WorldLanguages/isOnline/master/green%20cat.png
+// @icon         https://raw.githubusercontent.com/WorldLanguages/isOnlinev2/master/green%20cat.png
 // ==/UserScript==
 
-console.log("Userscript started");
+console.log("isOnline log: Userscript started");
 
 var url = window.location.href;
 var user = window.location.href.substring(30,100).substring(0, window.location.href.substring(30,100).indexOf('/'));
 var localuser = Scratch.INIT_DATA.LOGGED_IN_USER.model.username;
+var isuser = 1;
 iOlog("Possible username: " + user);
 iOlog("Local username: " + localuser);
 
-if (localStorage.getItem("iOlastAbs") == null) {
-    localStorage.setItem("iOlastAbs", 0);}
+if (localStorage.getItem("iOlastAbs") == null) {localStorage.setItem("iOlastAbs", 0);}
 
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.open("GET", 'https://scratchtools.tk/isonline/api/v1/' + localuser + '/set/online', true);
 xmlhttp.send();
 localStorage.setItem("iOlastOn", time());
+iOlog("Sent online request");
 
 
 setTimeout(function () {
@@ -41,16 +42,14 @@ window.addEventListener('load', function () {
     if (url.substring(24,29) == 'users' && (url.match(/\//g) || []).length == 5 ) {
         iOlog("Detected user is in a profile");
 
-        document.getElementsByClassName("location")[0].innerHTML = document.getElementsByClassName("location")[0].innerHTML + ' | <p style="display:inline" id="iOstatus"></p>';
+        document.getElementsByClassName("location")[0].innerHTML = document.getElementsByClassName("location")[0].innerHTML + ' | <p style="display:inline" id="iOstatus">Loading status...</p>';
 
-
-            if (localuser.toUpperCase() == user.toUpperCase()) {
-                iOlog("Detected user is their own profile");
-                isOnline();}
+        if (localuser.toUpperCase() == user.toUpperCase()) {
+            iOlog("Detected user is their own profile");
+            isOnline();}
         else {
             status();
             setInterval(absent, 30000);}}
-
 
 });
 
@@ -75,6 +74,8 @@ window.addEventListener('load', function () {
 
 function status() {
 
+    if (isuser == 0) {return;}
+
     iOlog("Started status scan");
 
     var xmlhttp = new XMLHttpRequest();
@@ -97,7 +98,8 @@ function status() {
 
         }
 
-        if (xmlhttp.readyState === 4 && xmlhttp.status === 404) {noiO();}
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 404) {noiO(); isuser=0;}
+
 
     }
 
@@ -118,14 +120,13 @@ function status() {
 
 
 function absent() {
-    iOlog("absent() started");
-
     if (time()-localStorage.getItem("iOlastOn") > 240 && time()-localStorage.getItem("iOlastAbs") > 120) {
         iOlog("Sent absent request");
         var xmlHttp = new XMLHttpRequest();
         xmlhttp.open("GET", 'https://scratchtools.tk/isonline/api/v1/' + localuser + '/set/absent', true);
         xmlhttp.send();
         localStorage.setItem("iOlastAbs", time());
+        iOlog("Sent absent request");
     }}
 
 
@@ -135,15 +136,15 @@ function absent() {
 
 function isOnline() {
     iOlog("Detected that the user is online");
-    document.getElementById("iOstatus").innerHTML = '<img src="https://raw.githubusercontent.com/WorldLanguages/isOnline/master/online%20skype.png" height="16" width="16"> <h4><font color="green">Online</font></h4>';}
+    document.getElementById("iOstatus").innerHTML = '<h4><font color="green">Online</font></h4>';}
 
 function isOffline() {
     iOlog("Detected that the user is offline");
-    document.getElementById("iOstatus").innerHTML = '<img src="https://raw.githubusercontent.com/WorldLanguages/isOnline/master/offline%20skype.png" height="16" width="16"> <h4><font color="red">Offline</font></h4>';}
+    document.getElementById("iOstatus").innerHTML = '<h4><font color="red">Offline</font></h4>';}
 
 function isAbsent() {
     iOlog("Detected that the user is absent");
-    document.getElementById("iOstatus").innerHTML = '<img src="https://raw.githubusercontent.com/WorldLanguages/isOnline/master/absent%20skype.png" height="16" width="16"> <h4><font color="Orange">Absent</font></h4>';}
+    document.getElementById("iOstatus").innerHTML = '<h4><font color="Orange">Absent</font></h4>';}
 
 function noiO() {
     iOlog("Detected that the user didn't install isOnline, stopped status finding until page is refreshed");
