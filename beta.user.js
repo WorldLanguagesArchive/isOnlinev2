@@ -155,7 +155,7 @@ function noiO() {
 
 
 function iOlog(x) {
-    console.log(time() + ": " + x);}
+    console.log("isOnline log @ " + new Date().toLocaleTimeString() + ": " + x);}
 
 
 
