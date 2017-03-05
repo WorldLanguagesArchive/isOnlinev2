@@ -28,7 +28,7 @@ localStorage.setItem("iOlastOn", time());
 setTimeout(function () {
     absent();
     setInterval(absent, 10000);
-}, 1000);
+}, 24000);
 
 
 
@@ -115,7 +115,7 @@ function status() {
 function absent() {
     iOlog("absent() started");
 
-    if (time()-localStorage.getItem("iOlastAbs") > 120) {
+    if (time()-localStorage.getItem("iOlastOn") > 240 && time()-localStorage.getItem("iOlastAbs") > 120) {
         iOlog("Sent absent request");
         var xmlHttp = new XMLHttpRequest();
         xmlhttp.open("GET", 'https://scratchtools.tk/isonline/api/v1/' + localuser + '/set/absent', true);
