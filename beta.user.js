@@ -28,7 +28,7 @@ localStorage.setItem("iOlastOn", time());
 setTimeout(function () {
     absent();
     setInterval(absent, 10000);
-}, 24000);
+}, 240000);
 
 
 
