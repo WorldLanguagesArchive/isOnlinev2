@@ -40,11 +40,16 @@ window.addEventListener('load', function () {
 
     if (url.substring(24,29) == 'users' && (url.match(/\//g) || []).length == 5 ) {
         iOlog("Detected user is in a profile");
-        if (localuser.toUpperCase() == user.toUpperCase()) {
-            iOlog("Detected user is their own profile");
-            isOnline();}
+
+        document.getElementsByClassName("location")[0].innerHTML = document.getElementsByClassName("location")[0].innerHTML + ' | <p style="display:inline" id="iOstatus"></p>';
+
+
+            if (localuser.toUpperCase() == user.toUpperCase()) {
+                iOlog("Detected user is their own profile");
+                isOnline();}
         else {
-            status();}}
+            status();
+            setInterval(absent, 30000);}}
 
 
 });
@@ -130,19 +135,19 @@ function absent() {
 
 function isOnline() {
     iOlog("Detected that the user is online");
-    document.getElementsByClassName("location")[0].innerHTML = document.getElementsByClassName("location")[0].innerHTML + " | " + '<img src="https://raw.githubusercontent.com/WorldLanguages/isOnline/master/online%20skype.png" height="16" width="16"> <h4><font color="green">Online</font></h4>';}
+    document.getElementById("iOstatus").innerHTML = '<img src="https://raw.githubusercontent.com/WorldLanguages/isOnline/master/online%20skype.png" height="16" width="16"> <h4><font color="green">Online</font></h4>';}
 
 function isOffline() {
     iOlog("Detected that the user is offline");
-    document.getElementsByClassName("location")[0].innerHTML = document.getElementsByClassName("location")[0].innerHTML + " | " + '<img src="https://raw.githubusercontent.com/WorldLanguages/isOnline/master/offline%20skype.png" height="16" width="16"> <h4><font color="red">Offline</font></h4>';}
+    document.getElementsByClassName("iOstatus").innerHTML = '<img src="https://raw.githubusercontent.com/WorldLanguages/isOnline/master/offline%20skype.png" height="16" width="16"> <h4><font color="red">Offline</font></h4>';}
 
 function isAbsent() {
     iOlog("Detected that the user is absent");
-    document.getElementsByClassName("location")[0].innerHTML = document.getElementsByClassName("location")[0].innerHTML + " | " + '<img src="https://raw.githubusercontent.com/WorldLanguages/isOnline/master/absent%20skype.png" height="16" width="16"> <h4><font color="Orange">Absent</font></h4>';}
+    document.getElementsByClassName("iOstatus").innerHTML = '<img src="https://raw.githubusercontent.com/WorldLanguages/isOnline/master/absent%20skype.png" height="16" width="16"> <h4><font color="Orange">Absent</font></h4>';}
 
 function noiO() {
     iOlog("Detected that the user didn't install isOnline, stopped status finding until page is refreshed");
-    document.getElementsByClassName("location")[0].innerHTML = document.getElementsByClassName("location")[0].innerHTML + " | " + document.getElementsByClassName("location")[0].innerHTML + ' | <span title="This user has to install isOnline in order to show their status">Not iO user</span>';}
+    document.getElementsByClassName("iOstatus").innerHTML = '<span title="This user has to install isOnline in order to show their status">Not iO user</span>';}
 
 
 
