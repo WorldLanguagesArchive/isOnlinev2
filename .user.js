@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         isOnline v2 LOCAL staging
+// @name         isOnline v2
 // @namespace    http://aremyfriends.online
 // @version      2.0
 // @description  Know who is online on Scratch!
@@ -10,9 +10,10 @@
 
 console.log("isOnline log: Userscript started");
 var stop = 0;
-try {var localuser = Scratch.INIT_DATA.LOGGED_IN_USER.model.username;} catch(err) {var localuser = document.getElementsByClassName("profile-name")[0].innerHTML;iOlog("NEW Local username: " + localuser);}
+try {var localuser = Scratch.INIT_DATA.LOGGED_IN_USER.model.username;} catch(err) {var localuser = document.getElementsByClassName("profile-name")[0].innerHTML;}
 
 if (window.location.href.startsWith("https://scratch.mit.edu/verify")) {
+    document.documentElement.innerHTML = "<center><h1 style='font-family:verdana';>Validating...</h1></center>";
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("GET", ' https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + location.hash.substring(1) + "/test/", true);
     xmlhttp.send();
@@ -20,15 +21,15 @@ if (window.location.href.startsWith("https://scratch.mit.edu/verify")) {
         if (xmlhttp.readyState === 4 && xmlhttp.responseText.includes("true")) {
             localStorage.setItem("iOuser", Scratch.INIT_DATA.LOGGED_IN_USER.model.username);
             localStorage.setItem("iOkey", location.hash.substring(1));
-            document.documentElement.innerHTML = "<center><h1 style='font-family:verdana; color:green' size:'100'>Successfully validated your Scratch account. isOnline is now working. <br>You can close this tab.</h1></center>";}
+            document.documentElement.innerHTML = "<center><h1 style='font-family:verdana; color:green'>Successfully validated your Scratch account. isOnline is now working. <br>You can close this tab.</h1></center>";}
         else {
-            document.documentElement.innerHTML = "<center><h1 style='font-family:verdana; color:red' size:'100'>An error occurred. Please contact <a href='https://scratch.mit.edu/users/chooper100#comments'>@chooper100</a> if you come from isOnline account validation.</h1></center>";}}}
+            document.documentElement.innerHTML = "<center><h1 style='font-family:verdana; color:red'>An error occurred. Please contact <a href='https://scratch.mit.edu/users/chooper100#comments'>@chooper100</a> if you come from isOnline account validation.</h1></center>";}}}
 
 
 if (localStorage.getItem("iOuser") === null) {
     stop = "User didn't validate any account. Stopped script."; try { window.addEventListener('load', function () {
         document.getElementsByClassName("confirm-email banner")[0].style.display = "block";
-        document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! Looks like you didn't validate your account on isOnline. isOnline won't work until you <a href='https://scratchtools.tk/isonline/register' target='blank' >validate your account</a>.</span> It takes ~15 seconds.";});} catch(err){}
+        document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! Looks like you didn't validate your account on isOnline. isOnline won't work until you <a href='https://scratchtools.tk/isonline/register' target='blank' >validate your account</a>.</span> It takes around 20 seconds.";});} catch(err){}
 }
 
 if (localuser != localStorage.getItem("iOuser") && window.location.href.includes("users") && localStorage.getItem("iOuser") !== null) {
@@ -186,15 +187,15 @@ function absent() {
 
 function isOnline() {
     iOlog("Detected that the user is online");
-    document.getElementById("iOstatus").innerHTML = '<h4><font color="green">Online</font></h4>';}
+    document.getElementById("iOstatus").innerHTML = '<img src="https://raw.githubusercontent.com/WorldLanguages/isOnlinev2/master/online.png" height="14" width="14"> <h4><font color="green">Online</font></h4>';}
 
 function isOffline() {
     iOlog("Detected that the user is offline");
-    document.getElementById("iOstatus").innerHTML = '<h4><font color="red">Offline</font></h4>';}
+    document.getElementById("iOstatus").innerHTML = '<img src="https://raw.githubusercontent.com/WorldLanguages/isOnlinev2/master/offline.png" height="14" width="14"> <h4><font color="red">Offline</font></h4>';}
 
 function isAbsent() {
     iOlog("Detected that the user is absent");
-    document.getElementById("iOstatus").innerHTML = '<h4><font color="Orange">Absent</font></h4>';}
+    document.getElementById("iOstatus").innerHTML = '<img src="https://raw.githubusercontent.com/WorldLanguages/isOnlinev2/master/absent.png" height="14" width="14"> <h4><font color="Orange">Absent</font></h4>';}
 
 function noiO() {
     iOlog("Detected that the user didn't install isOnline");
