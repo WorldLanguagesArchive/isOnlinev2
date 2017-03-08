@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name         isOnline v2 LOCAL
-// @namespace    http://isonline.cf/
-// @version      0.1.0
+// @name         isOnline v2 LOCAL staging
+// @namespace    http://aremyfriends.online
+// @version      2.0
 // @description  Know who is online on Scratch!
 // @author       @World_Languages & @chooper100
 // @match        https://scratch.mit.edu/*
-// @icon         https://raw.githubusercontent.com/WorldLanguages/isOnlinev2/master/green%20cat.png
+// @icon         https://raw.githubusercontent.com/WorldLanguages/isOnlinev2/master/isonline%202.png
 // ==/UserScript==
 
 console.log("isOnline log: Userscript started");
@@ -14,15 +14,15 @@ try {var localuser = Scratch.INIT_DATA.LOGGED_IN_USER.model.username;} catch(err
 
 if (window.location.href.startsWith("https://scratch.mit.edu/verify")) {
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", ' http://staging.scratchtools.tk/isonline/api/v1/' + localuser + '/' + location.hash.substring(1) + "/test/", true);
+    xmlhttp.open("GET", ' https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + location.hash.substring(1) + "/test/", true);
     xmlhttp.send();
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState === 4 && xmlhttp.responseText.includes("true")) {
             localStorage.setItem("iOuser", Scratch.INIT_DATA.LOGGED_IN_USER.model.username);
             localStorage.setItem("iOkey", location.hash.substring(1));
-            document.write("Succesfully validated isOnline account. You can close this tab.");}
+            document.documentElement.innerHTML = "<center><h1 style='font-family:verdana; color:green' size:'100'>Successfully validated your Scratch account. isOnline is now working. <br>You can close this tab.</h1></center>";}
         else {
-            document.documentElement.innerHTML = "Error. Could not verify isOnline account";}}}
+            document.documentElement.innerHTML = "<center><h1 style='font-family:verdana; color:red' size:'100'>An error occurred. Please contact <a href='https://scratch.mit.edu/users/chooper100#comments'>@chooper100</a> if you come from isOnline account validation.</h1></center>";}}}
 
 
 if (localStorage.getItem("iOuser") === null) {
@@ -70,7 +70,7 @@ if (stop === 0) {
         iOlog("Detected that page finished loading");
 
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("GET", 'http://staging.scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + '/set/online', true);
+        xmlhttp.open("GET", 'https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + '/set/online', true);
         xmlhttp.send();
         localStorage.setItem("iOlastOn", time());
         iOlog("Sent online request");
@@ -154,7 +154,7 @@ function status() {
 
     }
 
-    xmlhttp.open("GET", ' http://staging.scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + "/get/" + user, true);
+    xmlhttp.open("GET", ' https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + "/get/" + user, true);
     xmlhttp.send();
 
 }
@@ -173,7 +173,7 @@ function status() {
 function absent() {
     if (time()-localStorage.getItem("iOlastOn") > 240 && time()-localStorage.getItem("iOlastAbs") > 120) {
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("GET", 'http://staging.scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + '/set/absent', true);
+        xmlhttp.open("GET", 'https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + '/set/absent', true);
         xmlhttp.send();
         localStorage.setItem("iOlastAbs", time());
         iOlog("Sent absent request");
