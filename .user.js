@@ -5,7 +5,7 @@
 // @description  Know who is online on Scratch!
 // @author       @World_Languages & @chooper100
 // @match        https://scratch.mit.edu/*
-// @icon         https://raw.githubusercontent.com/WorldLanguages/isOnlinev2/master/isonline%202.png
+// @icon         https://raw.githubusercontent.com/WorldLanguages/isOnlinev2/master/logo.png
 // ==/UserScript==
 
 console.log("isOnline log: Userscript started");
