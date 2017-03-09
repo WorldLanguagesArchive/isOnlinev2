@@ -37,7 +37,7 @@ if (localuser != localStorage.getItem("iOuser") && window.location.href.includes
     window.addEventListener('load', function () {
         document.getElementsByClassName("confirm-email banner")[0].style.display = "block";
         document.getElementsByClassName("confirm-email banner")[0].style.color = "black";
-        document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! Looks like you didn't validate isOnline on the account you are using now, so it's not working. If needed, login to " + localStorage.getItem("iOuser") + ", or unregister it by " + " " + "<a href='https://scratchtools.tk/isonline/register' target='blank'>registering " + localuser + " instead</a>.</span>";});
+        document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! Looks like you didn't validate isOnline on the account you are using now, so it's not working. If needed, login to " + localStorage.getItem("iOuser") + ", or unregister it by <a href='https://scratchtools.tk/isonline/register' target='blank'>registering " + localuser + " instead</a>.  <a onclick='document.getElementsByClassName(\"confirm-email banner\")[0].style.display = \"none\";'>X</span>";});
 }
 
 
@@ -150,13 +150,16 @@ function status() {
 
         }
 
-        if (xmlhttp.readyState === 4 && xmlhttp.status === 404) {noiO(); isuser=0;}
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 404) {noiO();}
+
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 403) {document.getElementsByClassName("confirm-email banner")[0].style.display = "block";document.getElementsByClassName("confirm-email banner")[0].style.color = "black";
+        document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! There's an error with isOnline. This may ocurr if you installed iO on another computer. iO can only work at one computer at the same time. You can temporarily use isOnline on this computer by <a href='https://scratchtools.tk/isonline/register' target='blank'>re-validating</a>. <a onclick='document.getElementsByClassName(\"confirm-email banner\")[0].style.display = \"none\";'>X</span>";}
 
 
-    }
+}
 
-    xmlhttp.open("GET", ' https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + "/get/" + user, true);
-    xmlhttp.send();
+xmlhttp.open("GET", ' https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + "/get/" + user, true);
+xmlhttp.send();
 
 }
 
