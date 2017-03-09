@@ -28,6 +28,7 @@ if (window.location.href.startsWith("https://scratch.mit.edu/verify")) {
 
 if (localStorage.getItem("iOuser") === null) {
     stop = "User didn't validate any account. Stopped script."; try { window.addEventListener('load', function () {
+        isError();
         document.getElementsByClassName("confirm-email banner")[0].style.display = "block";
         document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! Looks like you didn't validate your account on isOnline. isOnline won't work until you <a href='https://scratchtools.tk/isonline/register' target='blank' >validate your account</a>.</span> It takes around 20 seconds.";});} catch(err){}
 }
@@ -35,6 +36,7 @@ if (localStorage.getItem("iOuser") === null) {
 if (localuser != localStorage.getItem("iOuser") && window.location.href.includes("users") && localStorage.getItem("iOuser") !== null) {
     stop = "User validated another account. Stopped script.";
     window.addEventListener('load', function () {
+        isError();
         document.getElementsByClassName("confirm-email banner")[0].style.display = "block";
         document.getElementsByClassName("confirm-email banner")[0].style.color = "black";
         document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! Looks like you didn't validate isOnline on the account you are using now, so it's not working. If needed, login to " + localStorage.getItem("iOuser") + ", or unregister it by <a href='https://scratchtools.tk/isonline/register' target='blank'>registering " + localuser + " instead</a>.  <a onclick='document.getElementsByClassName(\"confirm-email banner\")[0].style.display = \"none\";'>X</span>";});
@@ -137,7 +139,7 @@ function status() {
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
 
-            var response  = xmlhttp.responseText;
+            response  = xmlhttp.responseText;
             var parsedData = JSON.parse(response);
             var timestamp = parsedData.timestamp;
             var status = parsedData.status;
@@ -152,7 +154,7 @@ function status() {
 
         if (xmlhttp.readyState === 4 && xmlhttp.status === 404) {noiO();}
 
-        if (xmlhttp.readyState === 4 && xmlhttp.status === 403) {document.getElementsByClassName("confirm-email banner")[0].style.display = "block";document.getElementsByClassName("confirm-email banner")[0].style.color = "black";
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 0) {isError(); document.getElementsByClassName("confirm-email banner")[0].style.display = "block";document.getElementsByClassName("confirm-email banner")[0].style.color = "black";
         document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! There's an error with isOnline. This may ocurr if you installed iO on another computer. iO can only work at one computer at the same time. You can temporarily use isOnline on this computer by <a href='https://scratchtools.tk/isonline/register' target='blank'>re-validating</a>. <a onclick='document.getElementsByClassName(\"confirm-email banner\")[0].style.display = \"none\";'>X</span>";}
 
 
@@ -203,6 +205,9 @@ function isAbsent() {
 function noiO() {
     iOlog("Detected that the user didn't install isOnline");
     document.getElementById("iOstatus").innerHTML = '<span title="This user has to install isOnline in order to show their status">Not iO user</span>';}
+
+function isError() {
+    document.getElementsByClassName("location")[0].innerHTML = document.getElementsByClassName("location")[0].innerHTML + ' | <span title="Error getting the status. Read the orange box above">Error</span>';}
 
 
 
