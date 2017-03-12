@@ -154,7 +154,7 @@ function status() {
 
         if (xmlhttp.readyState === 4 && xmlhttp.status === 404) {noiO();}
 
-        if (xmlhttp.readyState === 4 && xmlhttp.status === 0) {isError(); document.getElementsByClassName("confirm-email banner")[0].style.display = "block";document.getElementsByClassName("confirm-email banner")[0].style.color = "black";
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 403) {isError(); document.getElementsByClassName("confirm-email banner")[0].style.display = "block";document.getElementsByClassName("confirm-email banner")[0].style.color = "black";
         document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! There's an error with isOnline. This may ocurr if you installed iO on another computer. iO can only work at one computer at the same time. You can temporarily use isOnline on this computer by <a href='https://scratchtools.tk/isonline/register' target='blank'>re-validating</a>. <a onclick='document.getElementsByClassName(\"confirm-email banner\")[0].style.display = \"none\";'>X</span>";}
 
 
