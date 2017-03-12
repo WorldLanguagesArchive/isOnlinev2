@@ -192,15 +192,15 @@ function absent() {
 
 function isOnline() {
     iOlog("Detected that the user is online");
-    document.getElementById("iOstatus").innerHTML = '<img src="https://raw.githubusercontent.com/WorldLanguages/isOnlinev2/master/Online.svg" height="14" width="14"> <h4 style="color: green">Online</h4>';}
+    document.getElementById("iOstatus").innerHTML = '<img src="https://scratchtools.tk/isonline/assets/online.svg" height="12" width="12"> <span style="color:green"> <b>Online</b></h5>';}
 
 function isOffline() {
     iOlog("Detected that the user is offline");
-    document.getElementById("iOstatus").innerHTML = '<img src="https://raw.githubusercontent.com/WorldLanguages/isOnlinev2/master/Offline.svg" height="14" width="14"> <h4 style="color: red">Offline</h4>';}
+    document.getElementById("iOstatus").innerHTML = '<img src="https://scratchtools.tk/isonline/assets/offline.svg" height="12" width="12"> <span style="color:red"> <b>Offline</b></span>';}
 
 function isAbsent() {
     iOlog("Detected that the user is absent");
-    document.getElementById("iOstatus").innerHTML = '<img src="https://raw.githubusercontent.com/WorldLanguages/isOnlinev2/master/Absent.svg" height="14" width="14"> <h4 style="color: orange">Absent</h4>';}
+    document.getElementById("iOstatus").innerHTML = '<img src="https://scratchtools.tk/isonline/assets/absent.svg" height="12" width="12"><span style="color:orange"> <b>Absent</b></soan>';}
 
 function noiO() {
     iOlog("Detected that the user didn't install isOnline");
