@@ -58,6 +58,8 @@ if (stop === 0) {
 
 
 
+        iOlog("Detected that page finished loading");
+
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("GET", 'https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + '/set/online', true);
         xmlhttp.send();
@@ -68,8 +70,7 @@ if (stop === 0) {
         if (url.substring(24,29) == 'users' && (url.match(/\//g) || []).length == 5 ) {
             iOlog("Detected user is in a profile");
 
-            document.getElementsByClassName("location")[0].innerHTML = document.getElementsByClassName("location")[0].innerHTML + ' | <p style="display:inline" id="iOstatus">
-            ing status...</p>';
+            document.getElementsByClassName("location")[0].innerHTML = document.getElementsByClassName("location")[0].innerHTML + ' | <p style="display:inline" id="iOstatus">Loading status...</p>';
 
             if (localuser.toUpperCase() == user.toUpperCase()) {iOlog("Detected user is their own profile");isOnline();} else {status();}}
 
