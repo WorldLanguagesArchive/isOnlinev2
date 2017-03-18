@@ -25,18 +25,17 @@ if (window.location.href.startsWith("https://scratch.mit.edu/verify")) {
 
 
 if (localStorage.getItem("iOuser") === null) {
-    stop = "User didn't validate any account. Stopped script."; try { window.addEventListener('load', function () {
+    stop = "User didn't validate any account. Stopped script."; try {
         isError();
         document.getElementsByClassName("confirm-email banner")[0].style.display = "block";document.getElementsByClassName("confirm-email banner")[0].style.color = "black";
-        document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! Looks like you didn't validate your account on isOnline. isOnline won't work until you <a href='https://scratchtools.tk/isonline/register' target='blank' >validate your account</a>.</span> It takes around 20 seconds.";});} catch(err){}
+        document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! Looks like you didn't validate your account on isOnline. isOnline won't work until you <a href='https://scratchtools.tk/isonline/register' target='blank' >validate your account</a>.</span> It takes around 20 seconds.";} catch(err){}
 }
 
 if (localuser != localStorage.getItem("iOuser") && window.location.href.includes("users") && localStorage.getItem("iOuser") !== null) {
     stop = "User validated another account. Stopped script.";
-    window.addEventListener('load', function () {
         isError();
         document.getElementsByClassName("confirm-email banner")[0].style.display = "block";document.getElementsByClassName("confirm-email banner")[0].style.color = "black";
-        document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! Looks like you didn't validate isOnline on the account you are using now, so it's not working. If needed, login to " + localStorage.getItem("iOuser") + ", or unregister it by <a href='https://scratchtools.tk/isonline/register' target='blank'>registering " + localuser + " instead</a>.  <a onclick='document.getElementsByClassName(\"confirm-email banner\")[0].style.display = \"none\";'>X</span>";});
+        document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! Looks like you didn't validate isOnline on the account you are using now, so it's not working. If needed, login to " + localStorage.getItem("iOuser") + ", or unregister it by <a href='https://scratchtools.tk/isonline/register' target='blank'>registering " + localuser + " instead</a>.  <a onclick='document.getElementsByClassName(\"confirm-email banner\")[0].style.display = \"none\";'>X</span>";
 }
 
 
@@ -59,10 +58,6 @@ if (stop === 0) {
 
 
 
-    window.addEventListener('load', function () {
-
-        iOlog("Detected that page finished loading");
-
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("GET", 'https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + '/set/online', true);
         xmlhttp.send();
@@ -73,10 +68,10 @@ if (stop === 0) {
         if (url.substring(24,29) == 'users' && (url.match(/\//g) || []).length == 5 ) {
             iOlog("Detected user is in a profile");
 
-            document.getElementsByClassName("location")[0].innerHTML = document.getElementsByClassName("location")[0].innerHTML + ' | <p style="display:inline" id="iOstatus">Loading status...</p>';
+            document.getElementsByClassName("location")[0].innerHTML = document.getElementsByClassName("location")[0].innerHTML + ' | <p style="display:inline" id="iOstatus">
+            ing status...</p>';
 
             if (localuser.toUpperCase() == user.toUpperCase()) {iOlog("Detected user is their own profile");isOnline();} else {status();}}
-    });
 
 
 
@@ -117,7 +112,7 @@ function status() {
 
             response  = xmlhttp.responseText;
             var timestamp = JSON.parse(response).timestamp;
-            var status = parsedData.status;
+            var status = JSON.parse(response).status;
 
             if (status == "online") {
                 if (time() - timestamp < 300) {isOnline();} else{isOffline();}}
