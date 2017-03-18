@@ -144,7 +144,7 @@ function status() {
 
 
 function absent() {
-    if (time()-localStorage.getItem("iOlastOn") > 240 && time()-localStorage.getItem("iOlastAbs") > 120 && stop === 0) {
+    if (time()-localStorage.getItem("iOlastOn") > 240 && time()-localStorage.getItem("iOlastAbs") > 120 && stop == 0) {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("GET", 'https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + '/set/absent', true);
         xmlhttp.send();
