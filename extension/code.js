@@ -5,7 +5,7 @@ catch(err) {document.onreadystatechange = function(){if(document.readyState === 
 
 function main() {
 
-    if (window.location.href.startsWith("https://scratch.mit.edu/verify")) {
+    if (window.location.href.startsWith("https://scratch.mit.edu/isonlineverify")) {
         stop = 1;
         document.documentElement.innerHTML = "<center><h1 style='font-family:verdana';>Validating...</h1></center>";
         test = new XMLHttpRequest();test.open("GET", ' https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + location.hash.substring(1) + "/test/", true);test.send();
@@ -111,7 +111,7 @@ function status() {
             response  = getstatus.responseText;
             timestamp = JSON.parse(response).timestamp;
             var status = JSON.parse(response).status;
-
+isonline
             if (status == "online") {
                 if (time() - timestamp < 300) {isOnline();} else{isOffline();}}
 
