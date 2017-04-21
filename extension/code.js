@@ -124,9 +124,9 @@ function status() {
 
         if (getstatus.readyState === 4 && getstatus.status === 403) {
             isError();
-            var status = JSON.parse(response).status;
-            if (status=="incorrect key") { stop = "Key was changed";keyWasChanged();}
-            if (status=="bot") { stop = "User is a bot";isBot();}
+            var status = JSON.parse(getstatus.responseText).status;
+            if (status=="incorrect key") {stop = "Key was changed";keyWasChanged();}
+            if (status=="bot") {stop = "User is a bot";isBot();}
         }
 
         if (getstatus.readyState === 4 && getstatus.status === 500) {isError();}
@@ -163,7 +163,7 @@ function noiO() {
     document.getElementById("iOstatus").innerHTML = '<span title="This user has to install isOnline in order to show their status">Not iO user</span>';}
 
 function isError() {
-    try { document.getElementById("iOstatus").innerHTML = '<span title="Error getting the status. Read the orange box above">Error</span>';} catch(err){
+    try { document.getElementById("iOstatus").innerHTML = '<span title="Error when getting the status. Read the orange box above">Error</span>';} catch(err){
         document.getElementsByClassName("location")[0].innerHTML = document.getElementsByClassName("location")[0].innerHTML + ' | <span title="Error getting the status. Read the orange box above">Error</span>';}}
 
 function didntValidate() { document.onreadystatechange = function(){if(document.readyState === 'complete'){try{
