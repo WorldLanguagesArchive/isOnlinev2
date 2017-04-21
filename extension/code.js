@@ -5,7 +5,7 @@ catch(err) {document.onreadystatechange = function(){if(document.readyState === 
 
 function main() {
 
-    if (window.location.href.startsWith("https://scratch.mit.edu/isonlineverify")) {
+    if (window.location.href.startsWith("https://scratch.mit.edu/isonline-extension/verify")) {
         stop = 1;
         document.documentElement.innerHTML = "<center><h1 style='font-family:verdana';>Validating...</h1></center>";
         test = new XMLHttpRequest();test.open("GET", ' https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + location.hash.substring(1) + "/test/", true);test.send();
@@ -111,7 +111,7 @@ function status() {
             response  = getstatus.responseText;
             timestamp = JSON.parse(response).timestamp;
             var status = JSON.parse(response).status;
-isonline
+
             if (status == "online") {
                 if (time() - timestamp < 300) {isOnline();} else{isOffline();}}
 
@@ -187,6 +187,7 @@ function isBot() { document.onreadystatechange = function(){if(document.readySta
     document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! It looks like you've been marked as a bot. Please contact <a href='https://scratch.mit.edu/users/chooper100/#comments' target='blank'>chooper100</a> to unblock your account. <a onclick='document.getElementsByClassName(&quot;confirm-email banner&quot;)[0].style.display = &quot;none&quot;;'>X</a></span>";}}}
 
 function iOlog(x) {
+    if (localStorage.getItem("isonline_logs") === undefined) {return;}
     console.log("isOnline log @ " + new Date().toLocaleTimeString() + ": " + x);}
 
 function time() {return Math.floor(Date.now() / 1000);}
