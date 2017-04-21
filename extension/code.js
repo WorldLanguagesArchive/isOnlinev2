@@ -6,15 +6,15 @@ catch(err) {document.onreadystatechange = function(){if(document.readyState === 
 function main() {
 
     if (window.location.href.startsWith("https://scratch.mit.edu/isonline-extension/verify")) {
-        stop = 1;
+        stop = "On verification page";
         document.documentElement.innerHTML = "<center><h1 style='font-family:verdana';>Validating...</h1></center>";
         test = new XMLHttpRequest();test.open("GET", ' https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + location.hash.substring(1) + "/test/", true);test.send();
         test.onreadystatechange = function() {
-            if (test.readyState === 4 && test.responseText.includes("true")) {
+            if (test.readyState === 4 && test.status === 200  && test.responseText == '{"valid":true}') {
                 localStorage.setItem("iOuser", localuser);
                 localStorage.setItem("iOkey", location.hash.substring(1));
                 document.documentElement.innerHTML = "<center><h1 style='font-family:verdana; color:green'>Successfully validated your Scratch account. isOnline is now working. <br>You can close this tab.</h1></center>";}
-            if (test.readyState === 4 && test.status === 404) {
+            else {
                 document.documentElement.innerHTML = "<center><h1 style='font-family:verdana; color:red'>An error occurred. Please contact <a href='https://scratch.mit.edu/users/chooper100#comments'>@chooper100</a> if you come from isOnline account validation.</h1></center>";}}}
 
     if (localStorage.getItem("iOuser") === null) {
@@ -166,10 +166,10 @@ function isError() {
     try { document.getElementById("iOstatus").innerHTML = '<span title="Error getting the status. Read the orange box above">Error</span>';} catch(err){
         document.getElementsByClassName("location")[0].innerHTML = document.getElementsByClassName("location")[0].innerHTML + ' | <span title="Error getting the status. Read the orange box above">Error</span>';}}
 
-function didntValidate() { try{
+function didntValidate() { document.onreadystatechange = function(){if(document.readyState === 'complete'){try{
     if(document.getElementsByClassName("confirm-email banner")[0].style.display!="none"){return;}
     document.getElementsByClassName("confirm-email banner")[0].style.display = "block";document.getElementsByClassName("confirm-email banner")[0].style.color = "black";
-    document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! Looks like you didn't validate your account on isOnline. isOnline won't work until you <a href='https://scratchtools.tk/isonline/register' target='blank' >validate your account</a>.</span> It takes around 20 seconds.";}catch(err){}}
+    document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! Looks like you didn't validate your account on isOnline. isOnline won't work until you <a href='https://scratchtools.tk/isonline/register' target='blank' >validate your account</a>.</span> It takes around 20 seconds.";}catch(err){}}}}
 
 function unvalidatedAcc() { document.onreadystatechange = function(){if(document.readyState === 'complete'){if(window.location.href.includes("users")){
     if(document.getElementsByClassName("confirm-email banner")[0].style.display!="none"){return;}
@@ -183,7 +183,7 @@ function keyWasChanged() { document.onreadystatechange = function(){if(document.
     document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! There's an error with isOnline. This may ocurr if you installed iO on another computer. iO can only work at one computer at the same time. You can use isOnline on this computer by <a href='https://scratchtools.tk/isonline/register' target='blank'>re-validating</a>. <a onclick='document.getElementsByClassName(\"confirm-email banner\")[0].style.display = \"none\";'>X</span>";}}}
 
 function isBot() { document.onreadystatechange = function(){if(document.readyState === 'complete'){
-    console.error("isOnline error: User is bot");
+    console.error("isOnline error: User has been marked as a bot");
     if(document.getElementsByClassName("confirm-email banner")[0].style.display!="none"){return;}
     document.getElementsByClassName("confirm-email banner")[0].style.display = "block";document.getElementsByClassName("confirm-email banner")[0].style.color = "black";
     document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! It looks like you've been marked as a bot. Please contact <a href='https://scratch.mit.edu/users/chooper100/#comments' target='blank'>chooper100</a> to unblock your account. <a onclick='document.getElementsByClassName(&quot;confirm-email banner&quot;)[0].style.display = &quot;none&quot;;'>X</a></span>";}}}
@@ -197,7 +197,6 @@ function time() {return Math.floor(Date.now() / 1000);}
 var openregister = false;
 if (!localStorage['iO.was.installed']) {
     openregister = true;
-    localStorage['iO.was.installed'] = '1';
-}
+    localStorage['iO.was.installed'] = '1';}
 
 if (openregister) window.open("https://scratchtools.tk/isonline/register");
