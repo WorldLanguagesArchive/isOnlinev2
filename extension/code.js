@@ -177,11 +177,13 @@ function unvalidatedAcc() { document.onreadystatechange = function(){if(document
     document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! Looks like you didn't validate isOnline on the account you are using now, so it's not working. If needed, login to " + localStorage.getItem("iOuser") + ", or unregister it by <a href='https://scratchtools.tk/isonline/register' target='blank'>registering " + localuser + " instead</a>.  <a onclick='document.getElementsByClassName(\"confirm-email banner\")[0].style.display = \"none\";'>X</span>";}}}}
 
 function keyWasChanged() { document.onreadystatechange = function(){if(document.readyState === 'complete'){
+    console.error("isOnline error: Key was changed");
     if(document.getElementsByClassName("confirm-email banner")[0].style.display!="none"){return;}
     document.getElementsByClassName("confirm-email banner")[0].style.display = "block";document.getElementsByClassName("confirm-email banner")[0].style.color = "black";
     document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! There's an error with isOnline. This may ocurr if you installed iO on another computer. iO can only work at one computer at the same time. You can use isOnline on this computer by <a href='https://scratchtools.tk/isonline/register' target='blank'>re-validating</a>. <a onclick='document.getElementsByClassName(\"confirm-email banner\")[0].style.display = \"none\";'>X</span>";}}}
 
 function isBot() { document.onreadystatechange = function(){if(document.readyState === 'complete'){
+    console.error("isOnline error: User is bot");
     if(document.getElementsByClassName("confirm-email banner")[0].style.display!="none"){return;}
     document.getElementsByClassName("confirm-email banner")[0].style.display = "block";document.getElementsByClassName("confirm-email banner")[0].style.color = "black";
     document.getElementsByClassName("confirm-email banner")[0].innerHTML = "<span>Whoops! It looks like you've been marked as a bot. Please contact <a href='https://scratch.mit.edu/users/chooper100/#comments' target='blank'>chooper100</a> to unblock your account. <a onclick='document.getElementsByClassName(&quot;confirm-email banner&quot;)[0].style.display = &quot;none&quot;;'>X</a></span>";}}}
