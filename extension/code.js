@@ -1,13 +1,3 @@
-// ==UserScript==
-// @name         isOnline v2
-// @namespace    http://aremyfriends.online
-// @version      2.0
-// @description  Know who is online on Scratch!
-// @author       @World_Languages & @chooper100
-// @match        https://scratch.mit.edu/*
-// @icon         https://raw.githubusercontent.com/WorldLanguages/isOnlinev2/master/logo.png
-// ==/UserScript==
-
 iOlog("isOnline started");
 stop = 0;
 try {localuser = document.documentElement.innerHTML.substring(document.documentElement.innerHTML.search("username")+10,document.documentElement.innerHTML.search("username")+100).match(/\'(.*)\'/).pop();main();}
@@ -52,6 +42,16 @@ function main() {
         if (localuser.toUpperCase() == user.toUpperCase()) {iOlog("Detected user is their own profile");isOnline();} else {status();}}
 
 } // main function
+
+
+
+
+
+
+
+
+
+
 
 
 
