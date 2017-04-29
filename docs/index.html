@@ -5,7 +5,10 @@
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
   ga('create', 'UA-92535085-2', 'auto');
-  ga('send', 'pageview');</script>
+  ga('send', 'pageview');
+  
+  if (window.location.protocol != "https:") {window.location.protocol = "https:"}
+  </script>
 
   <title>isOnline</title>
 <meta name="Description" content="Know who is online on scratch.mit.edu">
