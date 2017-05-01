@@ -18,7 +18,12 @@ function main() {
         if(document.readyState === 'complete'){unvalidatedAcc();}else{document.onreadystatechange = unvalidatedAcc;}}
 
     if(stop!==0){console.error("isOnline error: "+stop);return;}
-
+    
+    if(localStorage.getItem('iOpreference') === null){
+        // user hasn't set a preference yet
+        localStorage.setItem('iOpreference', 'Online');
+    }
+    
     url = window.location.href;
     user = window.location.href.substring(30,100).substring(0, window.location.href.substring(30,100).indexOf('/'));
     key = localStorage.getItem("iOkey");
@@ -26,7 +31,7 @@ function main() {
     iOlog("Local username: " + localuser);
 
 
-    if (time()-localStorage.getItem("iOlastOn") > 10) {
+    if (time()-localStorage.getItem("iOlastOn") > 10 && localStorage.getItem('iOpreference') === 'Online') {
         onlinerequest = new XMLHttpRequest();
         onlinerequest.open("POST", 'https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + '/set/online', true);
         onlinerequest.send();
@@ -39,7 +44,7 @@ function main() {
     if (url.substring(24,29) == 'users' && (url.match(/\//g) || []).length == 5 ) {
         iOlog("Detected user is in a profile");
         /* Add status box next to location */ document.getElementsByClassName("location")[0].innerHTML = document.getElementsByClassName("location")[0].innerHTML + ' | <p style="display:inline" id="iOstatus">Loading status...</p>';
-        if (localuser.toUpperCase() == user.toUpperCase()) {iOlog("Detected user is their own profile");isOnline();} else {status();}}
+        if (localuser.toUpperCase() == user.toUpperCase()) {iOlog("Detected user is their own profile");isOwn();} else {status();}}
 
 } // main function
 
@@ -137,19 +142,32 @@ function status() {
 }
 
 
+function beam(indx){
+    if(indx !== 3){ // if the new setting isn't "ghost"
+        setstatus = new XMLHttpRequest();
+        setstatus.open("POST", 'https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + '/set/' +
+                       ["online", "absent", "dnd"][indx], true);
+        setstatus.send();
+        localStorage.setItem('iOpreference', ["Online", "])
+    }
+}
+
 function absent() {
     if (time()-localStorage.getItem("iOlastOn") > 240 && time()-localStorage.getItem("iOlastAbs") > 120 && stop == 0) {
         absentrequest = new XMLHttpRequest();
         absentrequest.open("POST", 'https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + '/set/absent', true);
         absentrequest.send();
-        localStorage.setItem("iOlastAbs", time());
-        iOlog("Sent away request");
-    }}
-
+    }
+}
+                                              
+function isOwn(){
+    iOlog("Own profile detected");
+    document.getElementById("iOstatus").innerHTML = "<select onchange='beam(this.selectedIndex);'>" + ["Online", "Absent", "Don't disturb", "Offline (ghost)"].map(k => "<option " + (k === localStorage.get('iOpreference') ? "selected>" : ">") + k + "</options>" )+ "</select>";             
+}
+                                              
 function isOnline() {
     iOlog("Detected that the user is online");
     document.getElementById("iOstatus").innerHTML = '<img src="https://scratchtools.tk/isonline/assets/online.svg" height="12" width="12"> <span style="color:green"> <b>Online</b></h5>';}
-
 function isOffline() {
     iOlog("Detected that the user is offline");
     document.getElementById("iOstatus").innerHTML = '<img src="https://scratchtools.tk/isonline/assets/offline.svg" height="12" width="12"> <span style="color:red"> <b>Offline</b></span>';}
