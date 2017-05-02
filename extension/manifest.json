@@ -21,7 +21,7 @@
    },
    "background":{
       "scripts":["background.js"]  
-   }
+   },
    "icons":{  
       "16":"icon.png",
       "48":"icon.png",
