@@ -29,6 +29,7 @@
    },
    "permissions":[  
       "https://scratchtools.tk/*",
-      "https://scratch.mit.edu/*"
+      "https://scratch.mit.edu/*",
+      "storage"
    ]
 }
