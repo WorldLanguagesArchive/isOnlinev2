@@ -116,7 +116,7 @@ function status() {
                 if (time() - timestamp < 300) {isOnline();} else{isOffline();}}
 
             if (status == "absent") {
-                if (time() - timestamp < 180) {isAbsent();} else{isOffline();}}
+                if (time() - timestamp < 180) {isAbsent();} else{isOffline(timestamp);}}
 
         } // if 200
 
@@ -150,9 +150,36 @@ function isOnline() {
     iOlog("Detected that the user is online");
     document.getElementById("iOstatus").innerHTML = '<img src="https://scratchtools.tk/isonline/assets/online.svg" height="12" width="12"> <span style="color:green"> <b>Online</b></h5>';}
 
-function isOffline() {
+function isOffline(t) {
     iOlog("Detected that the user is offline");
-    document.getElementById("iOstatus").innerHTML = '<img src="https://scratchtools.tk/isonline/assets/offline.svg" height="12" width="12"> <span style="color:red"> <b>Offline</b></span>';}
+    document.getElementById("iOstatus").innerHTML = '<img src="https://scratchtools.tk/isonline/assets/offline.svg" height="12" width="12"> <span style="color:red"> <b>Offline</b></span>';
+    
+    var n = new Date(); // now
+    t = new Date(t);    // then
+    
+    var hh, mm, date;
+    
+    hh = String(t.getHours()); if(hh.length === 1) hh = "0" + hh;
+    mm = String(t.getMinutes()); if(mm.length === 1) mm = "0" + mm;
+    
+    // Okay, now we will alter `n` and `t`
+    
+    n.setHours(0)        ; t.setHours(0)        ; 
+    n.setMinutes(0)      ; t.setMinutes(0)      ;
+    n.setSeconds(0)      ; t.setSeconds(0)      ;
+    n.setMilliseconds(0) ; t.setMilliseconds(0) ;
+    
+    if(n - t === 86400000){
+        date = "today";   
+    } else if (n - t === 172800000) {
+        date = "yesterday";
+    } else {
+        date = t.getFullYear() + "-" +
+               (String(t.getMonth()).length === 1 ? "0" : "") + t.getMonth() +
+               (String(t.getDay()).length === 1 ? "0" : "")   + t.getDay();
+    }
+
+    document.getElementById("iOstatus").title = 'Last seen ' + hh + ':' + mm + ' (' + date + ')';}    
 
 function isAbsent() {
     iOlog("Detected that the user is away");
