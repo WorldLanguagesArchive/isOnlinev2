@@ -116,7 +116,7 @@ function status() {
                 if (time() - timestamp < 300) {isOnline();} else{isOffline();}}
 
             if (status == "absent") {
-                if (time() - timestamp < 180) {isAbsent();} else{isOffline(timestamp);}}
+                if (time() - timestamp < 180) {isAbsent();} else{isOffline(timestamp * 1000);}}
 
         } // if 200
 
