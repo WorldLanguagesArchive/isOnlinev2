@@ -113,7 +113,7 @@ function status() {
             var status = JSON.parse(response).status;
 
             if (status == "online") {
-                if (time() - timestamp < 300) {isOnline();} else{isOffline();}}
+                if (time() - timestamp < 300) {isOnline();} else{isOffline(timestamp * 1000);}}
 
             if (status == "absent") {
                 if (time() - timestamp < 180) {isAbsent();} else{isOffline(timestamp * 1000);}}
