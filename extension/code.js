@@ -169,13 +169,13 @@ function isOffline(t) {
     n.setSeconds(0)      ; t.setSeconds(0)      ;
     n.setMilliseconds(0) ; t.setMilliseconds(0) ;
     
-    if(n - t === 86400000){
+    if(n - t === 0){
         date = "today";   
-    } else if (n - t === 172800000) {
+    } else if (n - t === 86400000) {
         date = "yesterday";
     } else {
         date = t.getFullYear() + "-" +
-               (String(t.getMonth()).length === 1 ? "0" : "") + t.getMonth() +
+               (String(t.getMonth()).length === 1 ? "0" : "") + t.getMonth() + '-'
                (String(t.getDay()).length === 1 ? "0" : "")   + t.getDay();
     }
 
