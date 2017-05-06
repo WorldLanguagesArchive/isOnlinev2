@@ -175,7 +175,7 @@ function isOffline(t) {
         date = "yesterday";
     } else {
         date = t.getFullYear() + "-" +
-               (String(t.getMonth()).length === 1 ? "0" : "") + t.getMonth() + '-' +
+               (String(t.getMonth() + 1).length === 1 ? "0" : "") + (t.getMonth() + 1) + '-' +
                (String(t.getDay()).length === 1 ? "0" : "")   + t.getDay();
     }
 
