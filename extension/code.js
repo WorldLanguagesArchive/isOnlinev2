@@ -1,14 +1,11 @@
 iOlog("isOnline started");
 
-opt = [{"name": "Online",          "value" : "online",  "color": "green"},
-       {"name": "Away",            "value" : "absent",  "color": "orange"},
-       {"name": "Offline (ghost)", "value" : "offline", "color": "grey"}];
 isOwnAccount = false;
 stop = 0;
 try {localuser = document.documentElement.innerHTML.substring(document.documentElement.innerHTML.search("username")+10,document.documentElement.innerHTML.search("username")+100).match(/\'(.*)\'/).pop();main();}
 catch(err) {document.onreadystatechange = function(){localuser = document.getElementsByClassName("profile-name")[0].innerHTML;main();}}
 
-if(location.href.toLowerCase().startsWith("https://scratch.mit.edu/search/") && /\?q=the(%20|\+)best\1extension/i.test(location.search)) location.href = "https://scratch.mit.edu/users/isOnlineV2/"; // easter egg!
+if(location.href.toLowerCase().startsWith("https://scratch.mit.edu/search/") && /\?q=the(%20|\+)best\1extension/i.test(location.search)) location.href = "https://scratch.mit.edu/users/isOnlineV2/"; // Easter egg!
 
 function main() {
 
@@ -43,6 +40,7 @@ function main() {
         if (localuser.toUpperCase() == user.toUpperCase()) {iOlog("Detected user is their own profile");isOwn();} else {status();}}
 
 } // main function
+
 
 
 
@@ -163,10 +161,14 @@ function status() {
 }
 
 function isOwn(){
+    opt = [{"name": "Online",          "value" : "online",  "color": "green"},
+           {"name": "Away",            "value" : "absent",  "color": "orange"},
+           {"name": "Offline (ghost)", "value" : "offline", "color": "grey"}];
     isOwnAccount = true;
     document.getElementById("iOstatus").innerHTML = '<img id="iostatusimage" src="https://scratchtools.tk/isonline/assets/' + (localstatus() === "ghost" ? "offline" : localstatus()) + '.svg" height="12" width="12">';
-    document.getElementById("iOstatus").innerHTML += " <select id='ioselect' style='font-weight: bold; color: " + opt.find(k => localstatus() === k.value).color + "; width: 120px; padding:0px; font-size:13px; height:23px; margin:0px;' onchange='this.style.color=opt[this.selectedIndex].color;localStorage.setItem(\"iOstatus\", opt[this.selectedIndex].value);document.getElementById(\"iostatusimage\").src=\"https://scratchtools.tk/isonline/assets/\" +opt[this.selectedIndex].value+\".svg\"'>" + opt.map(k => "<option style='background-color: " + k.color + "; color: white;' " + (k.value === localstatus() ? "selected" : "") +">" + k.name + "</option>") + "</select>";
+    document.getElementById("iOstatus").innerHTML += " <select id='ioselect' style='font-weight: bold; color: " + opt.find(k => localstatus() === k.value).color + "; width: 120px; padding:0px; font-size:13px; height:23px; margin:0px;'>" + opt.map(k => "<option style='background-color: " + k.color + "; color: white;' " + (k.value === localstatus() ? "selected" : "") +">" + k.name + "</option>") + "</select>";
     iOcrown();
+    document.getElementById("ioselect").addEventListener("change", changed);
 }
 
 function isOnline() {
@@ -228,7 +230,9 @@ function localstatus(){if(localStorage.getItem("iOstatus")!==null){return localS
 
 function time() {return Math.floor(Date.now() / 1000);}
 
-function iOcrown() {try{if(document.getElementsByClassName("overview")[0].innerHTML.toLowerCase().includes("isonline.tk") || document.getElementsByClassName("overview")[1].innerHTML.toLowerCase().includes("isonline.tk")) {document.getElementsByClassName("header-text")[0].innerHTML = document.getElementsByClassName("header-text")[0].innerHTML.replace('</h2>', ' <a href="https://scratch.mit.edu/projects/158291459/" target="_blank" title="isOnline crown">👑</a></h2>').replace('<h2>', '<h2 style="color:white;">');document.getElementsByClassName("box-head")[0].style.backgroundColor="black";document.getElementsByClassName("header-text")[0].style.backgroundColor="black";document.getElementsByClassName("group")[0].style.color="white";document.getElementsByClassName("profile-details")[0].style.color="white";document.getElementById("iOstatustext").style.color="white";}}catch(err) {if (document.getElementById("user-details").innerHTML.toLowerCase().includes("isonline.tk")) {document.getElementsByClassName("header-text")[0].innerHTML = document.getElementsByClassName("header-text")[0].innerHTML.replace('</h2>', ' <a href="https://scratch.mit.edu/projects/158291459/" target="_blank" title="isOnline crown">👑</a></h2>').replace('<h2>', '<h2 style="color:white;">');document.getElementsByClassName("box-head")[0].style.backgroundColor="black";document.getElementsByClassName("header-text")[0].style.backgroundColor="black";document.getElementsByClassName("group")[0].style.color="white";document.getElementsByClassName("profile-details")[0].style.color="white";document.getElementById("iOstatustext").style.color="white";}}}
+function iOcrown() {try{if(document.getElementsByClassName("overview")[0].innerHTML.toLowerCase().includes("isonline.tk") || document.getElementsByClassName("overview")[1].innerHTML.toLowerCase().includes("isonline.tk")) {document.getElementsByClassName("header-text")[0].innerHTML = document.getElementsByClassName("header-text")[0].innerHTML.replace('</h2>', ' <a href="https://scratch.mit.edu/projects/158291459/" target="_blank" title="isOnline crown">👑</a></h2>').replace('<h2>', '<h2 style="color:white;">');document.getElementsByClassName("box-head")[0].style.backgroundColor="black";document.getElementsByClassName("header-text")[0].style.backgroundColor="black";document.getElementsByClassName("group")[0].style.color="white";document.getElementsByClassName("profile-details")[0].style.color="white";document.getElementById("iOstatustext").style.color="white";}}catch(err) {if (document.getElementById("user-details").innerHTML.toLowerCase().includes("isonline.tk")) {document.getElementsByClassName("header-text")[0].innerHTML = document.getElementsByClassName("header-text")[0].innerHTML.replace('</h2>', ' <a href="https://scratch.mit.edu/projects/158291459/" target="_blank" title="isOnline crown">👑</a></h2>').replace('<h2>', '<h2 style="color:white;">');document.getElementsByClassName("box-head")[0].style.backgroundColor="black";document.getElementsByClassName("header-text")[0].style.backgroundColor="black";document.getElementsByClassName("group")[0].style.color="white";document.getElementsByClassName("profile-details")[0].style.color="white";}}}
+
+function changed() {document.getElementById("ioselect").style.color=opt[document.getElementById("ioselect").selectedIndex].color;localStorage.setItem("iOstatus", opt[document.getElementById("ioselect").selectedIndex].value);document.getElementById("iostatusimage").src="https://scratchtools.tk/isonline/assets/" +opt[document.getElementById("ioselect").selectedIndex].value+".svg";}
 
 var openregister = false;
 if (!localStorage['iO.was.installed']) {openregister = true; localStorage['iO.was.installed'] = '1'; localStorage['iO.version'] = "1.1";}
