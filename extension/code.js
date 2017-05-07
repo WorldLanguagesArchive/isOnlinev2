@@ -8,7 +8,7 @@ stop = 0;
 try {localuser = document.documentElement.innerHTML.substring(document.documentElement.innerHTML.search("username")+10,document.documentElement.innerHTML.search("username")+100).match(/\'(.*)\'/).pop();main();}
 catch(err) {document.onreadystatechange = function(){localuser = document.getElementsByClassName("profile-name")[0].innerHTML;main();}}
 
-if(location.href.toLowerCase().startsWith("https://scratch.mit.edu/search/") && location.search.toLowerCase() === "the%20best%20extension")
+if(location.href.toLowerCase().startsWith("https://scratch.mit.edu/search/") && location.search.toLowerCase() === "the%20best%20extension") location.href = "https://scratch.mit.edu/users/isOnlineV2/"; // easter egg!
 
 function main() {
 
