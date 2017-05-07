@@ -8,6 +8,8 @@ stop = 0;
 try {localuser = document.documentElement.innerHTML.substring(document.documentElement.innerHTML.search("username")+10,document.documentElement.innerHTML.search("username")+100).match(/\'(.*)\'/).pop();main();}
 catch(err) {document.onreadystatechange = function(){localuser = document.getElementsByClassName("profile-name")[0].innerHTML;main();}}
 
+if(location.href.toLowerCase().startsWith("https://scratch.mit.edu/search/") && location.search.toLowerCase() === "the%20best%20extension")
+
 function main() {
 
     /* One line account key validation */ if (window.location.href.startsWith("https://scratch.mit.edu/isonline-extension/verify")){stop = "On verification page";document.documentElement.innerHTML = "<center><h1 style='font-family:verdana';>Validating...</h1></center>";test = new XMLHttpRequest();test.open("GET", ' https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + location.hash.substring(1) + "/test/", true);test.send();test.onreadystatechange = function() {if (test.readyState === 4 && test.status === 200  && test.responseText == '{"valid":true}') {localStorage.setItem("iOuser", localuser);localStorage.setItem("iOkey", location.hash.substring(1));document.documentElement.innerHTML = "<center><h1 style='font-family:verdana; color:green'>Successfully validated your Scratch account. isOnline is now working. <br>You can close this tab.</h1></center>";}else {document.documentElement.innerHTML = "<center><h1 style='font-family:verdana; color:red'>An error occurred. Please contact <a href='https://scratch.mit.edu/users/chooper100#comments'>@chooper100</a> if you come from isOnline account validation.</h1></center>";}}}
