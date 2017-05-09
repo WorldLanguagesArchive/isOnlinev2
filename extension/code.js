@@ -8,15 +8,26 @@ catch(err) {document.onreadystatechange = function(){localuser = document.getEle
 if(location.href.toLowerCase().startsWith("https://scratch.mit.edu/search/") && /\?q=the(%20|\+)best\1extension/i.test(location.search)) location.href = "https://scratch.mit.edu/users/isOnlineV2/"; // Easter egg!
 
 function main() {
+    
+    if (localStorage.getItem("iOuser") !== null){ // user is using an old version
+        localStorage.setItem("iOaccounts", JSON.stringify([
+            {"name": localStorage.getItem("iOuser"), "key": localStorage.getItem("iOkey")}
+        ]));
+        
+        localStorage.setItem("iOuser", null);
+        localStorage.setItem("iOkey", null);
+    }
+    
+    registeredUsers = localStorage.getItem("iOaccounts") === null ? null : JSON.parse(localStorage.getItem("iOaccounts"));
 
-    /* One line account key validation */ if (window.location.href.startsWith("https://scratch.mit.edu/isonline-extension/verify")){stop = "On verification page";document.documentElement.innerHTML = "<center><h1 style='font-family:verdana';>Validating...</h1></center>";test = new XMLHttpRequest();test.open("GET", ' https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + location.hash.substring(1) + "/test/", true);test.send();test.onreadystatechange = function() {if (test.readyState === 4 && test.status === 200  && test.responseText == '{"valid":true}') {localStorage.setItem("iOuser", localuser);localStorage.setItem("iOkey", location.hash.substring(1));document.documentElement.innerHTML = "<center><h1 style='font-family:verdana; color:green'>Successfully validated your Scratch account. isOnline is now working. <br>You can close this tab.</h1></center>";}else {document.documentElement.innerHTML = "<center><h1 style='font-family:verdana; color:red'>An error occurred. Please contact <a href='https://scratch.mit.edu/users/chooper100#comments'>@chooper100</a> if you come from isOnline account validation.</h1></center>";}}}
-
-    if (localStorage.getItem("iOuser") === null) {
+    /* One line account key validation */ if (window.location.href.startsWith("https://scratch.mit.edu/isonline-extension/verify")){stop = "On verification page";document.documentElement.innerHTML = "<center><h1 style='font-family:verdana';>Validating...</h1></center>";test = new XMLHttpRequest();test.open("GET", ' https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + location.hash.substring(1) + "/test/", true);test.send();test.onreadystatechange = function() {if (test.readyState === 4 && test.status === 200  && test.responseText == '{"valid":true}') {localStorage.setItem("iOaccounts", (registeredUsers === null ? [] : registeredUsers).concat({"name": localuser, "key": location.hash.substring(1)});document.documentElement.innerHTML = "<center><h1 style='font-family:verdana; color:green'>Successfully validated your Scratch account. isOnline is now working. <br>You can close this tab.</h1></center>";}else {document.documentElement.innerHTML = "<center><h1 style='font-family:verdana; color:red'>An error occurred. Please contact <a href='https://scratch.mit.edu/users/chooper100#comments'>@chooper100</a> if you come from isOnline account validation.</h1></center>";}}}
+    
+    if (registeredUsers === null) {
         stop = "User didn't validate any account.";
         isError();
         didntValidate();}
 
-    if (localuser != localStorage.getItem("iOuser") && localStorage.getItem("iOuser") !== null) {
+    if (registeredUsers !== null && registeredUsers.findIndex(user => user.name === localuser) === -1) {
         stop = "User validated another account.";
         isError();
         unvalidatedAcc();}
@@ -25,7 +36,7 @@ function main() {
 
     url = window.location.href;
     user = window.location.href.substring(30,100).substring(0, window.location.href.substring(30,100).indexOf('/'));
-    key = localStorage.getItem("iOkey");
+    key = registeredUsers.key;
     iOlog("Profile: " + user);
     iOlog("Local username: " + localuser);
 
@@ -195,7 +206,7 @@ function didntValidate() { try{
     document.getElementById("alert-view").innerHTML="<div class='alert fade in alert-success' style='display: block;'><span class='close' onclick='document.getElementById(\"alert-view\").style.display=\"none\";'>×</span>Whoops! Looks like you didn't validate your account on isOnline. isOnline won't work until you <a href='https://scratchtools.tk/isonline/register' target='blank' >validate your account</a>.</span> It takes around 20 seconds.</div>";}catch(err){}}
 
 function unvalidatedAcc() { if(window.location.href.includes("users")){
-    document.getElementById("alert-view").innerHTML="<div class='alert fade in alert-success' style='display: block;'><span class='close' onclick='document.getElementById(\"alert-view\").style.display=\"none\";'>×</span>Whoops! Looks like you didn\'t validate isOnline on the account you are using now, so it's not working. If needed, login to " + localStorage.getItem("iOuser") + ", or unregister it by <a href='https://scratchtools.tk/isonline/register' target='blank'>registering " + localuser + " instead</a>.</div>";}}
+    document.getElementById("alert-view").innerHTML="<div class='alert fade in alert-success' style='display: block;'><span class='close' onclick='document.getElementById(\"alert-view\").style.display=\"none\";'>×</span>Whoops! Looks like you didn\'t validate isOnline on the account you are using now, so it's not working. Don't worry, you can <a href='https://scratchtools.tk/isonline/register' target='blank' >register an additional account</a> to fix the problem.</div>";}}
 
 function keyWasChanged() {
     console.error("isOnline error: Key was changed");
