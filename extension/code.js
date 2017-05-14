@@ -47,7 +47,7 @@ function main() {
 
     url = window.location.href;
     user = window.location.href.substring(30,100).substring(0, window.location.href.substring(30,100).indexOf('/'));
-    key = registeredUsers.key;
+    key = registeredUsers.find(user => user.name === localuser).key;
     iOlog("Profile: " + user);
     iOlog("Local username: " + localuser);
 
