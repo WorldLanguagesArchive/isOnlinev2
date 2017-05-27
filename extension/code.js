@@ -286,9 +286,9 @@ function iOcrown() { try { if (document.getElementsByClassName("overview")[0].in
 function changed() {document.getElementById("ioselect").style.color=opt[document.getElementById("ioselect").selectedIndex].color;localStorage.setItem("iOstatus", opt[document.getElementById("ioselect").selectedIndex].value);document.getElementById("iostatusimage").src="https://scratchtools.tk/isonline/assets/" +opt[document.getElementById("ioselect").selectedIndex].value+".svg";}
 
 var openregister = false;
-if (!localStorage['iO.was.installed']) {openregister = true; localStorage['iO.was.installed'] = '1'; localStorage['iO.version'] = "1.1";}
+if (!localStorage['iO.was.installed']) {openregister = true; localStorage['iO.was.installed'] = '1'; localStorage['iO.version'] = "1.2";}
 if (openregister) window.location="https://scratchtools.tk/isonline/register";
 
 var openupdate = false;
-if (localStorage['iO.version'] !== "1.1" && localStorage['iO.was.installed']!==null) {openupdate = true; localStorage['iO.version'] = "1.1";}
-if (openupdate) window.location="https://isonlineupdate.blogspot.com/#"+window.location;
+if (localStorage['iO.version'] !== "1.2" && localStorage['iO.was.installed']!==null) {openupdate = true; localStorage['iO.version'] = "1.2";}
+if (openupdate) window.location="https://isonlineupdate.blogspot.com/#"+location.hash;
