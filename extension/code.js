@@ -32,7 +32,7 @@ function main() {
 
     registeredUsers = localStorage.getItem("iOaccounts") === null ? [] : JSON.parse(localStorage.getItem("iOaccounts"));
 
-    // Account validation 
+    // Account validation
     if (window.location.href.startsWith("https://scratch.mit.edu/isonline-extension/verify")) {
         stop = "On verification page";
         document.documentElement.innerHTML = "<!DOCTYPE html><html><head><style>body{background: #f0f0f0;margin: 0;}#vcenter{position: absolute;top: 50%;width: 100%;margin-top: -100px;}h1{text-align: center;font-family: trebuchet ms, courier new, sans-serif;font-size: 2em;}#loader,#loader:before,#loader:after{border-radius: 50%;width: 2.5em;height: 2.5em;-webkit-animation-fill-mode: both;animation-fill-mode: both;-webkit-animation: load7 1.8s infinite ease-in-out;animation: load7 1.8s infinite ease-in-out;}#loader{color: #098e8b;font-size: 10px;margin: 80px auto;position: relative;text-indent: -9999em;-webkit-transform: translateZ(0);-ms-transform: translateZ(0);transform: translateZ(0);-webkit-animation-delay: -0.16s;animation-delay: -0.16s;}#loader:before,#loader:after{content: '';position: absolute;top: 0;}#loader:before{left: -3.5em;-webkit-animation-delay: -0.32s;animation-delay: -0.32s;}#loader:after{left: 3.5em;}@-webkit-keyframes load7{0%,80%,100%{box-shadow: 0 2.5em 0 -1.3em;}40%{box-shadow: 0 2.5em 0 0;}}@keyframes load7{0%,80%,100%{box-shadow: 0 2.5em 0 -1.3em;}40%{box-shadow: 0 2.5em 0 0;}}</style></head><body><div id='vcenter'><h1 id='header'>Validating isOnline account</h1><div id='loader'></div></div></body></html>";
@@ -68,7 +68,7 @@ function main() {
 
     if (registeredUsers.findIndex(user => user.name === localuser) === -1 && registeredUsers.length !== 0) {
         stop = "User validated another account.";
-        isError();
+        try{document.getElementsByClassName("location")[0].innerHTML += ' | <small><a href="https://scratchtools.tk/isonline/register" target="_blank">Verify this account </a> to use isOnline on it</small>';}catch(err){}
         unvalidatedAcc();}
 
     if(stop!==0){console.error("isOnline error: "+stop);return;}
@@ -154,6 +154,7 @@ function update() {
             absentrequest = new XMLHttpRequest();
             absentrequest.open("POST", 'https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + '/set/absent', true);
             absentrequest.send();
+            checkResponse(absentrequest);
             localStorage.setItem("iOlastAbs", time());
             iOlog("Sent away request");}}
     if (localstatus() == "absent"){
@@ -162,6 +163,7 @@ function update() {
             absentrequest = new XMLHttpRequest();
             absentrequest.open("POST", 'https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + '/set/absent', true);
             absentrequest.send();
+            checkResponse(absentrequest);
             localStorage.setItem("iOlastAbs", time());
             iOlog("Sent away request");}}
     if (localstatus() == "offline") {
@@ -237,8 +239,8 @@ function noiO() {
     document.getElementById("iOstatus").innerHTML = '<span title="This user has to install isOnline in order to show their status">Not iO user</span>';}
 
 function isError() { try{
-    try { document.getElementById("iOstatus").innerHTML = '<span title="Error getting the status. Read the orange box above">Error</span>';} catch(err){
-        document.getElementsByClassName("location")[0].innerHTML = document.getElementsByClassName("location")[0].innerHTML + ' | <span title="Error getting the status. Read the orange box above">Error</span>';}}catch(err){}}
+    try { document.getElementById("iOstatus").innerHTML = '<span title="Error: ' + stop + '">Error</span>';} catch(err){
+        document.getElementsByClassName("location")[0].innerHTML += ' | <span title="Error: ' + stop + '">Error</span>';}}catch(err){}}
 
 function didntValidate() {
     try{ document.getElementById("alert-view").innerHTML="<div class='alert fade in alert-success' style='display: block;'><span class='close' onclick='document.getElementById(\"alert-view\").style.display=\"none\";'>×</span>Whoops! Looks like you didn't validate your account on isOnline. isOnline won't work until you <a href='https://scratchtools.tk/isonline/register/#"+localuser+"' target='blank' >validate your account</a>.</span> It takes around 20 seconds.</div>";}catch(err){}}
@@ -248,9 +250,9 @@ function unvalidatedAcc() {
     if(window.location.href.includes("users")){
         document.getElementById("alert-view").innerHTML="<div class='alert fade in alert-success' style='display: block;'><span class='close' onclick='document.getElementById(\"alert-view\").style.display=\"none\";localStorage.setItem(\"iObanner\"," + time() + ")'>×</span>Whoops! isOnline isn't working on this Scratch account because it isn\'t validated. Want to use isOnline on this account too? <a href='https://scratchtools.tk/isonline/register/#"+localuser+"' target='blank' >Validate an additional user</a>.</div>";}}
 
-function keyWasChanged() {
+function keyWasChanged() { try{
     console.error("isOnline error: Key was changed");
-    document.getElementById("alert-view").innerHTML="<div class='alert fade in alert-success' style='display: block;'><span class='close' onclick='document.getElementById(\"alert-view\").style.display=\"none\";'>×</span>Whoops! isOnline isn't working. This may ocurr if you installed iO on another computer. iO can only work at one computer at the same time. You can use isOnline on this computer by <a href='https://scratchtools.tk/isonline/register/#"+localuser+"' target='blank'>re-validating</a>.</div>";}
+    document.getElementById("alert-view").innerHTML="<div class='alert fade in alert-success' style='display: block;'><span class='close' onclick='document.getElementById(\"alert-view\").style.display=\"none\";'>×</span>Whoops! isOnline isn't working. This may ocurr if you installed iO on another computer. iO can only work at one computer at the same time. You can use isOnline on this computer by <a href='https://scratchtools.tk/isonline/register/#"+localuser+"' target='blank'>re-validating</a>.</div>";}catch(err){alert("err");}}
 
 function isBot() {
     console.error("isOnline error: User has been marked as a bot");
@@ -265,6 +267,7 @@ function setOnline() {
     onlinerequest = new XMLHttpRequest();
     onlinerequest.open("POST", 'https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + '/set/online', true);
     onlinerequest.send();
+    checkResponse(onlinerequest);
     localStorage.setItem("iOlastOn", time());}
 
 function updateStatus(color) {
@@ -284,6 +287,14 @@ function time() {return Math.floor(Date.now() / 1000);}
 function iOcrown() { try { if (document.getElementsByClassName("overview")[0].innerHTML.toLowerCase().includes("isonline.tk") || document.getElementsByClassName("overview")[1].innerHTML.toLowerCase().includes("isonline.tk")) { document.getElementsByClassName("header-text")[0].innerHTML = document.getElementsByClassName("header-text")[0].innerHTML.replace('</h2>', ' <a href="https://scratch.mit.edu/projects/158291459/" target="_blank" title="isOnline crown">👑</a></h2>').replace('<h2>', '<h2 style="color:orange;text-shadow:none;">'); } } catch (err) { try { if (document.getElementById("user-details").innerHTML.toLowerCase().includes("isonline.tk")) { document.getElementsByClassName("header-text")[0].innerHTML = document.getElementsByClassName("header-text")[0].innerHTML.replace('</h2>', ' <a href="https://scratch.mit.edu/projects/158291459/" target="_blank" title="isOnline crown">👑</a></h2>').replace('<h2>', '<h2 style="color:orange;text-shadow:none;">'); } } catch (err) {} } } 
 
 function changed() {document.getElementById("ioselect").style.color=opt[document.getElementById("ioselect").selectedIndex].color;localStorage.setItem("iOstatus", opt[document.getElementById("ioselect").selectedIndex].value);document.getElementById("iostatusimage").src="https://scratchtools.tk/isonline/assets/" +opt[document.getElementById("ioselect").selectedIndex].value+".svg";}
+
+function checkResponse(request) {
+    request.onreadystatechange = function() {if (request.readyState === 4){
+        if (request.status !== 200) {
+            result = JSON.parse(request.responseText).result;
+            if (result=="incorrect key") {stop = "Key was changed";isError();keyWasChanged();}
+            if (result=="bot") {stop = "User is a bot";isError();isBot();}
+        }}};}
 
 var openregister = false;
 if (!localStorage['iO.was.installed']) {openregister = true; localStorage['iO.was.installed'] = '1'; localStorage['iO.version'] = "1.2";}
