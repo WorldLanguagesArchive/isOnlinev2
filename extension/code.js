@@ -56,7 +56,7 @@ function main() {
                 document.getElementById("header").innerHTML = "<center><h3 style='color:green'>Successfully validated your Scratch account.<br>isOnline is now working. <br>You can close this tab.</h3></center>";
             } else {
                 document.getElementById("loader").style.display = "none";
-                document.getElementById("header").innerHTML = "<center><h3 style='color:red'>An error occurred. Please contact <a href='https://scratch.mit.edu/users/chooper100#comments'>@chooper100</a> if you come from isOnline account validation.</h3></center>";
+                document.getElementById("header").innerHTML = "<center><h3 style='color:red'>An error occured. Please contact <a href='https://scratch.mit.edu/users/chooper100#comments'>@chooper100</a> if you come from isOnline account validation.</h3></center>";
             }
         };
     }
@@ -243,7 +243,7 @@ function isError() { try{
         document.getElementsByClassName("location")[0].innerHTML += ' | <span title="Error: ' + stop + '">Error</span>';}}catch(err){}}
 
 function didntValidate() {
-    if(url=="https://scratch.mit.edu/projects/149841742/"){return;}
+    if(window.location.href=="https://scratch.mit.edu/projects/149841742/"){return;}
     try{ document.getElementById("alert-view").innerHTML="<div class='alert fade in alert-success' style='display: block;'><span class='close' onclick='document.getElementById(\"alert-view\").style.display=\"none\";'>×</span>Whoops! Looks like you didn't validate your account on isOnline. isOnline won't work until you <a href='https://scratchtools.tk/isonline/register/#"+localuser+"' target='blank' >validate your account</a>.</span> It takes around 20 seconds.</div>";}catch(err){}}
 
 function unvalidatedAcc() {
@@ -253,7 +253,7 @@ function unvalidatedAcc() {
 
 function keyWasChanged() { try{
     console.error("isOnline error: Key was changed");
-    document.getElementById("alert-view").innerHTML="<div class='alert fade in alert-success' style='display: block;'><span class='close' onclick='document.getElementById(\"alert-view\").style.display=\"none\";'>×</span>Whoops! isOnline isn't working. This may ocurr if you installed iO on another computer. iO can only work at one computer at the same time. You can use isOnline on this computer by <a href='https://scratchtools.tk/isonline/register/#"+localuser+"' target='blank'>re-validating</a>.</div>";}catch(err){alert("err");}}
+    document.getElementById("alert-view").innerHTML="<div class='alert fade in alert-success' style='display: block;'><span class='close' onclick='document.getElementById(\"alert-view\").style.display=\"none\";'>×</span>Whoops! isOnline isn't working. This may occur if you installed iO on another computer. iO can only work at one computer at the same time. You can use isOnline on this computer by <a href='https://scratchtools.tk/isonline/register/#"+localuser+"' target='blank'>re-validating</a>.</div>";}catch(err){alert("err");}}
 
 function isBot() { try{
     console.error("isOnline error: User has been marked as a bot");
