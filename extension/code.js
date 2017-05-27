@@ -68,7 +68,7 @@ function main() {
 
     if (registeredUsers.findIndex(user => user.name === localuser) === -1 && registeredUsers.length !== 0) {
         stop = "User validated another account.";
-        try{document.getElementsByClassName("location")[0].innerHTML += ' | <small><a href="https://scratchtools.tk/isonline/register" target="_blank">Verify this account </a> to use isOnline on it</small>';}catch(err){}
+        try{document.getElementsByClassName("location")[0].innerHTML += ' | <small><a href="https://scratchtools.tk/isonline/register/" target="_blank">Validate this account </a> to use isOnline on it</small>';}catch(err){}
         unvalidatedAcc();}
 
     if(stop!==0){console.error("isOnline error: "+stop);return;}
@@ -243,6 +243,7 @@ function isError() { try{
         document.getElementsByClassName("location")[0].innerHTML += ' | <span title="Error: ' + stop + '">Error</span>';}}catch(err){}}
 
 function didntValidate() {
+    if(url=="https://scratch.mit.edu/projects/149841742/"){return;}
     try{ document.getElementById("alert-view").innerHTML="<div class='alert fade in alert-success' style='display: block;'><span class='close' onclick='document.getElementById(\"alert-view\").style.display=\"none\";'>×</span>Whoops! Looks like you didn't validate your account on isOnline. isOnline won't work until you <a href='https://scratchtools.tk/isonline/register/#"+localuser+"' target='blank' >validate your account</a>.</span> It takes around 20 seconds.</div>";}catch(err){}}
 
 function unvalidatedAcc() {
