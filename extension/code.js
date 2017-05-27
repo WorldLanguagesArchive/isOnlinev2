@@ -291,4 +291,4 @@ if (openregister) window.location="https://scratchtools.tk/isonline/register";
 
 var openupdate = false;
 if (localStorage['iO.version'] !== "1.1" && localStorage['iO.was.installed']!==null) {openupdate = true; localStorage['iO.version'] = "1.1";}
-if (openupdate) window.location="https://isonlineupdate.blogspot.com";
+if (openupdate) window.location="https://isonlineupdate.blogspot.com/#"+window.location;
