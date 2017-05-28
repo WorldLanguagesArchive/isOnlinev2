@@ -1,15 +1,3 @@
-// ==UserScript==
-// @name         iO beta
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  try to take over the world!
-// @author       You
-// @match        https://scratch.mit.edu/*
-// @match        https://scratchtools.tk/*
-// @run-at document-idle
-// @grant        none
-// ==/UserScript==
-
 iOlog("isOnline started");
 
 isOwnAccount = false;
@@ -89,43 +77,6 @@ function main() {
         if (localuser.toUpperCase() == user.toUpperCase()) {iOlog("Detected user is their own profile");isOwn();} else {status();}}
 
 } // main function
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
