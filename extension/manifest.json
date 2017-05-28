@@ -19,6 +19,9 @@
       "default_popup":"popup.html",
       "default_icon":"icon.png"
    },
+   "background":{
+      "scripts":["background.js"]  
+   },
    "icons":{  
       "16":"icon.png",
       "48":"icon.png",
@@ -26,6 +29,7 @@
    },
    "permissions":[  
       "https://scratchtools.tk/*",
-      "https://scratch.mit.edu/*"
+      "https://scratch.mit.edu/*",
+      "storage"
    ]
 }
