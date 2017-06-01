@@ -204,7 +204,7 @@ function unvalidatedAcc() {
 
 function keyWasChanged() { try{
     console.error("isOnline error: Key was changed");
-    document.getElementById("alert-view").innerHTML="<div class='alert fade in alert-success' style='display: block;'><span class='close' onclick='document.getElementById(\"alert-view\").style.display=\"none\";'>×</span>Whoops! isOnline isn't working. This may occur if you installed iO on another computer. isOnline won't work with this Scratch account on this computer until you <a href='https://scratchtools.tk/isonline/register/#"+localuser+"' target='blank'>re-validate</a>.</div>";}catch(err){alert("err");}}
+    document.getElementById("alert-view").innerHTML="<div class='alert fade in alert-success' style='display: block;'><span class='close' onclick='document.getElementById(\"alert-view\").style.display=\"none\";'>×</span>Whoops! isOnline isn't working. This may occur if you installed iO on another computer. isOnline won't work with this Scratch account on this computer until you <a href='https://scratchtools.tk/isonline/register/#"+localuser+"' target='blank'>re-validate</a>.</div>";}catch(err){}}
 
 function isBot() { try{
     console.error("isOnline error: User has been marked as a bot");
