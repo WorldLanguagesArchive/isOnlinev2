@@ -2,21 +2,13 @@ iOlog("isOnline started");
 
 isOwnAccount = false;
 stop = 0;
-try {localuser = document.documentElement.innerHTML.substring(document.documentElement.innerHTML.search("username")+10,document.documentElement.innerHTML.search("username")+100).match(/\'(.*)\'/).pop();main();}
+try {nav=document.getElementsByClassName("user-nav")[0].innerHTML;localuser=nav.substring(nav.search('/">Profile</a>')-100,nav.search('/">Profile</a>')).substring(nav.substring(nav.search('/">Profile</a>')-100,nav.search('/">Profile</a>')).lastIndexOf("/") + 1);main();}
 catch(err) {if(!String(err).includes("Cannot read property 'pop' of null")){console.error("isOnline error.\n" + err);}document.onreadystatechange = function(){localuser = document.getElementsByClassName("profile-name")[0].innerHTML;main();};}
 
 /* Easter egg */      if(location.href.toLowerCase().startsWith("https://scratch.mit.edu/search/") && /\?q=the(%20|\+)best\1extension/i.test(location.search)) location.href = "https://scratch.mit.edu/users/isOnlineV2/";
 /* Redirect to verification */ if(location.href.toLowerCase().startsWith("https://scratch.mit.edu/isonline-extension/register")) {window.location="https://scratchtools.tk/isonline/register/";}
 
 function main() {
-
-    if (localStorage.getItem("iOuser") !== null){ // Key transition from v1.1 to v1.2
-        localStorage.setItem("iOaccounts", JSON.stringify([
-            {"name": localStorage.getItem("iOuser"), "key": localStorage.getItem("iOkey")}
-        ]));
-        localStorage.removeItem("iOuser", null);
-        localStorage.removeItem("iOkey", null);
-    }
 
     registeredUsers = localStorage.getItem("iOaccounts") === null ? [] : JSON.parse(localStorage.getItem("iOaccounts"));
 
@@ -249,9 +241,9 @@ function checkResponse(request) {
         }}};}
 
 var openregister = false;
-if (!localStorage['iO.was.installed']) {openregister = true; localStorage['iO.was.installed'] = '1'; localStorage['iO.version'] = "1.2";}
+if (!localStorage['iO.version']) {openregister = true; localStorage['iO.version'] = "1.2";}
 if (openregister) window.location="https://scratchtools.tk/isonline/register";
-
-var openupdate = false;
-if (localStorage['iO.version'] !== "1.2" && localStorage['iO.was.installed']!==null) {openupdate = true; localStorage['iO.version'] = "1.2";}
-if (openupdate) window.location="https://isonlineupdate.blogspot.com/#"+window.location;
+if (localStorage['iO.version'] !== "1.2" && localStorage['iO.version']!==null) {x=0; document.onclick = function() {
+    if (x==1){return;}
+    window.open("https://isonlineupdate.blogspot.com/");x=1;
+	localStorage['iO.version'] = "1.2";};}
