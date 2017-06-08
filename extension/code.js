@@ -240,10 +240,12 @@ function checkResponse(request) {
             if (result=="bot") {stop = "User is a bot";isError();isBot();}
         }}};}
 
+chrome.storage.local.get("iO.version", function(result) {
 var openregister = false;
-if (!localStorage['iO.version']) {openregister = true; localStorage['iO.version'] = "1.2";}
+if (JSON.stringify(result)=="{}") {openregister = true; chrome.storage.local.set({"iO.version":"1.2"});}
 if (openregister) window.location="https://scratchtools.tk/isonline/register";
-if (localStorage['iO.version'] !== "1.2" && localStorage['iO.version']!==null) {x=0; document.onclick = function() {
+if (result !== "1.2" && JSON.stringify(result)=="{}") {x=0; document.onclick = function() {
     if (x==1){return;}
     window.open("https://isonlineupdate.blogspot.com/");x=1;
-	localStorage['iO.version'] = "1.2";};}
+	chrome.storage.local.set({"iO.version":"1.2"});};}
+});
