@@ -30,7 +30,7 @@ function main() {
                     localStorage.setItem("iOaccounts", JSON.stringify(registeredUsers.slice(0, indx).concat({
                         "name": localuser,
                         "key": location.hash.substring(1)
-                    }).concat(registeredUsers.slice(indx + 1))));
+                    }).concat(registeredUsers.slice(indx +1))));
                 }
                 document.getElementById("loader").style.display = "none";
                 document.getElementById("header").innerHTML = "<center><h3 style='color:green'>Successfully validated your Scratch account.<br>isOnline is now working. <br>You can close this tab.</h3></center>";
