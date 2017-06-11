@@ -19,7 +19,7 @@
   "background": {
     "scripts": ["background.js"]
   },
-   "optional_permissions": [ "background","tabs","notifications" ],
+   "optional_permissions": ["notifications"],
    "browser_action":{  
       "default_popup":"popup.html",
       "default_icon":"icon.png"
