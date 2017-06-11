@@ -1,4 +1,4 @@
-{  
+﻿{  
    "manifest_version":2,
    "name":"isOnline",
    "short_name":"iO",
@@ -15,6 +15,11 @@
       }
    ],
    "version":"1.2",
+  "options_page": "popup.html",
+  "background": {
+    "scripts": ["background.js"]
+  },
+   "optional_permissions": [ "background","tabs","notifications" ],
    "browser_action":{  
       "default_popup":"popup.html",
       "default_icon":"icon.png"
@@ -26,6 +31,7 @@
    },
    "permissions":[  
       "https://scratchtools.tk/*",
-      "https://scratch.mit.edu/*"
+      "https://scratch.mit.edu/*",
+      "storage"
    ]
 }
