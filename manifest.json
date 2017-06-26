@@ -1,0 +1,37 @@
+﻿{  
+   "manifest_version":2,
+   "name":"isOnline",
+   "short_name":"iO",
+   "description":"Know who is online on Scratch!",
+   "content_scripts":[  
+      {  
+         "matches":[  
+            "https://scratch.mit.edu/*"
+         ],
+         "js":[  
+            "code.js"
+         ],
+         "run_at":"document_idle"
+      }
+   ],
+   "version":"1.2",
+  "options_page": "popup.html",
+  "background": {
+    "scripts": ["background.js"]
+  },
+   "optional_permissions": ["notifications"],
+   "browser_action":{  
+      "default_popup":"popup.html",
+      "default_icon":"icon.png"
+   },
+   "icons":{  
+      "16":"icon.png",
+      "48":"icon.png",
+      "128":"icon.png"
+   },
+   "permissions":[  
+      "https://scratchtools.tk/*",
+      "https://scratch.mit.edu/*",
+      "storage"
+   ]
+}
