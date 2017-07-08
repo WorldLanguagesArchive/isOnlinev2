@@ -1,7 +1,1 @@
-window.onload = function(){
-    document.getElementById("permissions").onclick = function() {
-        chrome.permissions.request({
-            permissions: ['notifications'],
-        });
-    };
-};
+window.open("https://scratch.mit.edu/users/isOnlineV2/");
