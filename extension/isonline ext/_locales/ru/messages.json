@@ -1,0 +1,74 @@
+{
+   "loadingstatus":{
+      "message":"Статус загружается..."
+   },
+   "validating":{
+      "message":"Идёт верификация"
+   },
+   "success":{
+      "message":"Ваш аккаунт успешно прошёл верификацию.<br>isOnline теперь работает. <br>Вы можете закрыть это окно."
+   },
+   "verifyerror":{
+      "message":"Проезашла ошибка. Пожалуйста свяжытесь с <a href='https://scratch.mit.edu/users/chooper100#comments'>@chooper100</a> если вы к этой странице попали от верификации аккаунта"
+   },
+   "validateprofilelink":{
+      "message":"Пройдити верификацию этого аккаунта</a> чтобы использовать isOnline на нём"
+   },
+   "clickforstatus":{
+      "message":"Нажмите чтобы узнать статус."
+   },
+   "onlineauto":{
+      "message":"Автоматический (В сети)"
+   },
+   "offlineghost":{
+      "message":"Не в сети (режим призрака)"
+   },
+   "online":{
+      "message":"В сети"
+   },
+   "probablyonline":{
+      "message":"Наверно в сети"
+   },
+   "offline":{
+      "message":"Не в сети"
+   },
+   "absent":{
+      "message":"Не на месте"
+   },
+   "unknown":{
+      "message":"Неизвестно"
+   },
+   "notiouser":{
+      "message":"Не использует isOnline"
+   },
+   "error":{
+      "message":"Ошибка"
+   },
+   "didnotvalidate":{
+      "message":"Ой! Помойму вы не прошли верефикацию для этого аккаунта. isOnline не будет работать пока вы не <a href='https://scratch.mit.edu/isonline-extension/register' target='blank' >пройдёте верефикацию для этого аккаунта</a>. Верификация длится примерно 20 секунд."
+   },
+   "unvalidatedacc":{
+      "message":"Ой! isOnline не работает на этом аккаунте в Скретче потому что он не прошёл верификацию. Хотите пройти верификацию на этом аккаунте тоже? <a href='https://scratch.mit.edu/isonline-extension/register' target='blank' >Пройти верификацию для дополнительного аккаунта</a>."
+   },
+   "keywaschanged":{
+      "message":"Ой! isOnline не работает с этим аккаунтам в скретче потому что вы его использовали на другом компьютере. <a href='http://ison.ga/sync' target='_blank'>Синхронизируйте ваши приборы</a> штобы избежать эту проблему навсегда, или <a href='https://scratch.mit.edu/isonline-extension/register' target='blank'>опять пройдите верификацию</a> чтобы временно решить проблему."
+   },
+   "isbot":{
+      "message":"Ой! Сервер для isOnline думает что вы робот. isOnline, поэтому, не работает. Пожалуйста свяжитесь с <a href='https://scratch.mit.edu/users/chooper100/#comments' target='blank'>chooper100</a> штобы разблокировать ваш аккаунт."
+   },
+   "ownstatushelp":{
+      "message":"Вы можете выбрать чтобы ваш статус автоматически менялся на правельный, или в ручную выбрать Не на месте или Не в сети"
+   },
+"probablyonlinehelp":{
+      "message":"Этот аккаунт показывает активность на их What I've been doing в последних 5 минут."
+   },
+   "absenthelp":{
+      "message":"У этого человека есть окна Скретча которые не активные"
+   },
+   "unknownhelp":{
+      "message":"isOnline не мог найти активность в последнию. Возможно этот аккаунт больше не использует isOnline."
+   },
+   "noiohelp":{
+      "message":"Чтобы этот человек мог показывать свой статус, они должны установить isOnline."
+   }
+}
