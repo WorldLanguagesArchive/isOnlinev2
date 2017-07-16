@@ -1,1 +1,1 @@
-window.open("https://scratch.mit.edu/users/isOnlineV2");
+window.open("https://scratch.mit.edu/users/isOnlineV2/");
