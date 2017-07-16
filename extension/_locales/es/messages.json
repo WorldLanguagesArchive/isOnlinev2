@@ -1,0 +1,74 @@
+{
+   "loadingstatus":{
+      "message":"Loading status..."
+   },
+   "validating":{
+      "message":"Validating isOnline account"
+   },
+   "success":{
+      "message":"Successfully validated your Scratch account.<br>isOnline is now working. <br>You can close this tab."
+   },
+   "verifyerror":{
+      "message":"An error occured. Please contact <a href='https://scratch.mit.edu/users/chooper100#comments'>@chooper100</a> if you come from isOnline account validation."
+   },
+   "validateprofilelink":{
+      "message":"Validate this account </a> to use isOnline on it"
+   },
+   "clickforstatus":{
+      "message":"Click to get status"
+   },
+   "onlineauto":{
+      "message":"Automatic (Online)"
+   },
+   "offlineghost":{
+      "message":"Offline (ghost)"
+   },
+   "online":{
+      "message":"Online"
+   },
+   "probablyonline":{
+      "message":"Probably Online"
+   },
+   "offline":{
+      "message":"Offline"
+   },
+   "absent":{
+      "message":"Away"
+   },
+   "unknown":{
+      "message":"Unknown"
+   },
+   "notiouser":{
+      "message":"Not iO user"
+   },
+   "error":{
+      "message":"Error"
+   },
+   "didnotvalidate":{
+      "message":"Whoops! Looks like you didn't validate your account on isOnline. isOnline won't work until you <a href='https://scratch.mit.edu/isonline-extension/register' target='blank' >validate your account</a>. It takes around 20 seconds."
+   },
+   "unvalidatedacc":{
+      "message":"Whoops! isOnline isn't working on this Scratch account because it isn't validated. Want to use isOnline on this account too? <a href='https://scratch.mit.edu/isonline-extension/register' target='blank' >Validate an additional user</a>."
+   },
+   "keywaschanged":{
+      "message":"Whoops! isOnline isn't working with this Scratch account because you used it on another computer. <a href='http://ison.ga/sync' target='_blank'>Synchronize your computers</a> to avoid this error permanently or <a href='https://scratch.mit.edu/isonline-extension/register' target='blank'>re-validate</a> to temporarily fix it."
+   },
+   "isbot":{
+      "message":"Whoops! It looks like you've been marked as a bot by the isOnline server. isOnline isn't working. Please contact <a href='https://scratch.mit.edu/users/chooper100/#comments' target='blank'>chooper100</a> to unblock your account."
+   },
+   "ownstatushelp":{
+      "message":"You can choose your status to be automatically set to the correct one, or manually select to be seen as Away or Offline."
+   },
+   "probablyonlinehelp":{
+      "message":"This user shows activity on their What I've been doing from the last 5 minutes."
+   },
+   "absenthelp":{
+      "message":"The user has open inactive Scratch tabs."
+   },
+   "unknownhelp":{
+      "message":"isOnline did not detect activity in the last week. This user may not use isOnline anymore."
+   },
+   "noiohelp":{
+      "message":"This user has to install isOnline in order to show their status."
+   }
+}
