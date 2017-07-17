@@ -1,4 +1,4 @@
-﻿iOlog("isOnline started");
+iOlog("isOnline started");
 
 isOwnAccount = false;
 stop = 0;
