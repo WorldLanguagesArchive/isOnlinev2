@@ -15,7 +15,7 @@
          "run_at":"document_idle"
       }
    ],
-   "version":"1.3",
+   "version":"1.3.2",
   "background": {
     "scripts": ["background.js"]
   },
