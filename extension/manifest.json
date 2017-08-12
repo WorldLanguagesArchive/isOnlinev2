@@ -1,4 +1,4 @@
-﻿{  
+{  
    "manifest_version":2,
    "name":"isOnline",
    "short_name":"iO",
@@ -9,13 +9,16 @@
          "matches":[  
             "https://scratch.mit.edu/*"
          ],
+		 "css":[
+			"inject-styles.css"
+		 ],
          "js":[  
             "code.js"
          ],
          "run_at":"document_idle"
       }
    ],
-   "version":"1.3.2",
+   "version":"1.4.2",
   "background": {
     "scripts": ["background.js", "friendlist.js"]
   },
@@ -31,7 +34,8 @@
    "permissions":[  
       "https://scratchtools.tk/*",
       "https://scratch.mit.edu/*",
-      "storage"
+      "storage",
+	  "contextMenus"
    ],
    "optional_permissions": ["notifications"]
 }
