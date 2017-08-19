@@ -1,0 +1,1 @@
+chrome.runtime.sendMessage({removefriend: location.hash.substring(1)},function(){window.close();});
