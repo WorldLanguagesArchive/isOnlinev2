@@ -3,8 +3,11 @@ chrome.runtime.onInstalled.addListener(function(details){
         chrome.tabs.create({url:"https://scratchtools.tk/isonline/register/"});}
     if(details.reason == "update"){
         //chrome.tabs.create({url: "https://scratch.mit.edu/isonline-extension/update"});
+        chrome.storage.sync.get("iOfriendsenabled", function (data) {
+            if(data.iOfriendsenabled==1){localStorage.setItem("iOnotifications","1");}});
     }
-});
+}
+                                      );
 
 let key, user;
 
