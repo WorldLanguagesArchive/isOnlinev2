@@ -52,9 +52,6 @@ chrome.storage.sync.get(["iOaccounts","iOfriendlist","iOfriendsenabled"], functi
     if(location.href == "https://scratch.mit.edu/isonline-extension/update") {
         document.documentElement.innerHTML = "<!DOCTYPE html><html><head><style>body{background: #f0f0f0;margin: 0;}#vcenter{position: absolute;top: 50%;width: 100%;margin-top: -100px;}h1{text-align: center;font-family: trebuchet ms, courier new, sans-serif;font-size: 2em;}#loader,#loader:before,#loader:after{border-radius: 50%;width: 2.5em;height: 2.5em;-webkit-animation-fill-mode: both;animation-fill-mode: both;-webkit-animation: load7 1.8s infinite ease-in-out;animation: load7 1.8s infinite ease-in-out;}#loader{color: #098e8b;font-size: 10px;margin: 80px auto;position: relative;text-indent: -9999em;-webkit-transform: translateZ(0);-ms-transform: translateZ(0);transform: translateZ(0);-webkit-animation-delay: -0.16s;animation-delay: -0.16s;}#loader:before,#loader:after{content: '';position: absolute;top: 0;}#loader:before{left: -3.5em;-webkit-animation-delay: -0.32s;animation-delay: -0.32s;}#loader:after{left: 3.5em;}@-webkit-keyframes load7{0%,80%,100%{box-shadow: 0 2.5em 0 -1.3em;}40%{box-shadow: 0 2.5em 0 0;}}@keyframes load7{0%,80%,100%{box-shadow: 0 2.5em 0 -1.3em;}40%{box-shadow: 0 2.5em 0 0;}}</style></head><body><div id='vcenter'><h1 id='header'>Redirecting to isOnline update page... <br>(please don't close this tab)</h1><div id='loader'></div></div></body></html>";
         if (localStorage.getItem("iOaccounts") !== null) {
-            LSaccounts = JSON.parse(localStorage.getItem("iOaccounts"));
-            transition(0);
-        } else{
             window.location="https://isonlineupdate.blogspot.com";}
     } // Update
     else{start();}
@@ -218,8 +215,7 @@ function main() {
 					document.getElementsByName("content")[0].focus();
 					document.getElementById("main-post-form").getElementsByClassName("control-group")[0].getElementsByClassName("small-text")[0].innerHTML += " <b>Press Shift+Enter to post.</b>";
 					document.getElementById("main-post-form").getElementsByClassName("control-group")[0].getElementsByTagName("textarea")[0].placeholder += " and post by pressing Shift+Enter";
-					document.addEventListener('keydown', function(event) {
-					if(document.activeElement.placeholder!=="Leave a comment and post by pressing Shift+Enter"){return;}
+					document.getElementById("main-post-form").getElementsByClassName("control-group")[0].getElementsByTagName("textarea")[0].addEventListener('keydown', function(event) {
 					if(event.key==="Enter" && previouskey==="Shift"){
 					document.getElementsByName("content")[0].blur();
 					document.getElementById("main-post-form").getElementsByClassName("control-group")[1].getElementsByClassName("button small")[0].click();

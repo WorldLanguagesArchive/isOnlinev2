@@ -22,16 +22,16 @@ chrome.runtime.onMessage.addListener(
         if (request.addfriend) {
             if(friendlist.length==10){sendResponse({result: "maxreached"});}
             else {
-			done = 0;
-			checkfollowing(0,request.addfriend[0],request.addfriend[1]);
-			function checkifdone(){
-			if(done===1){sendResponse({result: "ok"});}
-			if(done===2){sendResponse({result: "onlyfollowing"});}
-			else{setTimeout(checkifdone,100);}
-			}
-			checkifdone();
-			return true;
-			}
+                done = 0;
+                checkfollowing(0,request.addfriend[0],request.addfriend[1]);
+                function checkifdone(){
+                    if(done===1){sendResponse({result: "ok"});}
+                    if(done===2){sendResponse({result: "onlyfollowing"});}
+                    else{setTimeout(checkifdone,100);}
+                }
+                checkifdone();
+                return true;
+            }
         }
         if (request.removefriend) {
             sendResponse({result: "ok"});
@@ -39,16 +39,15 @@ chrome.runtime.onMessage.addListener(
         }
     });
 
-    if (localStorage.getItem("iOfriendlistenabled")==1) {
-        chrome.storage.sync.get(["iOaccounts", "iOfriendlist", "iOfriendlistenabled"], function (data) {
-            registeredUsers = JSON.stringify(data.iOaccounts) === "{}" || typeof(data.iOaccounts)==="undefined" ? [] : JSON.parse(data.iOaccounts);
-            friendlist = typeof(data.iOfriendlist)==="undefined" ? [] : data.iOfriendlist;
-            if(friendlist.length===0){localStorage.setItem("iOfriendsempty","1");}else{localStorage.setItem("iOfriendsempty","0");}
-            for (i = 0; i < registeredUsers.length; i++) {
-                if(registeredUsers[i].key !== "changed"){localuser = registeredUsers[i].name;key = registeredUsers[i].key;friendlistcode();}
-            }
-        });
+chrome.storage.sync.get(["iOaccounts", "iOfriendlist", "iOfriendlistenabled"], function (data) {
+    localStorage.setItem("iOfriendlistenabled",data.iOfriendlistenabled===1?"1":"0");
+    registeredUsers = JSON.stringify(data.iOaccounts) === "{}" || typeof(data.iOaccounts)==="undefined" ? [] : JSON.parse(data.iOaccounts);
+    friendlist = typeof(data.iOfriendlist)==="undefined" ? [] : data.iOfriendlist;
+    if(friendlist.length===0){localStorage.setItem("iOfriendsempty","1");}else{localStorage.setItem("iOfriendsempty","0");}
+    for (i = 0; i < registeredUsers.length; i++) {
+        if(registeredUsers[i].key !== "changed"){localuser = registeredUsers[i].name;key = registeredUsers[i].key;friendlistcode();}
     }
+});
 
 function friendlistcode() {
 
@@ -136,7 +135,7 @@ function check(i) {
                 });
             }
             if (getstatus.status === 404) {
-            removeFromFriends(friendlist[i]);
+                removeFromFriends(friendlist[i]);
             }
             setTimeout(docheck, interval);}
     };
@@ -185,20 +184,20 @@ function checkfollowing(offset,user,localuser) {
 }
 
 function addToFriends(user) {
-	done = 1;
+    done = 1;
     friendlist.push(user);
     chrome.storage.sync.set({iOfriendlist : friendlist});
-	if(friendlist.length===1){setTimeout(function(){location.reload();},1000);}
-	else{check(friendlist.length-1);}
+    if(friendlist.length===1){location.reload();}
+    else{check(friendlist.length-1);}
 }
 
 function removeFromFriends(user){
-	finditem = friendlist.findIndex(item => user.toLowerCase() === item.toLowerCase());
+    finditem = friendlist.findIndex(item => user.toLowerCase() === item.toLowerCase());
     friendlist.splice(finditem, 1);
     friendliststatuses.splice(finditem, 1);
     chrome.storage.sync.set({iOfriendlist : friendlist}, function(){/*location.reload();*/});
-	if(friendlist.length===0){localStorage.setItem("iOfriendsempty","1");location.reload();}else{localStorage.setItem("iOfriendsempty","0");}
-	chrome.browserAction.setBadgeText({text: ""});
+    if(friendlist.length===0){localStorage.setItem("iOfriendsempty","1");location.reload();}else{localStorage.setItem("iOfriendsempty","0");}
+    chrome.browserAction.setBadgeText({text: ""});
     chrome.browserAction.getBadgeText({}, function(result) {
         if(result!==" "){
             chrome.browserAction.setBadgeText({text: ""});}
