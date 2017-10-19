@@ -237,4 +237,44 @@ window.onload = function() {
     }
 
 
+	
+	
+	
+// Easter egg
+	
+	
+	
+function onKonamiCode(cb) {
+  var input = '';
+  var key = '38384040373937396665';
+  document.addEventListener('keydown', function (e) {
+    input += ("" + e.keyCode);
+    if (input === key) {
+      return cb();
+    }
+    if (!key.indexOf(input)) return;
+    input = ("" + e.keyCode);
+  });
+}
+
+onKonamiCode(function () {
+	if(document.getElementById("titleonlinefriends").innerHTML=="" || document.getElementById("onlinefriends").innerHTML.includes("kaj")){return;}
+	document.getElementById("onlinefriends").innerHTML = '<li class="onlinefriends"><img style="vertical-align:middle;" height="15" width="15" src="https://cdn2.scratch.mit.edu/get_image/user/1_60x60.png">&nbsp;<a class="linktouser">kaj</a></li><hr style="border: 0;height: 1px;background-image: linear-gradient(to right, rgb(159, 166, 173), rgba(0, 0, 0, 0))">' + document.getElementById("onlinefriends").innerHTML;
+    });
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }; //onload

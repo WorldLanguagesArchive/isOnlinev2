@@ -39,8 +39,9 @@ chrome.runtime.onMessage.addListener(
         }
     });
 
-chrome.storage.sync.get(["iOaccounts", "iOfriendlist", "iOfriendlistenabled"], function (data) {
-    localStorage.setItem("iOfriendlistenabled",data.iOfriendlistenabled===1?"1":"0");
+chrome.storage.sync.get(["iOaccounts", "iOfriendlist", "iOfriendsenabled"], function (data) {
+    localStorage.setItem("iOfriendlistenabled",data.iOfriendsenabled==="1"?"1":"0");
+    if (data.iOfriendsenabled!=="1"){return;}
     registeredUsers = JSON.stringify(data.iOaccounts) === "{}" || typeof(data.iOaccounts)==="undefined" ? [] : JSON.parse(data.iOaccounts);
     friendlist = typeof(data.iOfriendlist)==="undefined" ? [] : data.iOfriendlist;
     if(friendlist.length===0){localStorage.setItem("iOfriendsempty","1");}else{localStorage.setItem("iOfriendsempty","0");}
@@ -185,9 +186,10 @@ function checkfollowing(offset,user,localuser) {
 
 function addToFriends(user) {
     done = 1;
+	amountbefore = friendlist.length;
     friendlist.push(user);
     chrome.storage.sync.set({iOfriendlist : friendlist});
-    if(friendlist.length===1){location.reload();}
+    if(friendlist.length===1 && amountbefore===0){setTimeout(function(){location.reload();},100);}
     else{check(friendlist.length-1);}
 }
 
