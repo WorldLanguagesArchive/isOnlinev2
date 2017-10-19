@@ -145,5 +145,8 @@
    },
    "translationcredits":{
       "message":""
+   },
+   "shiftenter":{
+      "message":"Press Shift+Enter to post."
    }
 }
