@@ -213,8 +213,7 @@ function main() {
                 var iOcomments = function(){if(document.getElementsByClassName("comment ").length>0){
 					location.hash="iOc";
 					document.getElementsByName("content")[0].focus();
-					document.getElementById("main-post-form").getElementsByClassName("control-group")[0].getElementsByClassName("small-text")[0].innerHTML += " <b>Press Shift+Enter to post.</b>";
-					document.getElementById("main-post-form").getElementsByClassName("control-group")[0].getElementsByTagName("textarea")[0].placeholder += " and post by pressing Shift+Enter";
+					document.getElementById("main-post-form").getElementsByClassName("control-group")[0].getElementsByClassName("small-text")[0].innerHTML += " <b>"+chrome.i18n.getMessage("shiftenter")+"</b>";
 					document.getElementById("main-post-form").getElementsByClassName("control-group")[0].getElementsByTagName("textarea")[0].addEventListener('keydown', function(event) {
 					if(event.key==="Enter" && previouskey==="Shift"){
 					document.getElementsByName("content")[0].blur();
