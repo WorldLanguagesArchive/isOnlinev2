@@ -1,4 +1,10 @@
 window.onload = function() {
+	// Halloween and other special days easter egg
+
+	if(new Date().getDate() === 31 && new Date().getMonth() === 9) { // Halloween
+		document.querySelector(".easter-egg").innerHTML = "&#127875; &#128123; &#127875;"; // JACK-O-LANTERN GHOST JACK-O-LANTERN
+		document.querySelector(".easter-egg").className = "easter-egg visible";
+	}	
 
     // Localization
 
@@ -261,9 +267,6 @@ onKonamiCode(function () {
 	if(document.getElementById("titleonlinefriends").innerHTML=="" || document.getElementById("onlinefriends").innerHTML.includes("kaj")){return;}
 	document.getElementById("onlinefriends").innerHTML = '<li class="onlinefriends"><img style="vertical-align:middle;" height="15" width="15" src="https://cdn2.scratch.mit.edu/get_image/user/1_60x60.png">&nbsp;<a class="linktouser">kaj</a></li><hr style="border: 0;height: 1px;background-image: linear-gradient(to right, rgb(159, 166, 173), rgba(0, 0, 0, 0))">' + document.getElementById("onlinefriends").innerHTML;
     });
-
-	
-	
 	
 	
 	
