@@ -194,7 +194,7 @@ function halloween() {
 	if(location.href.toLowerCase().startsWith("https://scratch.mit.edu/io-halloween-messages")) {
 		document.querySelector("#page-404 > div.box-content").innerHTML = `
 			<a href="/io-halloween-challenge${halloweenData.stage}" style="font-size: 30px; display: block; padding: 20px;">isOnline says you've unlocked stage ${halloweenData.stage + 1}</a>
-			Happy Halloween!
+			Happy Halloween! <b>Oh, and you might be interested in <a href="https://scratch.mit.edu/discuss/topic/280462/">isOnline's Art Competition</a> based on the notifications you'll get above!</b>
 		`;
 		halloweenData.messagesRead = true;
 		localStorage.setItem("iOHalloween", JSON.stringify(halloweenData));
