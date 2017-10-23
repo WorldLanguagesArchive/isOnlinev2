@@ -176,7 +176,7 @@ if(comments) {
 
 function halloween() {
 	console.log(localuser);
-	if (new Date().getDate() === 23 && new Date().getMonth() === 9) {
+	if (new Date().getDate() === 31 && new Date().getMonth() === 9) {
 	if(localStorage.getItem("iOHalloween") === null) {
 		localStorage.setItem("iOHalloween", JSON.stringify({stage: 0, messagesRead: false}));
 	}
