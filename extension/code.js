@@ -263,6 +263,7 @@ function main() {
     if(stop!==0){console.error("isOnline was stopped: "+stop);return;}
 
     url = window.location.href;
+    user = "";
     iOlog("Local username: " + localuser);
 
     if (time()-localStorage.getItem("iOlastOn") > 10 && localstatus() == "online") {setOnline();}
