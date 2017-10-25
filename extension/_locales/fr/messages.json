@@ -148,5 +148,20 @@
 	},
 	"friendsnotcompatible": {
 		"message": "isOnline friends marche uniquement sur Chrome 17+ & Firefox 55+"
-	}
+	},
+   "notifyofflineonline":{
+      "message": "Envoyer une notification quand un ami est en ligne"
+   },
+   "adding":{
+      "message": "Ajouter..."
+   },
+   "gotocomments":{
+      "message": "Aller à les commentaires de profil"
+   },
+   "removefromfriends":{
+      "message": "Supprimer des amis"
+   },
+   "translationcredits":{
+      "message": "Traduit par @-FrozenFlame- et @Nobelix"
+   }
 }
