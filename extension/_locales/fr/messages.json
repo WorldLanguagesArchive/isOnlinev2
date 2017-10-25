@@ -163,5 +163,8 @@
    },
    "translationcredits":{
       "message": "Traduit par @-FrozenFlame- et @Nobelix"
+   },
+   "shiftenter": {
+		"message": "Appuyez sur Maj + Entrée pour publier"
    }
 }
