@@ -149,5 +149,22 @@
   "friendsnotcompatible": {
     "message": "isOnline bạn bè chỉ hoạt động trong Chrome 17+ và Firefox 55+"
   },
-  "notifyofflineonline": {}
+  "notifyofflineonline": {
+	"message": "Gửi một thông báo khi một người bạn đi trực tuyến"
+  },
+  "adding": {
+	"message": "Thêm..."
+  },
+  "gotocomments": {
+	"message": "Đi đến hồ sơ ý kiến"
+  },
+  "removefromfriends": {
+	"message": "Loại bỏ từ bạn bè"
+  },
+  "translationcredits":{
+	"message": "Dịch bởi @EvanKTC"
+  },
+  "shiftenter":{
+	"message": "Nhấn Shift + Enter để đăng bài"
+  }
 }
