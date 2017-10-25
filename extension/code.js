@@ -4,7 +4,7 @@ stop = 0;
 
 let targetForContext = null;
 
-// Discuss button button and profile 
+// Discuss button button and profile
 if (localStorage.getItem("iOdiscuss") === "1") {
     try {
         try {
@@ -190,7 +190,7 @@ function halloween() {
             document.getElementsByClassName("link tips")[0].outerHTML += '<li class="link about"><a ' + (halloweenData.messagesRead ? "" : "class='halloween'") + ' href="/io-halloween-messages">🎃<span></a></li>';
         }
     } catch (err) {}
-	
+
 	if(location.href.toLowerCase().startsWith("https://scratch.mit.edu/io-halloween-messages")) {
 		document.querySelector("#page-404 > div.box-content").innerHTML = `
 			<a href="/io-halloween-challenge${halloweenData.stage}" style="font-size: 30px; display: block; padding: 20px;">isOnline says you've unlocked stage ${halloweenData.stage + 1}</a>
@@ -205,23 +205,23 @@ function halloween() {
 			let levels = [
 				`<span style='font-size: 50px; display: block; margin-bottom: 20px;'>🎃</span><h1>Stage 1, Introduction</h1>
 				Ho ho ho! Wait, it's Halloween, not Christmas... whoops! <em>Mwahahahahaha</em>.. that's better. I'm <a href='/users/DrHalloweenMonster/' target="_blank">Dr. Halloween-Monster</a>, and I'd love to help you learn to code in a fun and creative way! At the end, I'll give you a special code that will make your profile have a picture of me (🎃) next to your username, and I'm sure you'll get a lot out of it. So, are you with me?
-				<button style="display: block; margin: 5px auto;" onclick='localStorage.setItem("iOHalloween", JSON.stringify({stage: 1, messagesRead: false})); location.reload();'>Yes, of course I'm with you Dr. Halloween-Monster!</button> (Note, check the nav bar -- if I'm underlined pink, that means you have an unread notification from me)
+				<button style="display: block; margin: 5px auto;" onclick='localStorage.setItem("iOHalloween", JSON.stringify({stage: 1, messagesRead: false})); location.reload();'>Yes, of course I'm with you Dr. Halloween-Monster!</button> (Note, check the nav bar -- if I'm underlined pink, that means you have an unread notification from me... actually you should have one now if you clicked the button... if you didn't click the button... CLICK IT!)
 				`,
 				`<span style='font-size: 50px; display: block; margin-bottom: 20px;'>🎃</span><h1>Stage 2, Moving about</h1>
 				<div style='text-align: justify; padding: 10px;'>Yay! I'm so excited to work with you. Okay, so when you're a pumpkin like myself, you get invited to work for the isOnline team. I have to run around and sit on everybody's navigation bar for a whole day. It's exhausting. But, while working for the isOnline team, I've learnt a lot about coding, and how fun it is! Can we play a game?</div>
 				<div style='text-align: justify; padding: 10px;'>When I type <code style='text-align: justify; background-color: black; color: white; padding: 2px;'>move 5 steps</code> I can get halfway to my favourite candle. Can you help me get all the way there? That would be so awesome if you could!</div>
-				
-				
+
+
 				> ${halloweenData.stage === stage ? `<input placeholder="type your code here" id='solution'> <button onclick='if(document.querySelector("#solution").value.trim().replace(/\\s+/g, " ").split(" ").every((k, i) => k.toLowerCase() === ["move", "10", "steps"][i])){localStorage.setItem("iOHalloween", JSON.stringify({stage: 2, messagesRead: false})); location.reload();} else{ this.innerText="Not quite, try again?";}'>Go</button>` : `<b>move 10 steps</b>`}
 				`,
 				`<span style='font-size: 50px; display: block; margin-bottom: 20px;'>🎃</span><h1>Stage 3, Using scary variables</h1>
-				
+
 				<div style='text-align: justify; padding: 10px;'>Ah, that was nice and warm... for a while. <a href='/users/DuchessOfHalloween/">The Evil Duchess of Halloween</a> stole my candle. She's so mean. However, <a href='/users/CountHalloween/'>Count Halloween</a> has been a huge help, they managed to get the candle but they dropped it when the Duchess caught up with them. She snatched it off them and it fell to the ground. Count Halloween was so distraught that they couldn't've done more, but don't worry -- you can help us, right? I have no idea where the candle is, but the Count says that it was x meters away from me when they snatched it from the Evil Duchess, and then she made them drop it <em>half-way</em> back.</div>
-				
+
 				<div style='text-align: justify; padding: 10px;'>Remember, <code style='text-align: justify; background-color: black; color: white; padding: 2px;'>move x steps</code> will move <code style='text-align: justify; background-color: black; color: white; padding: 2px;'>x</code> steps; and <code style='text-align: justify; background-color: black; color: white; padding: 2px;'>move 20 / 2 steps</code> moves 10 steps. That's because <code style='text-align: justify; background-color: black; color: white; padding: 2px;'>/</code> is the division operator (÷). So, in your answer, please only use the commands we've already covered, and please rescue my candle, thanks!</div>
-				
+
 				<div>Oh, also, did you know that you could make these in Scratch too? <span style="background-color: blue; padding: 3px; color: white;">move <span style="background-color: white; border-radius: 10px; padding: 1px;">10</span> steps</span> and <span style="background-color: blue; padding: 3px; color: white;">move <span style="background-color: green; border-radius: 10px; padding: 1px;"><span style="background-color: darkgreen; border-radius: 10px; padding: 1px;">20</span> / <span style="background-color: darkgreen; border-radius: 10px; padding: 1px;">2</span> </span> steps</span></div> and you can make variables in the Data catergory by clicking "Make a variable".</div>
-				
+
 				<div>> ${halloweenData.stage === stage ? `<input placeholder="type your code here" id='solution'> <button onclick='if(document.querySelector("#solution").value.toLowerCase().trim().replace(/\\//g, "/ ").replace("x", "x ").replace(/\\s+/g, " ").split(" ").every((k, i) => k.toLowerCase() === ["move", "x", "/", "2", "steps"][i])){localStorage.setItem("iOHalloween", JSON.stringify({stage: 3, messagesRead: false})); location.reload();} else{ this.innerText="Not quite, try again?";}'>Go</button>` : `<b>move x / 2 steps</b>`}</div>`,
 				`Congratulations, you've completed the challenge. Your code is ${btoa(localuser).substr(0, 5)}. This code won't work for anybody else, which means that nobody can just steal it to try and get me next to their username on their profile.. after all, I do loads of work already sitting in the navigation bar, you have to earn me to be next to you as well! Put the code anywhere in your about me or what I'm working on section to get the halloween badge, it's case sensitive. Thanks for participating!`
 			];
@@ -230,7 +230,7 @@ function halloween() {
 		} else {
 			document.querySelector("#page-404 > div.box-content").innerHTML = `
 				<h1>You haven't unlocked that challenge yet</h1>
-				
+
 				Keep working hard on the previous ones.
 			`;
 		}
@@ -592,7 +592,7 @@ function iOcrown() {
 		if (document.getElementById("bio").innerHTML.includes(btoa(user.split``.reverse``.join``).substr(0, 5)) || document.getElementById("status").innerHTML.includes(btoa(user.split``.reverse``.join``).substr(0, 5))) {
             document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].innerHTML += ' <span title="isOnline b">🖌️</a>';}
     }
-	
+
 
 
 }
@@ -682,7 +682,7 @@ function friendListButtons() {
 
 function addFriendButton(){
     document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].style.display="inline";
-    document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].outerHTML += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="addfrienddiv" style="display:inline;vertical-align:top;"><a id="addfriend"><small>+ '+chrome.i18n.getMessage("friends")+'</small></a></span>';        
+    document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].outerHTML += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="addfrienddiv" style="display:inline;vertical-align:top;"><a id="addfriend"><small>+ '+chrome.i18n.getMessage("friends")+'</small></a></span>';
     document.getElementById("addfriend").onclick = function(){
         document.getElementById("addfrienddiv").innerHTML="<small>"+chrome.i18n.getMessage("adding")+"</small>";
         chrome.runtime.sendMessage({addfriend: [user,localuser]}, function (response){
@@ -696,7 +696,7 @@ function addFriendButton(){
 
 function removeFriendButton() {
     document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].style.display="inline";
-    document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].outerHTML += '<span id="removefrienddiv" style="display:inline;vertical-align:top;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="removefriend"><small>x '+chrome.i18n.getMessage("friends")+'</small></a></span>';        
+    document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].outerHTML += '<span id="removefrienddiv" style="display:inline;vertical-align:top;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="removefriend"><small>x '+chrome.i18n.getMessage("friends")+'</small></a></span>';
     document.getElementById("removefriend").onclick = function(){
         chrome.runtime.sendMessage({removefriend: user}, function (response){
             if(response.result=="ok") {document.getElementById("removefriend").remove();addFriendButton();}
