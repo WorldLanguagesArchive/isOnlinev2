@@ -266,7 +266,7 @@ function main() {
     user = "";
     iOlog("Local username: " + localuser);
 
-    if ((time()-localStorage.getItem("iOlastOn") > 10 && time()-localStorage.getItem("iOlastOn") < -1) && localstatus() == "online") {setOnline();}
+    if ((time()-localStorage.getItem("iOlastOn") > 10 || time()-localStorage.getItem("iOlastOn") < -1) && localstatus() == "online") {setOnline();}
 
     /* Manage statuses */ window.addEventListener('load',function(){update();setInterval(update, 3000);});
 
