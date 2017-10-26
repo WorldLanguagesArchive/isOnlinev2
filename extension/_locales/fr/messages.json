@@ -150,21 +150,21 @@
 		"message": "isOnline friends marche uniquement sur Chrome 17+ & Firefox 55+"
 	},
    "notifyofflineonline":{
-      "message": "Envoyer une notification quand un ami est en ligne"
+      "message": "Envoyer une notification quand un ami se rend en ligne."
    },
    "adding":{
-      "message": "Ajouter..."
+      "message": "Ajout en cours..."
    },
    "gotocomments":{
-      "message": "Aller à les commentaires de profil"
+      "message": "Se rendre au commentaires du profil"
    },
    "removefromfriends":{
-      "message": "Supprimer des amis"
+      "message": "Supprimer de votre liste d'amis"
    },
    "translationcredits":{
-      "message": "Traduit par @-FrozenFlame- et @Nobelix"
+      "message": "Traduit par @Nobelix"
    },
    "shiftenter": {
-		"message": "Appuyez sur Maj + Entrée pour publier"
+		"message": "Pressez Maj + Entrée pour envoyer"
    }
 }
