@@ -74,9 +74,9 @@
    "friendlist":{
       "message":"isOnline friends"
    },
-	"friendsnote": {		
-	"message": "Note: You can disable notifications temporarily while keeping friends by setting your status to \"Do Not Disturb\" on your profile."
-	},
+   "friendsnote":{
+      "message":"Note: You can disable notifications temporarily while keeping friends by setting your status to \"Do Not Disturb\" on your profile."
+   },
    "friendsettings":{
       "message":"Notification settings"
    },
