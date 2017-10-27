@@ -9,7 +9,7 @@
       "message":"Votre compte Scratch a été validé avec succès.<br>isOnline est maintenant foncionnel.<br>Vous pouvez fermer cet onglet."
    },
    "verifyerror":{
-      "message":"Une erreur s'est produite. Contactez <a href='https://scratch.mit.edu/users/chooper100#comments'>@chooper100</a> si vous arrivez depuis la validation de isOnline."
+      "message":"Une erreur s'est produite. Contactez <a href='https://scratch.mit.edu/users/isOnlineV2#comments'>@isOnlineV2</a> si vous arrivez depuis la validation de isOnline."
    },
    "validateprofilelink":{
       "message":"Validez ce compte </a> afin d'y utiliser isOnline"
@@ -54,117 +54,99 @@
       "message":"Ooups! isOnline ne marche pas avec ce compte Scratch car vous l'avez utilsé sur un autre ordinateur. <a href='http://ison.ga/sync' target='_blank'>Synchronizez vos ordinateurs</a> pour éviter cette erreur durablement ou <a href='https://scratch.mit.edu/isonline-extension/register' target='_blank'>re-validez le compte</a> pour réparer ça temporairement."
    },
    "isbot":{
-      "message":"Ooups! On dirait que vous avez été identifié comme un robot par le serveur isOnline. isOnline ne marche pas. Contactez <a href='https://scratch.mit.edu/users/chooper100/#comments' target='_blank'>chooper100</a> pour débloquer votre compte."
+      "message":"Ooups! On dirait que vous avez été identifié comme un robot par le serveur isOnline. isOnline ne marche pas. Contactez <a href='https://scratch.mit.edu/users/isOnlineV2/#comments' target='_blank'>isOnlineV2</a> pour débloquer votre compte."
    },
-	"probablyonlinehelp": {
-		"message": "Cet utilisateur montre une activité récente."
-	},
-	"absenthelp": {
-		"message": "Cet utilisateur a des onglets Scratch inactifs ouverts."
-	},
-	"unknownhelp": {
-		"message": "isOnline n'a pas détécté d'activité depuis une semaine. Il se peut que cet utilisateur n'utilise plus isOnline."
-	},
-	"noiohelp": {
-		"message": "Cet utilisateur doit installer isOnline pour pouvoir afficher son statut."
-	},
-	"ownstatushelp": {
-		"message": "Réglez votre statut manuellement, ou laisser le sur automatique."
-	},
-	"help": {
-		"message": "Besoin d'aide? Écrivez un commentaire!"
-	},
-	"friendlist": {
-		"message": "isOnline notifications des amis en ligne"
-	},
-	"friendsnote": {
-		"message": "Note: Vous pouvez désactiver les notifications temporairement en réglant votre statut sur\"Ne pas déranger\" sur votre profil."
-	},
-	"friendsettings": {
-		"message": "Paramètres de la liste d'amis"
-	},
-	"notifyawayonline": {
-		"message": "Me Notifier quand un ami est inactif et se rend en ligne"
-	},
-	"soundnotiftext": {
-		"message": "Notification Sonore"
-	},
-	"friendlistdescription": {
-		"message": "Soyez informé du statut d'un maximum de 10 amis et recevez des notifications lorsqu'ils se rendent en ligne! "
-	},
-	"nofriendshelp": {
-		"message": "Vous pouvez ajouter les personnes qui vous suivent en tant qu'amis en cliquant \"+ amis\" sur leurs profils!"
-	},
-	"friendserror": {
-		"message": "Erreur: <a href=\"https://scratch.mit.edu/isonline-extension/register\" target=\"_blank\">re-validez</a> pour résoudre le problème."
-	},
-	"loadingstatusesfrom": {
-		"message": "Chargement des statuts de..."
-	},
-	"onetabopen": {
-		"message": "<img src='sorryneedtabopen.png' style='width:300px;display: absolute;margin: 0 auto;padding:0px;'></img>"
-	},
-	"dndhelp1": {
-		"message": "Vous ne receverez pas de notifications lorsque vos amis se renderont en ligne"
-	},
-	"dndhelp2": {
-		"message": "et les autres vous verrons comme hors-ligne sur leur liste amis."
-	},
-	"dnd": {
-		"message": "Ne pas déranger"
-	},
-	"friends": {
-		"message": "amis"
-	},
-	"maxreached": {
-		"message": "Le maximum d'amis fut atteint (10). Vous pouvez retirez des amis en allant sur leur profil."
-	},
-	"removedfromfriends": {
-		"message": "Retiré depuis votre liste d'amis"
-	},
-	"removedfromfriendsbody": {
-		"message": "Vous n'allez plus recevoir de notifications lorsqu'ils se rendent en ligne."
-	},
-	"couldnotadd": {
-		"message": "n'a pas put être ajouté dans votre liste d'amis"
-	},
-	"wasadded": {
-		"message": "a été ajouté dans votre liste d'amis"
-	},
-	"wasaddedbody": {
-		"message": "Vous allez à présent recevoir des notifications lorsqu'ils se rendent en ligne."
-	},
-	"onlyfollowing": {
-		"message": "Vous pouvez ajouter des personnes dans votre liste d'amis, uniquement si ils vous suivent"
-	},
-	"dndotherhelp": {
-		"message": "Cet utilisateur ne recoit pas de notifications concenant ses amis."
-	},
-	"isnowonline": {
-		"message": "est à présent en ligne"
-	},
-	"isnowonlinebody": {
-		"message": "Cliquez pour se rendre sur son profil."
-	},
-	"friendsnotcompatible": {
-		"message": "isOnline friends marche uniquement sur Chrome 17+ & Firefox 55+"
-	},
+   "absenthelp":{
+      "message":"Cet utilisateur a des onglets Scratch inactifs ouverts."
+   },
+   "unknownhelp":{
+      "message":"isOnline n'a pas détécté d'activité depuis une semaine. Il se peut que cet utilisateur n'utilise plus isOnline."
+   },
+   "noiohelp":{
+      "message":"Cet utilisateur doit installer isOnline pour pouvoir afficher son statut."
+   },
+   "ownstatushelp":{
+      "message":"Réglez votre statut manuellement, ou laisser le sur automatique."
+   },
+   "help":{
+      "message":"Besoin d'aide? Écrivez un commentaire!"
+   },
+   "friendlist":{
+      "message":"isOnline notifications des amis en ligne"
+   },
+   "friendsnote":{
+      "message":"Note: Vous pouvez désactiver les notifications temporairement en réglant votre statut sur\"Ne pas déranger\" sur votre profil."
+   },
+   "friendsettings":{
+      "message":"Paramètres de la liste d'amis"
+   },
+   "notifyawayonline":{
+      "message":"Me Notifier quand un ami est inactif et se rend en ligne"
+   },
+   "soundnotiftext":{
+      "message":"Notification Sonore"
+   },
+   "friendlistdescription":{
+      "message":"Soyez informé du statut d'un maximum de 10 amis et recevez des notifications lorsqu'ils se rendent en ligne! "
+   },
+   "nofriendshelp":{
+      "message":"Vous pouvez ajouter les personnes qui vous suivent en tant qu'amis en cliquant \"+ amis\" sur leurs profils!"
+   },
+   "friendserror":{
+      "message":"Erreur: <a href=\"https://scratch.mit.edu/isonline-extension/register\" target=\"_blank\">re-validez</a> pour résoudre le problème."
+   },
+   "loadingstatusesfrom":{
+      "message":"Chargement des statuts de..."
+   },
+   "onetabopen":{
+      "message":"<img src='sorryneedtabopen.png' style='width:300px;display: absolute;margin: 0 auto;padding:0px;'></img>"
+   },
+   "dndhelp1":{
+      "message":"Vous ne receverez pas de notifications lorsque vos amis se renderont en ligne"
+   },
+   "dndhelp2":{
+      "message":"et les autres vous verrons comme hors-ligne sur leur liste amis."
+   },
+   "dnd":{
+      "message":"Ne pas déranger"
+   },
+   "friends":{
+      "message":"amis"
+   },
+   "maxreached":{
+      "message":"Le maximum d'amis fut atteint (10). Vous pouvez retirez des amis en allant sur leur profil."
+   },
+   "onlyfollowing":{
+      "message":"Vous pouvez ajouter des personnes dans votre liste d'amis, uniquement si ils vous suivent"
+   },
+   "dndotherhelp":{
+      "message":"Cet utilisateur ne recoit pas de notifications concenant ses amis."
+   },
+   "isnowonline":{
+      "message":"est à présent en ligne"
+   },
+   "isnowonlinebody":{
+      "message":"Cliquez pour se rendre sur son profil."
+   },
+   "friendsnotcompatible":{
+      "message":"isOnline friends marche uniquement sur Chrome 17+ & Firefox 55+"
+   },
    "notifyofflineonline":{
-      "message": "Envoyer une notification quand un ami se rend en ligne."
+      "message":"Envoyer une notification quand un ami se rend en ligne."
    },
    "adding":{
-      "message": "Ajout en cours..."
+      "message":"Ajout en cours..."
    },
    "gotocomments":{
-      "message": "Se rendre au commentaires du profil"
+      "message":"Se rendre au commentaires du profil"
    },
    "removefromfriends":{
-      "message": "Supprimer de votre liste d'amis"
+      "message":"Supprimer de votre liste d'amis"
    },
    "translationcredits":{
-      "message": "Traduit par @Nobelix"
+      "message":"Traduit par @Nobelix"
    },
-   "shiftenter": {
-		"message": "Pressez Maj + Entrée pour envoyer"
+   "shiftenter":{
+      "message":"Pressez Maj + Entrée pour envoyer"
    }
 }
