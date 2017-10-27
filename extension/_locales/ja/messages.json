@@ -145,5 +145,8 @@
    },
    "translationcredits":{
       "message":"Translation by @kazuta123"
+   },
+   "shiftenter":{
+      "message":"Press Shift+Enter to post."
    }
 }
