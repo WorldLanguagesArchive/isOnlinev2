@@ -145,5 +145,7 @@
    },
    "translationcredits":{
       "message":"Traduccion por @World_Languages"
-   }
+   },
+   "shiftenter":{
+      "message":"Presiona Shift+Intro para publicar."
 }
