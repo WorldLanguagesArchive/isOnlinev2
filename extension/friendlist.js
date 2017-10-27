@@ -186,7 +186,7 @@ function checkfollowing(offset,user,localuser) {
 
 function addToFriends(user) {
     done = 1;
-	amountbefore = friendlist.length;
+    amountbefore = friendlist.length;
     friendlist.push(user);
     chrome.storage.sync.set({iOfriendlist : friendlist});
     if(friendlist.length===1 && amountbefore===0){setTimeout(function(){location.reload();},100);}
@@ -198,10 +198,13 @@ function removeFromFriends(user){
     friendlist.splice(finditem, 1);
     friendliststatuses.splice(finditem, 1);
     chrome.storage.sync.set({iOfriendlist : friendlist}, function(){/*location.reload();*/});
+    if (friendliststatuses.toString().match(/Online/g) === null) {
+        chrome.browserAction.getBadgeText({}, function(result) {
+            if(result!==" "){
+                chrome.browserAction.setBadgeText({text: ""});}
+        });
+    }
+    else {
+        chrome.browserAction.setBadgeText({text: String(friendliststatuses.toString().match(/Online/g).length)});}
     if(friendlist.length===0){localStorage.setItem("iOfriendsempty","1");location.reload();}else{localStorage.setItem("iOfriendsempty","0");}
-    chrome.browserAction.setBadgeText({text: ""});
-    chrome.browserAction.getBadgeText({}, function(result) {
-        if(result!==" "){
-            chrome.browserAction.setBadgeText({text: ""});}
-    });
 }
