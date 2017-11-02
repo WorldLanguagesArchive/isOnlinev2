@@ -1,10 +1,4 @@
 window.onload = function() {
-	// Halloween and other special days easter egg
-
-	if(new Date().getDate() === 31 && new Date().getMonth() === 9) { // Halloween
-		document.querySelector(".easter-egg").innerHTML = "&#127875; &#128123; &#127875;"; // JACK-O-LANTERN GHOST JACK-O-LANTERN
-		document.querySelector(".easter-egg").className = "easter-egg visible";
-	}	
 
     // Localization
 
@@ -15,15 +9,15 @@ window.onload = function() {
     document.getElementById("soundnotiftext").innerHTML=chrome.i18n.getMessage("soundnotiftext");
     document.getElementById("notifyofflineonline").innerHTML=chrome.i18n.getMessage("notifyofflineonline");
     document.getElementById("translationcredits").innerHTML=chrome.i18n.getMessage("translationcredits");
-	isenglish = chrome.i18n.getUILanguage().startsWith("en");
+    isenglish = chrome.i18n.getUILanguage().startsWith("en");
     //
 
     protips = ['Easily get someone\'s status by right-clicking their profile link/picture and choosing "click to get status".', '<a href="http://ison.ga/sync" target="_blank">Sync your computers</a> to avoid reverifying.', 'Add the discuss button to the nav bar on <a href="https://scratch.mit.edu/users/DiscussButton" target="_blank">@DiscussButton</a>', 'Want to know more about something? Hover the info icon!', 'Don\'t want people to know you\'re online? Use the ghost status', 'Friend notifications won\'t disturb you if you aren\'t on Scratch', 'Have any suggestion for isOnline? Post it <a href="http://scratch.mit.edu/discuss/topic/253147" target="_blank">here</a>', 'Want a crown in your profile? Check <a href="https://scratch.mit.edu/projects/158291459/" target="_blank">how to get one</a>'];
     document.getElementById("protiptext").innerHTML=protips[Math.floor(Math.random() * protips.length)];
-	if(!isenglish) {
-		document.getElementById("protip").remove();
-		document.getElementById("protiptext").remove();
-	}
+    if(!isenglish) {
+        document.getElementById("protip").remove();
+        document.getElementById("protiptext").remove();
+    }
 
     getmessage = new XMLHttpRequest();
     getmessage.open("GET", "https://scratchtools.tk/api/getmessage.php", true);
@@ -40,12 +34,12 @@ window.onload = function() {
         return;
     }
 
-    document.getElementById("enablefriendlist").onclick = function() {
+    /*document.getElementById("enablefriendlist").onclick = function() {
         if(document.getElementById("enablefriendlist").checked) {
             localStorage.setItem("iOfriendlistenabled",1);chrome.storage.sync.set({iOfriendsenabled : "1"},function(){chrome.runtime.sendMessage({friendlist: "refresh"});location.reload();});}
         else {
             chrome.browserAction.getBadgeText({}, function(result) {if(result!==" "){chrome.browserAction.setBadgeText({text: ""});}});localStorage.setItem("iOfriendlistenabled",0);chrome.storage.sync.set({iOfriendsenabled : "0"},function(){chrome.runtime.sendMessage({friendlist: "refresh"});location.reload();});}
-    };
+    };*/
 
     document.getElementById("offlinetoonline").onclick = function() {
         chrome.permissions.contains({
@@ -56,10 +50,10 @@ window.onload = function() {
                     localStorage.setItem("iOnotifications","1");
                     document.getElementById("awaytoonlinediv").style.display = 'block';
                     document.getElementById("soundnotifdiv").style.display = 'block';
-					}
+                }
                 else {
                     localStorage.setItem("iOnotifications","0");
-					document.getElementById("awaytoonlinediv").style.display = 'none';
+                    document.getElementById("awaytoonlinediv").style.display = 'none';
                     document.getElementById("soundnotifdiv").style.display = 'none';}
             } else { // If there's no permission
                 chrome.runtime.sendMessage({notifications: "enable"});
@@ -74,7 +68,7 @@ window.onload = function() {
     if(localStorage.getItem("iOnotifications")==="1") {
         document.getElementById("offlinetoonline").checked = true;
         document.getElementById("awaytoonlinediv").style.display = 'block';
-		document.getElementById("soundnotifdiv").style.display = 'block';
+        document.getElementById("soundnotifdiv").style.display = 'block';
     }
 
     document.getElementById("soundnotif").onclick = function() {
@@ -91,11 +85,6 @@ window.onload = function() {
     if(localStorage.getItem("iOfriendlistsound")!=="0") {
         document.getElementById("soundnotif").checked = true;
     }
-
-    if(localStorage.getItem("iOfriendlistenabled")==1) {
-        document.getElementById("enablefriendlist").checked = true;
-    }
-    else{document.getElementById("settings").remove();document.getElementById("friendstatuseslist").remove();document.getElementById("friendsnote").innerHTML=chrome.i18n.getMessage("friendlistdescription");document.getElementById("newlines").remove();return;}
 
     if(localStorage.getItem("iOfriendsempty")!=="0"){document.getElementById("divonlinefriends").innerHTML+='<b>'+chrome.i18n.getMessage("nofriendshelp")+'</b>';return;}
 
@@ -170,7 +159,7 @@ window.onload = function() {
             if(JSON.stringify(response.thelist)===offlineresponse){return;}
             offlineresponse = JSON.stringify(response.thelist);
             if(response.thelist==="error"){document.getElementById("errorMessage").innerHTML=chrome.i18n.getMessage("friendserror");return;}
-			document.getElementById("errorMessage").innerHTML="";
+            document.getElementById("errorMessage").innerHTML="";
             document.getElementById("offlinefriends").innerHTML = '<hr style="border: 1px solid red;">';
             document.getElementById("titleofflinefriends").innerHTML = "";
             document.getElementById("divofflinefriends").style.display = "none";
@@ -243,41 +232,41 @@ window.onload = function() {
     }
 
 
-	
-	
-	
-// Easter egg
-	
-	
-	
-function onKonamiCode(cb) {
-  var input = '';
-  var key = '38384040373937396665';
-  document.addEventListener('keydown', function (e) {
-    input += ("" + e.keyCode);
-    if (input === key) {
-      return cb();
-    }
-    if (!key.indexOf(input)) return;
-    input = ("" + e.keyCode);
-  });
-}
 
-onKonamiCode(function () {
-	if(document.getElementById("titleonlinefriends").innerHTML=="" || document.getElementById("onlinefriends").innerHTML.includes("kaj")){return;}
-	document.getElementById("onlinefriends").innerHTML = '<li class="onlinefriends"><img style="vertical-align:middle;" height="15" width="15" src="https://cdn2.scratch.mit.edu/get_image/user/1_60x60.png">&nbsp;<a class="linktouser">kaj</a></li><hr style="border: 0;height: 1px;background-image: linear-gradient(to right, rgb(159, 166, 173), rgba(0, 0, 0, 0))">' + document.getElementById("onlinefriends").innerHTML;
+
+
+    // Easter egg
+
+
+
+    function onKonamiCode(cb) {
+        var input = '';
+        var key = '38384040373937396665';
+        document.addEventListener('keydown', function (e) {
+            input += ("" + e.keyCode);
+            if (input === key) {
+                return cb();
+            }
+            if (!key.indexOf(input)) return;
+            input = ("" + e.keyCode);
+        });
+    }
+
+    onKonamiCode(function () {
+        if(document.getElementById("titleonlinefriends").innerHTML=="" || document.getElementById("onlinefriends").innerHTML.includes("kaj")){return;}
+        document.getElementById("onlinefriends").innerHTML = '<li class="onlinefriends"><img style="vertical-align:middle;" height="15" width="15" src="https://cdn2.scratch.mit.edu/get_image/user/1_60x60.png">&nbsp;<a class="linktouser">kaj</a></li><hr style="border: 0;height: 1px;background-image: linear-gradient(to right, rgb(159, 166, 173), rgba(0, 0, 0, 0))">' + document.getElementById("onlinefriends").innerHTML;
     });
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
 }; //onload
