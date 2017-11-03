@@ -40,7 +40,6 @@ chrome.runtime.onMessage.addListener(
     });
 
 chrome.storage.sync.get(["iOaccounts", "iOfriendlist"], function (data) {
-    console.log("test");
     registeredUsers = JSON.stringify(data.iOaccounts) === "{}" || typeof(data.iOaccounts)==="undefined" ? [] : JSON.parse(data.iOaccounts);
     friendlist = typeof(data.iOfriendlist)==="undefined" ? [] : data.iOfriendlist;
     if(friendlist.length===0){localStorage.setItem("iOfriendsempty","1");}else{localStorage.setItem("iOfriendsempty","0");}
