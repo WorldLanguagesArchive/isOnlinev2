@@ -2,9 +2,14 @@ chrome.runtime.onInstalled.addListener(function(details){
     if(details.reason == "install"){
         chrome.tabs.create({url:"https://scratchtools.tk/isonline/register/"});}
     if(details.reason == "update"){
-        //chrome.tabs.create({url: "https://scratch.mit.edu/isonline-extension/update"});
+        chrome.tabs.create({url: "https://scratch.mit.edu/isonline-extension/update"});
+        chrome.storage.sync.get("iOfriendsenabled", function (data) {
+            if(data.iOfriendsenabled==1){localStorage.setItem("iOnotifications","1");}});
+        chrome.storage.sync.remove("iOfriendsenabled");
+        localStorage.removeItem("iOfriendlistenabled");
     }
-});
+}
+                                      );
 
 let key, user;
 

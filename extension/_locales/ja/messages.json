@@ -1,152 +1,152 @@
 ﻿{
-    "loadingstatus": {
-        "message": "読み込み中・・・"
-    },
-    "validating": {
-        "message": "アカウントを認証しています"
-    },
-    "success": {
-        "message": "アカウントの認証に成功しました。<br>もうこのタブを閉じてもかまいません。"
-    },
-    "verifyerror": {
-        "message": "エラーが発生しました。アカウントを認証しようとしている場合は、<a href='https://scratch.mit.edu/users/chooper100#comments'>@chooper100</a> に連絡してください。"
-    },
-    "validateprofilelink": {
-        "message": "isOnlineを使用するためには、アカウントを認証してください。"
-    },
-    "clickforstatus": {
-        "message": "クリックしてステータスを取得する"
-    },
-    "onlineauto": {
-        "message": "自動(オンライン)"
-    },
-    "offlineghost": {
-        "message": "オフライン状態を隠す"
-    },
-    "online": {
-        "message": "オンライン"
-    },
-    "probablyonline": {
-        "message": "オンラインと思われる"
-    },
-    "offline": {
-        "message": "オフライン"
-    },
-    "absent": {
-        "message": "退席中"
-    },
-    "unknown": {
-        "message": "ステータス不明"
-    },
-    "notiouser": {
-        "message": "isOnline未使用"
-    },
-    "error": {
-        "message": "エラー"
-    },
-    "didnotvalidate": {
-        "message": "おっと!あなたはまだアカウントを認証してないようです。<a href='https://scratch.mit.edu/isonline-extension/register' target='blank' >認証</a>はたった約20秒で完了します。"
-    },
-    "unvalidatedacc": {
-        "message": "おっと! まだこのアカウントでは認証が済んでいないようです。このアカウントでもisOnlineを使う場合は、<a href='https://scratch.mit.edu/isonline-extension/register' target='blank' >サブアカウントとして認証してください。</a>"
-    },
-    "keywaschanged": {
-        "message": "おっと!このコンピューターではisOnlineは動作していません。<a href='http://ison.ga/sync' target='_blank'>アカウントを同期して永久的にエラーを回避する</a>か、<a href='https://scratch.mit.edu/isonline-extension/register' target='_blank'>一時的に再認証してください。</a>"
-    },
-    "isbot": {
-        "message": ": おっと!残念ながらあなたはIsOnlineのサーバーによってBotとしてマークされてしまっているようです。<a href='https://scratch.mit.edu/users/chooper100/#comments' target='blank'>chooper100</a> に連絡してください。"
-    },
-    "probablyonlinehelp": {
-        "message": "5分以内にユーザーの活動がありました。"
-    },
-    "absenthelp": {
-        "message": "このユーザーはScratchを開いたまま放置しています。"
-    },
-    "unknownhelp": {
-        "message": "一週間ユーザーの活動を検知しませんでした。"
-    },
-    "noiohelp": {
-        "message": "このユーザーはisOnlineをインストールしていないため、ステータスを表示できません。"
-    },
-    "ownstatushelp": {
-        "message": "ステータスを手動で設定するか、自動で正しいものに変更します。"
-    },
-    "help": {
-        "message": "助けが必要ですか?コメントしてください。"
-    },
-    "friendlist": {
-        "message": "フレンドと通知"
-    },
-    "friendsnote": {
-        "message": "ステータスを \"静かに\" に設定することによって、フレンドを削除せず一時的に通知を無効にすることができます。"
-    },
-    "friendsettings": {
-        "message": "フレンドリストの設定"
-    },
-    "notifyawayonline": {
-        "message": "Notify if a friend is Away and becomes Online"
-    },
-    "soundnotiftext": {
-        "message": "サウンド通知"
-    },
-    "friendlistdescription": {
-        "message": "フレンドのステータスを、通知を受け取って確認できます!フレンドリストには最大10人まで追加できます。"
-    },
-    "nofriendshelp": {
-        "message": " \"フレンドに追加\" をクリックして、あなたをフォローしている人をフレンドとして追加できます!"
-    },
-    "friendserror": {
-        "message": "エラー: <a href=\"https://scratch.mit.edu/isonline-extension/register\" target=\"_blank\">再認証</a> して問題を解決してください。"
-    },
-    "loadingstatusesfrom": {
-        "message": "...のステータスを読み込み中"
-    },
-    "onetabopen": {
-        "message": "フレンドリストは少なくとも1つのタブでscratchを開いているときにのみ動作します。"
-    },
-    "dndhelp1": {
-        "message": "フレンドのオンライン通知を受け取りません。"
-    },
-    "dndhelp2": {
-        "message": "また、ほかの人のフレンドリストにはオフラインと表示されます。"
-    },
-    "dnd": {
-        "message": "静かに"
-    },
-    "friends": {
-        "message": "フレンド"
-    },
-    "maxreached": {
-        "message": "フレンドがいっぱいです(10)。削除したいフレンドのプロフィールへ行って、フレンドを削除できます。"
-    },
-    "removedfromfriends": {
-        "message": "フレンドを削除しました。"
-    },
-    "removedfromfriendsbody": {
-        "message": "もうオンラインになったときの通知を受け取りません。"
-    },
-    "couldnotadd": {
-        "message": "フレンドリストに追加できませんでした。"
-    },
-    "wasadded": {
-        "message": "はフレンドリストに追加されました。"
-    },
-    "wasaddedbody": {
-        "message": "オンラインになったときに通知を受け取ります。"
-    },
-    "onlyfollowing": {
-        "message": "あなたがフォローしている人のみ、フレンドとして追加できます。"
-    },
-    "dndotherhelp": {
-        "message": "このユーザーはフレンドがオンラインになったときの通知を受け取っていません。"
-    },
-	"isnowonline": {
-		"message": "is now online"
-	},
-	"isnowonlinebody": {
-		"message": "Click to go to profile."
-	},
-	"friendsnotcompatible": {
-		"message": "You cannot use friends. isOnline friends works in Chrome 17+ & Firefox 55+"
-	}
+   "loadingstatus":{
+      "message":"読み込み中・・・"
+   },
+   "validating":{
+      "message":"アカウントを認証しています"
+   },
+   "success":{
+      "message":"アカウントの認証に成功しました。<br>もうこのタブを閉じてもかまいません。"
+   },
+   "verifyerror":{
+      "message":"エラーが発生しました。アカウントを認証しようとしている場合は、<a href='https://scratch.mit.edu/users/isOnlineV2#comments'>@isOnlineV2</a> に連絡してください。"
+   },
+   "validateprofilelink":{
+      "message":"isOnlineを使用するためには、アカウントを認証してください。"
+   },
+   "clickforstatus":{
+      "message":"クリックしてステータスを取得する"
+   },
+   "onlineauto":{
+      "message":"自動(オンライン)"
+   },
+   "offlineghost":{
+      "message":"オフライン状態を隠す"
+   },
+   "online":{
+      "message":"オンライン"
+   },
+   "probablyonline":{
+      "message":"オンラインと思われる"
+   },
+   "offline":{
+      "message":"オフライン"
+   },
+   "absent":{
+      "message":"退席中"
+   },
+   "unknown":{
+      "message":"ステータス不明"
+   },
+   "notiouser":{
+      "message":"isOnline未使用"
+   },
+   "error":{
+      "message":"エラー"
+   },
+   "didnotvalidate":{
+      "message":"おっと!あなたはまだアカウントを認証してないようです。<a href='https://scratch.mit.edu/isonline-extension/register' target='_blank' >認証</a>はたった約20秒で完了します。"
+   },
+   "unvalidatedacc":{
+      "message":"おっと! まだこのアカウントでは認証が済んでいないようです。このアカウントでもisOnlineを使う場合は、<a href='https://scratch.mit.edu/isonline-extension/register' target='_blank' >サブアカウントとして認証してください。</a>"
+   },
+   "keywaschanged":{
+      "message":"おっと!このコンピューターではisOnlineは動作していません。<a href='http://ison.ga/sync' target='_blank'>アカウントを同期して永久的にエラーを回避する</a>か、<a href='https://scratch.mit.edu/isonline-extension/register' target='_blank'>再認証</a>して一時的にエラーを解決します。"
+   },
+   "isbot":{
+      "message":"おっと!残念ながらあなたはIsOnlineのサーバーによってBotとしてマークされてしまっているようです。<a href='https://scratch.mit.edu/users/isOnlineV2/#comments' target='_blank'>isOnlineV2</a> に連絡してください。"
+   },
+   "absenthelp":{
+      "message":"このユーザーはScratchを開いたまま放置しています。"
+   },
+   "unknownhelp":{
+      "message":"一週間ユーザーの活動を検知しませんでした。"
+   },
+   "noiohelp":{
+      "message":"このユーザーはisOnlineをインストールしていないため、ステータスを表示できません。"
+   },
+   "ownstatushelp":{
+      "message":"ステータスを手動で設定するか、自動で正しいものに変更します。"
+   },
+   "help":{
+      "message":"助けが必要ですか?コメントしてください。"
+   },
+   "friendlist":{
+      "message":"isOnline フレンド"
+   },
+   "friendsnote":{
+      "message":"ステータスを \"取り込み中\" に設定することによって、フレンドを削除せず一時的に通知を無効にすることができます。"
+   },
+   "friendsettings":{
+      "message":"フレンドリストの設定"
+   },
+   "notifyawayonline":{
+      "message":"退席中のフレンドがオンラインになったときに通知します。"
+   },
+   "soundnotiftext":{
+      "message":"サウンド通知"
+   },
+   "friendlistdescription":{
+      "message":"フレンドのステータスを、通知を受け取って確認できます!フレンドリストには最大10人まで追加できます。"
+   },
+   "nofriendshelp":{
+      "message":" \"フレンドに追加\" をクリックして、あなたをフォローしている人をフレンドとして追加できます!"
+   },
+   "friendserror":{
+      "message":"エラー: <a href=\"https://scratch.mit.edu/isonline-extension/register\" target=\"_blank\">再認証</a> して問題を解決してください。"
+   },
+   "loadingstatusesfrom":{
+      "message":"...のステータスを読み込み中"
+   },
+   "onetabopen":{
+      "message":"フレンドリストは少なくとも1つのタブでscratchを開いているときにのみ動作します。"
+   },
+   "dndhelp1":{
+      "message":"フレンドのオンライン通知を受け取りません。"
+   },
+   "dndhelp2":{
+      "message":"また、ほかの人のフレンドリストにはオフラインと表示されます。"
+   },
+   "dnd":{
+      "message":"取り込み中"
+   },
+   "friends":{
+      "message":"フレンド"
+   },
+   "maxreached":{
+      "message":"フレンドがいっぱいです(10)。"
+   },
+   "onlyfollowing":{
+      "message":"あなたをフォローしている人のみ、フレンドとして追加できます。"
+   },
+   "dndotherhelp":{
+      "message":"このユーザーは通知を受け取っていません。"
+   },
+   "isnowonline":{
+      "message":"はオンラインです。"
+   },
+   "isnowonlinebody":{
+      "message":"クリックしてプロフィールを開きます。"
+   },
+   "friendsnotcompatible":{
+      "message":"isOnlineのフレンド機能はバージョン 17以降のChromeかバージョン55以降のFirefoxでのみ利用できます。"
+   },
+   "notifyofflineonline":{
+      "message":"オフラインのフレンドがオンラインになったときに通知します。"
+   },
+   "adding":{
+      "message":"Adding..."
+   },
+   "gotocomments":{
+      "message":"Go to profile comments"
+   },
+   "removefromfriends":{
+      "message":"Remove from friends"
+   },
+   "translationcredits":{
+      "message":"Translation by @kazuta123"
+   },
+   "shiftenter":{
+      "message":"Press Shift+Enter to post."
+   }
 }

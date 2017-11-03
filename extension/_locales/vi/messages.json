@@ -1,0 +1,152 @@
+{
+   "loadingstatus":{
+      "message":"Đang tải trạng thái ..."
+   },
+   "validating":{
+      "message":"Xác nhận tài khoản isOnline"
+   },
+   "success":{
+      "message":"Đã xác thực thành công tài khoản Scratch của bạn. <br> isOnline đang làm việc. <br> Bạn có thể đóng tab này."
+   },
+   "verifyerror":{
+      "message":"Đã xảy ra lỗi. Hãy liên hệ với <a href='https://scratch.mit.edu/users/isOnlineV2#comments'> @ isOnlineV2 </a> nếu bạn đến từ xác nhận tài khoản isOnline."
+   },
+   "validateprofilelink":{
+      "message":"Xác nhận hợp lệ tài khoản này </a> để sử dụng trên Trực tuyến"
+   },
+   "clickforstatus":{
+      "message":"Nhấp để có trạng thái"
+   },
+   "onlineauto":{
+      "message":"Tự động (Trực tuyến)"
+   },
+   "offlineghost":{
+      "message":"Ngoại tuyến (ma)"
+   },
+   "online":{
+      "message":"Trực tuyến"
+   },
+   "probablyonline":{
+      "message":"Có lẽ là Trực tuyến"
+   },
+   "offline":{
+      "message":"Ngoại tuyến"
+   },
+   "absent":{
+      "message":"Xa"
+   },
+   "unknown":{
+      "message":"không xác định"
+   },
+   "notiouser":{
+      "message":"Không phải người dùng iO"
+   },
+   "error":{
+      "message":"lỗi"
+   },
+   "didnotvalidate":{
+      "message":"Rất tiếc! Có vẻ như bạn đã không xác nhận tài khoản của mình trên isOnline. isOnline sẽ không hoạt động cho đến khi bạn <a href='https://scratch.mit.edu/isonline-extension/register' target='_blank'> xác nhận tài khoản của bạn </a>. Mất khoảng 20 giây."
+   },
+   "unvalidatedacc":{
+      "message":"Rất tiếc! isOnline không hoạt động trên tài khoản Scratch vì nó không được xác nhận. Bạn có muốn sử dụng isOnline trên tài khoản này không? <a href='https://scratch.mit.edu/isonline-extension/register' target='_blank'> Xác nhận người dùng bổ sung </a>."
+   },
+   "keywaschanged":{
+      "message":"Rất tiếc! isOnline không làm việc với tài khoản Scratch này bởi vì bạn đã sử dụng nó trên máy tính khác. <a href='http://ison.ga/sync' target='_blank'> Đồng bộ hóa máy tính của bạn </a> để tránh lỗi này vĩnh viễn hoặc <a href = 'https: //scratch.mit.edu/isonline -extension / register 'target = _' blank '> xác nhận lại </a> để tạm thời sửa nó."
+   },
+   "isbot":{
+      "message":"Rất tiếc! Dường như bạn đã bị đánh dấu là một bot bởi máy chủ isOnline. isOnline không hoạt động. Vui lòng liên hệ <a href='https://scratch.mit.edu/users/isOnlineV2/#comments' target='_blank'> isOnlineV2 </a> để bỏ chặn tài khoản của bạn."
+   },
+   "absenthelp":{
+      "message":"Người dùng đã mở các tab Bắt đầu không hoạt động."
+   },
+   "unknownhelp":{
+      "message":"isOnline không phát hiện hoạt động trong tuần trước. Người dùng này không thể sử dụng isOnline nữa."
+   },
+   "noiohelp":{
+      "message":"Người dùng này phải cài đặt isOnline để hiển thị trạng thái của họ."
+   },
+   "ownstatushelp":{
+      "message":"Đặt trạng thái của bạn theo cách thủ công, hoặc để nó tự động."
+   },
+   "help":{
+      "message":"Cần giúp hoặc có câu hỏi? Bình luận về"
+   },
+   "friendlist":{
+      "message":"isOnline bạn bè & thông báo trực tuyến"
+   },
+   "friendsnote":{
+      "message":"Lưu ý: Bạn có thể tắt thông báo tạm thời trong khi vẫn giữ bạn bè bằng cách đặt trạng thái thành \"Đừng làm phiền\" trong tiểu sử của bạn."
+   },
+   "friendsettings":{
+      "message":"Cài đặt danh sách bạn bè"
+   },
+   "notifyawayonline":{
+      "message":"Thông báo nếu một người bạn đang ở xa và trở thành Trực tuyến"
+   },
+   "soundnotiftext":{
+      "message":"Thông báo âm thanh"
+   },
+   "friendlistdescription":{
+      "message":"Biết các trạng thái của tối đa 10 người bạn chỉ với một cú nhấp chuột và nhận được thông báo trên màn hình khi họ khởi động!"
+   },
+   "nofriendshelp":{
+      "message":"Bạn có thể thêm những người theo bạn vào danh sách bạn bè của bạn bằng cách nhấp vào \"+ friends\" trên hồ sơ của họ!"
+   },
+   "friendserror":{
+      "message":"Lỗi: <a href=\"https://scratch.mit.edu/isonline-extension/register\" target=\"_blank\"> xác nhận lại </a> để giải quyết vấn đề."
+   },
+   "loadingstatusesfrom":{
+      "message":"Đang tải trạng thái từ ..."
+   },
+   "onetabopen":{
+      "message":"Lấy làm tiếc! Danh sách bạn bè yêu cầu một tab mở"
+   },
+   "dndhelp1":{
+      "message":"Bạn sẽ không nhận được bất kỳ thông báo bạn bè trực tuyến nào"
+   },
+   "dndhelp2":{
+      "message":"và mọi người sẽ nhìn thấy bạn như là ngoại tuyến trong danh sách bạn bè của họ."
+   },
+   "dnd":{
+      "message":"Đừng làm phiền"
+   },
+   "friends":{
+      "message":"bạn bè"
+   },
+   "maxreached":{
+      "message":"Đã đạt được số lượng bạn bè tối đa (10). Bạn có thể xóa bạn bè bằng cách vào tiểu sử của họ."
+   },
+   "onlyfollowing":{
+      "message":"Bạn chỉ có thể thêm người dùng đang theo dõi bạn trong danh sách bạn bè của bạn."
+   },
+   "dndotherhelp":{
+      "message":"Người dùng này không nhận được thông báo bạn bè trực tuyến."
+   },
+   "isnowonline":{
+      "message":"đang trực tuyến"
+   },
+   "isnowonlinebody":{
+      "message":"Nhấp để vào tiểu sử."
+   },
+   "friendsnotcompatible":{
+      "message":"isOnline bạn bè chỉ hoạt động trong Chrome 17+ và Firefox 55+"
+   },
+   "notifyofflineonline":{
+      "message":"Gửi một thông báo khi một người bạn đi trực tuyến"
+   },
+   "adding":{
+      "message":"Thêm..."
+   },
+   "gotocomments":{
+      "message":"Đi đến hồ sơ ý kiến"
+   },
+   "removefromfriends":{
+      "message":"Loại bỏ từ bạn bè"
+   },
+   "translationcredits":{
+      "message":"Dịch bởi @EvanKTC"
+   },
+   "shiftenter":{
+      "message":"Nhấn Shift + Enter để đăng bài"
+   }
+}

@@ -1,152 +1,152 @@
 {
-	"loadingstatus": {
-		"message": "Loading status..."
-	},
-	"validating": {
-		"message": "Validating isOnline account"
-	},
-	"success": {
-		"message": "Successfully validated your Scratch account.<br>isOnline is now working. <br>You can close this tab."
-	},
-	"verifyerror": {
-		"message": "An error occured. Please contact <a href='https://scratch.mit.edu/users/chooper100#comments'>@chooper100</a> if you come from isOnline account validation."
-	},
-	"validateprofilelink": {
-		"message": "Validate this account </a> to use isOnline on it"
-	},
-	"clickforstatus": {
-		"message": "Click to get status"
-	},
-	"onlineauto": {
-		"message": "Automatic (Online)"
-	},
-	"offlineghost": {
-		"message": "Offline (ghost)"
-	},
-	"online": {
-		"message": "Online"
-	},
-	"probablyonline": {
-		"message": "Probably Online"
-	},
-	"offline": {
-		"message": "Offline"
-	},
-	"absent": {
-		"message": "Away"
-	},
-	"unknown": {
-		"message": "Unknown"
-	},
-	"notiouser": {
-		"message": "Not iO user"
-	},
-	"error": {
-		"message": "Error"
-	},
-	"didnotvalidate": {
-		"message": "Whoops! Looks like you didn't validate your account on isOnline. isOnline won't work until you <a href='https://scratch.mit.edu/isonline-extension/register' target='blank' >validate your account</a>. It takes around 20 seconds."
-	},
-	"unvalidatedacc": {
-		"message": "Whoops! isOnline isn't working on this Scratch account because it isn't validated. Want to use isOnline on this account too? <a href='https://scratch.mit.edu/isonline-extension/register' target='blank' >Validate an additional user</a>."
-	},
-	"keywaschanged": {
-		"message": "Whoops! isOnline isn't working with this Scratch account because you used it on another computer. <a href='http://ison.ga/sync' target='_blank'>Synchronize your computers</a> to avoid this error permanently or <a href='https://scratch.mit.edu/isonline-extension/register' target='blank'>re-validate</a> to temporarily fix it."
-	},
-	"isbot": {
-		"message": "Whoops! It looks like you've been marked as a bot by the isOnline server. isOnline isn't working. Please contact <a href='https://scratch.mit.edu/users/chooper100/#comments' target='blank'>chooper100</a> to unblock your account."
-	},
-	"probablyonlinehelp": {
-		"message": "This user shows activity on their What I've been doing from the last 5 minutes."
-	},
-	"absenthelp": {
-		"message": "The user has open inactive Scratch tabs."
-	},
-	"unknownhelp": {
-		"message": "isOnline did not detect activity in the last week. This user may not use isOnline anymore."
-	},
-	"noiohelp": {
-		"message": "This user has to install isOnline in order to show their status."
-	},
-	"ownstatushelp": {
-		"message": "Set your status manually, or leave it on automatic."
-	},
-	"help": {
-		"message": "Need help or have questions? Comment on"
-	},
-	"friendlist": {
-		"message": "isOnline friends & online notifications"
-	},
-	"friendsnote": {
-		"message": "Note: You can disable notifications temporarily while keeping friends by setting your status to \"Do Not Disturb\" on your profile."
-	},
-	"friendsettings": {
-		"message": "Friend list settings"
-	},
-	"notifyawayonline": {
-		"message": "Notify if a friend is Away and becomes Online"
-	},
-	"soundnotiftext": {
-		"message": "Sound Notification"
-	},
-	"friendlistdescription": {
-		"message": "Know the statuses of a maximum of 10 friends with just a click and receive instant desktop notifications when they get on!"
-	},
-	"nofriendshelp": {
-		"message": "You can add people that follow you to your friend list by clicking \"+ friends\" on their profiles!"
-	},
-	"friendserror": {
-		"message": "Error: <a href=\"https://scratch.mit.edu/isonline-extension/register\" target=\"_blank\">re-validate</a> to solve the problem."
-	},
-	"loadingstatusesfrom": {
-		"message": "Loading statuses from..."
-	},
-	"onetabopen": {
-		"message": "<img src='sorryneedtabopen.png' style='width:300px;display: absolute;margin: 0 auto;padding:0px;'></img>"
-	},
-	"dndhelp1": {
-		"message": "You won't receive any online friends notifications"
-	},
-	"dndhelp2": {
-		"message": "and people will see you as offline on their friend list."
-	},
-	"dnd": {
-		"message": "Do Not Disturb"
-	},
-	"friends": {
-		"message": "friends"
-	},
-	"maxreached": {
-		"message": "Reached maximum amount of friends (10). You can remove friends by going to their profiles."
-	},
-	"removedfromfriends": {
-		"message": "Removed from of friend list"
-	},
-	"removedfromfriendsbody": {
-		"message": "You won't receive notifications when they get online anymore."
-	},
-	"couldnotadd": {
-		"message": "Could not add to friend list"
-	},
-	"wasadded": {
-		"message": "was added to friend list"
-	},
-	"wasaddedbody": {
-		"message": "You'll now receive notifications when they get online."
-	},
-	"onlyfollowing": {
-		"message": "You can only add users that are following you to your friend list."
-	},
-	"dndotherhelp": {
-		"message": "This user isn't receiving online friends notifications."
-	},
-	"isnowonline": {
-		"message": "is now online"
-	},
-	"isnowonlinebody": {
-		"message": "Click to go to profile."
-	},
-	"friendsnotcompatible": {
-		"message": "isOnline friends only works in Chrome 17+ & Firefox 55+"
-	}
+   "loadingstatus":{
+      "message":"Loading status..."
+   },
+   "validating":{
+      "message":"Validating isOnline account"
+   },
+   "success":{
+      "message":"Successfully validated your Scratch account.<br>isOnline is now working. <br>You can close this tab."
+   },
+   "verifyerror":{
+      "message":"An error occured. Please contact <a href='https://scratch.mit.edu/users/isOnlineV2#comments'>@isOnlineV2</a> if you come from isOnline account validation."
+   },
+   "validateprofilelink":{
+      "message":"Validate this account </a> to use isOnline on it"
+   },
+   "clickforstatus":{
+      "message":"Click to get status"
+   },
+   "onlineauto":{
+      "message":"Automatic (Online)"
+   },
+   "offlineghost":{
+      "message":"Offline (ghost)"
+   },
+   "online":{
+      "message":"Online"
+   },
+   "probablyonline":{
+      "message":"Probably Online"
+   },
+   "offline":{
+      "message":"Offline"
+   },
+   "absent":{
+      "message":"Away"
+   },
+   "unknown":{
+      "message":"Unknown"
+   },
+   "notiouser":{
+      "message":"Not iO user"
+   },
+   "error":{
+      "message":"Error"
+   },
+   "didnotvalidate":{
+      "message":"Whoops! Looks like you didn't validate your account on isOnline. isOnline won't work until you <a href='https://scratch.mit.edu/isonline-extension/register' target='_blank' >validate your account</a>. It takes around 20 seconds."
+   },
+   "unvalidatedacc":{
+      "message":"Whoops! isOnline isn't working on this Scratch account because it isn't validated. Want to use isOnline on this account too? <a href='https://scratch.mit.edu/isonline-extension/register' target='_blank' >Validate an additional user</a>."
+   },
+   "keywaschanged":{
+      "message":"Whoops! isOnline isn't working with this Scratch account because you used it on another computer. <a href='http://ison.ga/sync' target='_blank'>Synchronize your computers</a> to avoid this error permanently or <a href='https://scratch.mit.edu/isonline-extension/register' target='_blank'>re-validate</a> to temporarily fix it."
+   },
+   "isbot":{
+      "message":"Whoops! It looks like you've been marked as a bot by the isOnline server. isOnline isn't working. Please contact <a href='https://scratch.mit.edu/users/isOnlineV2/#comments' target='_blank'>isOnlineV2</a> to unblock your account."
+   },
+   "absenthelp":{
+      "message":"The user has open inactive Scratch tabs."
+   },
+   "unknownhelp":{
+      "message":"isOnline did not detect activity in the last week. This user may not use isOnline anymore."
+   },
+   "noiohelp":{
+      "message":"This user has to install isOnline in order to show their status."
+   },
+   "ownstatushelp":{
+      "message":"Set your status manually, or leave it on automatic."
+   },
+   "help":{
+      "message":"Need help or have questions? Comment on"
+   },
+   "friendlist":{
+      "message":"isOnline friends"
+   },
+   "friendsnote":{
+      "message":"Note: You can disable notifications temporarily while keeping friends by setting your status to \"Do Not Disturb\" on your profile."
+   },
+   "friendsettings":{
+      "message":"Notification settings"
+   },
+   "notifyawayonline":{
+      "message":"Notify if an Away friend goes Online"
+   },
+   "soundnotiftext":{
+      "message":"Sound Notification"
+   },
+   "friendlistdescription":{
+      "message":"Know the statuses of a maximum of 10 friends with just a click and receive instant desktop notifications when they get on!"
+   },
+   "nofriendshelp":{
+      "message":"You can add people that follow you to your friend list by clicking \"+ friends\" on their profiles!"
+   },
+   "friendserror":{
+      "message":"Error: <a href=\"https://scratch.mit.edu/isonline-extension/register\" target=\"_blank\">re-validate</a> to solve the problem."
+   },
+   "loadingstatusesfrom":{
+      "message":"Loading statuses from..."
+   },
+   "onetabopen":{
+      "message":"<img src='sorryneedtabopen.png' style='width:300px;display: absolute;margin: 0 auto;padding:0px;'></img>"
+   },
+   "dndhelp1":{
+      "message":"You won't receive any online friends notifications"
+   },
+   "dndhelp2":{
+      "message":"and people will see you as offline on their friend list."
+   },
+   "dnd":{
+      "message":"Do Not Disturb"
+   },
+   "friends":{
+      "message":"friends"
+   },
+   "maxreached":{
+      "message":"Reached maximum amount of friends (10)."
+   },
+   "onlyfollowing":{
+      "message":"You can only add users that are following you to your friend list."
+   },
+   "dndotherhelp":{
+      "message":"This user isn't receiving online friends notifications."
+   },
+   "isnowonline":{
+      "message":"is now online"
+   },
+   "isnowonlinebody":{
+      "message":"Click to go to profile."
+   },
+   "friendsnotcompatible":{
+      "message":"isOnline friends only works in Chrome 17+ & Firefox 55+"
+   },
+   "notifyofflineonline":{
+      "message":"Send a notification when a friend goes Online"
+   },
+   "adding":{
+      "message":"Adding..."
+   },
+   "gotocomments":{
+      "message":"Go to profile comments"
+   },
+   "removefromfriends":{
+      "message":"Remove from friends"
+   },
+   "translationcredits":{
+      "message":""
+   },
+   "shiftenter":{
+      "message":"Press Shift+Enter to post."
+   }
 }
