@@ -9,7 +9,7 @@
       "message": "Cuenta verificada correctamente<br>isOnline está funcionando. <br>Puedes cerrar esta pestaña."
    },
    "verifyerror": {
-      "message": "Un error occurió. Por favor contacte a <a href='https://scratch.mit.edu/users/chooper100#comments'>@chooper100</a> si provienes de la verificación de la cuenta."
+      "message": "Un error occurió. Por favor contacte a <a href='https://scratch.mit.edu/users/isOnlineV2#comments'>@isOnlineV2</a> si provienes de la verificación de la cuenta."
    },
    "validateprofilelink": {
       "message": "Verifica esta cuenta </a> para usar isOnline en ella"
@@ -54,7 +54,7 @@
       "message": "Whoops! isOnline no está funcionando con esta cuenta porque la has usado en otra computadora. <a href='http://ison.ga/sync' target='_blank'>Sincroniza tus computadoras</a> para evitar este error permanentemente o <a href='https://scratch.mit.edu/isonline-extension/register' target='_blank'>re-verifica</a> para resolverlo temporalmente."
    },
    "isbot": {
-      "message": "Whoops! Parece que los servidores de isOnline piensan que eres un bot. isOnline no está funcionando. Por favor pídele a <a href='https://scratch.mit.edu/users/chooper100/#comments' target='_blank'>chooper100</a> que deesbloquee tu cuenta."
+      "message": "Whoops! Parece que los servidores de isOnline piensan que eres un bot. isOnline no está funcionando. Por favor pídele a <a href='https://scratch.mit.edu/users/isOnlineV2/#comments' target='_blank'>isOnlineV2</a> que deesbloquee tu cuenta."
    },
    "absenthelp": {
       "message": "Este usuario tiene pestañas de Scratch inactivas."
