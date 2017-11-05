@@ -45,7 +45,7 @@
       "message": "Error"
    },
    "didnotvalidate": {
-      "message": "Whoops! Parece que no verificaste la cuenta con isOnline. isOnline no funcionará hasta que <a href='https://scratch.mit.edu/isonline-extension/register' target='_blank' >verifiques tu cuenta</a>. Toma alrededor de 20 segunso."
+      "message": "Whoops! Parece que no verificaste la cuenta con isOnline. isOnline no funcionará hasta que <a href='https://scratch.mit.edu/isonline-extension/register' target='_blank' >verifiques tu cuenta</a>. Toma alrededor de 20 segundos."
    },
    "unvalidatedacc": {
       "message": "Whoops! isOnline no esta funcionando en esta cuenta porque no está verificada. ¿Quieres usar isOnline en esta cuenta también? <a href='https://scratch.mit.edu/isonline-extension/register' target='_blank' >Verifica un usuario adicional</a>."
