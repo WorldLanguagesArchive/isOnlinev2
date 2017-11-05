@@ -520,7 +520,7 @@ function iOcrown() {
         if (document.getElementById("bio").innerHTML.toLowerCase().includes("#lovecookies") || document.getElementById("status").innerHTML.toLowerCase().includes("#lovecookies")) {
             document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].innerHTML += ' <span title="isOnline cookie">🍪</a>';}
         if (document.getElementById("bio").innerHTML.includes(btoa(user).substr(0, 5)) || document.getElementById("status").innerHTML.includes(btoa(user).substr(0, 5))) {
-            document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].innerHTML += ' <span title="isOnline cookie">🎃</a>';}
+            document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].innerHTML += ' <span title="isOnline pumpkin">🎃</a>';}
         if (document.getElementById("bio").innerHTML.includes(btoa(user.split``.reverse``.join``).substr(0, 5)) || document.getElementById("status").innerHTML.includes(btoa(user.split``.reverse``.join``).substr(0, 5))) {
             document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].innerHTML += ' <span title="isOnline b">🖌️</a>';}
     }
