@@ -15,11 +15,13 @@ let key, user;
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
+		console.log(request);//ttt
         if (request.action == "reload") {
             location.reload();}
         if (request.setuninstallurl) {
             chrome.runtime.setUninstallURL("https://scratchtools.tk/isonline/uninstall/?user="+request.setuninstallurl.name+"&key="+request.setuninstallurl.key);}
         if(request.color === ""){
+			localStorage.setItem("iOtabtimestamp",Math.floor(Date.now() / 1000));
             localStorage.setItem("iOstatus","online");
             chrome.browserAction.getBadgeText({}, function(result) {
                 if(result===" "){chrome.browserAction.setBadgeText({text: ""});}
@@ -44,13 +46,13 @@ chrome.runtime.onMessage.addListener(
     });
 
 setInterval(function(){
-    chrome.tabs.query({url:"https://scratch.mit.edu/*"}, function(tabs) {
-        if (tabs.length===0){chrome.browserAction.setBadgeText({text: ""});}
-    });
-}, 10000);
+        if (Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")>4){chrome.browserAction.setBadgeText({text: ""});}
+}, 5000);
 
 
 function badge(thecolor) {
+	console.log("Ran badge");//ttt
+	localStorage.setItem("iOtabtimestamp",Math.floor(Date.now() / 1000));
     chrome.browserAction.getBadgeText({}, function(result) {
         if(result===""){
             chrome.browserAction.setBadgeText({text: " "});}

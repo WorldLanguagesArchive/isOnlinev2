@@ -202,7 +202,8 @@ function main() {
 
     if ((time()-localStorage.getItem("iOlastOn") > 10 || time()-localStorage.getItem("iOlastOn") < -1) && localstatus() == "online") {setOnline();}
 
-    /* Manage statuses */ window.addEventListener('load',function(){update();setInterval(update, 3000);});
+    /* Manage statuses */ update();setInterval(update, 3000);
+			console.log("Ran updateeventlistener");//ttt
 
     if (url.substring(24,29) == 'users' && (url.match(/\//g) || []).length == 5) {
         iOlog("Detected user is in a profile");
@@ -307,6 +308,7 @@ iONotify.setup();
 
 
 function update() {
+		console.log("Ran update");//ttt
     if (stop !== 0 || window.location.href.startsWith("https://scratch.mit.edu/isonline-extension")) {return;}
     if (localstatus() == "online") {
         updateStatus("");
@@ -490,9 +492,10 @@ function setOnline() {
     localStorage.setItem("iOlastOn", time());}
 
 function updateStatus(color) {
+	console.log("Ran updateStatus");//ttt
     chrome.runtime.sendMessage({color});
     try {document.getElementsByClassName("user-name dropdown-toggle")[0].style.backgroundColor=color;}
-    catch(err) {document.getElementsByClassName("link right account-nav")[0].style.backgroundColor=color;}
+    catch(err) {try{document.getElementsByClassName("link right account-nav")[0].style.backgroundColor=color;}catch(err){}}
     color = color === "" ? "green" : color;
     if(localuser.toUpperCase() == user.toUpperCase() && document.getElementById("ioselect").style.color !== color){
         document.getElementById("ioselect").selectedIndex = opt.findIndex(k => k.color === color);

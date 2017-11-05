@@ -4,10 +4,12 @@ friendliststatuses=[0,0,0,0,0,0,0,0,0,0].map(() => "Unknown");
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
         if (request.notifications == "enable") {
+			var done = 0;
             setInterval(function(){check();},100);
-            var check = function(){chrome.permissions.contains({
+            var check = function(){if(done===1){return;}
+			chrome.permissions.contains({
                 permissions: ['notifications'],
-            }, function(result) {if(result){localStorage.setItem("iOnotifications",1);}});
+            }, function(result) {if(result){localStorage.setItem("iOnotifications",1);done=1;}});
                                   };
 
         }
@@ -59,12 +61,10 @@ function friendlistcode() {
     scratchopen = true;
 
     setInterval(function(){
-        chrome.tabs.query({url:"https://scratch.mit.edu/*"}, function(tabs) {
-            if (scratchopen === false && tabs.length>0){location.reload();}
-            if  (firsttime && tabs.length>0){firsttime=false;docheck();}
-            scratchopen = tabs.length>0;
+            if (scratchopen === false && (Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")<4)){location.reload();}
+            if  (firsttime && (Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")<4)){firsttime=false;docheck();}
+            scratchopen = Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")<4;
             if(scratchopen===false){friendliststatuses=[0,0,0,0,0,0,0,0,0,0].map(() => "Unknown");chrome.browserAction.getBadgeText({}, function(result) {if(result!==" "){chrome.browserAction.setBadgeText({text: ""});}});}
-        });
     }, 3000);
 
 }
