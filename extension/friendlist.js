@@ -155,7 +155,11 @@ function notification(user) {
                 icon: "https://cdn2.scratch.mit.edu/get_image/user/"+id+"_90x90.png?"+Math.round(new Date().getTime()/1000),
                 body: chrome.i18n.getMessage("isnowonlinebody"),
             });
-            notification.onclick = function(){notification.close();window.open("https://scratch.mit.edu/users/"+user+"/?comments");};
+			notification.onclick = function(event) {
+			  event.preventDefault();
+			  chrome.tabs.create({url: "https://scratch.mit.edu/users/"+user+"/?comments"});
+			  notification.close();
+			}
             setTimeout(function () {
                 notification.close();
             }, 10000);
