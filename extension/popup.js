@@ -1,5 +1,3 @@
-document.onclick = function(){Notification.requestPermission();};//ttt
-
 window.onload = function() {
 
     // Localization
@@ -40,6 +38,7 @@ document.getElementById("offlinetoonline").onclick = function() {
     if(typeof InstallTrigger !== 'undefined') { // If Firefox
         if(Notification.permission!=="granted") {
             window.open(chrome.extension.getURL("enablenotifications.html"));
+			
         }
         else {
             if(document.getElementById("offlinetoonline").checked) {
@@ -85,8 +84,9 @@ document.getElementById("offlinetoonline").onclick = function() {
         document.getElementById("soundnotifdiv").style.display = 'block';
     }
 
+	audio = new Audio('sound.wav');
     document.getElementById("soundnotif").onclick = function() {
-        audio = new Audio('sound.mp3');audio.play();
+        audio.play();
         localStorage.setItem("iOfriendlistsound",document.getElementById("soundnotif").checked ? 1 : 0);};
 
     if(localStorage.getItem("iOfriendsawaytoonline")==1) {

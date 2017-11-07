@@ -1,4 +1,4 @@
-audio = new Audio('sound.mp3');
+audio = new Audio('sound.wav');
 friendliststatuses=[0,0,0,0,0,0,0,0,0,0].map(() => "Unknown");
 
 chrome.runtime.onMessage.addListener(
