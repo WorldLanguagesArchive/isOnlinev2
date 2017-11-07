@@ -4,12 +4,12 @@ friendliststatuses=[0,0,0,0,0,0,0,0,0,0].map(() => "Unknown");
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
         if (request.notifications == "enable") {
-			var done = 0;
+			var done1 = 0;
             setInterval(function(){check();},100);
-            var check = function(){if(done===1){return;}
+            var check = function(){if(done1===1){return;}
 			chrome.permissions.contains({
                 permissions: ['notifications'],
-            }, function(result) {if(result){localStorage.setItem("iOnotifications",1);done=1;}});
+            }, function(result) {if(result){localStorage.setItem("iOnotifications",1);done1=1;}});
                                   };
 
         }
@@ -191,7 +191,7 @@ function addToFriends(user) {
     amountbefore = friendlist.length;
     friendlist.push(user);
     chrome.storage.sync.set({iOfriendlist : friendlist});
-    if(friendlist.length===1 && amountbefore===0){setTimeout(function(){location.reload();},100);}
+    if(friendlist.length===1 && amountbefore===0){setTimeout(function(){location.reload();},1000);}
     else{check(friendlist.length-1);}
 }
 
