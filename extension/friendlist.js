@@ -61,9 +61,9 @@ function friendlistcode() {
     scratchopen = true;
 
     setInterval(function(){
-            if (scratchopen === false && (Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")<4)){location.reload();}
-            if  (firsttime && (Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")<4)){firsttime=false;docheck();}
-            scratchopen = Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")<4;
+            if (scratchopen === false && (Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")<6)){location.reload();}
+            if  (firsttime && (Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")<6)){firsttime=false;docheck();}
+            scratchopen = Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")<6;
             if(scratchopen===false){friendliststatuses=[0,0,0,0,0,0,0,0,0,0].map(() => "Unknown");chrome.browserAction.getBadgeText({}, function(result) {if(result!==" "){chrome.browserAction.setBadgeText({text: ""});}});}
     }, 3000);
 

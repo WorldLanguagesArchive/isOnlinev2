@@ -15,7 +15,6 @@ let key, user;
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-		console.log(request);//ttt
         if (request.action == "reload") {
             location.reload();}
         if (request.setuninstallurl) {
@@ -46,12 +45,11 @@ chrome.runtime.onMessage.addListener(
     });
 
 setInterval(function(){
-        if (Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")>4){chrome.browserAction.setBadgeText({text: ""});}
+        if (Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")>6){chrome.browserAction.setBadgeText({text: ""});}
 }, 5000);
 
 
 function badge(thecolor) {
-	console.log("Ran badge");//ttt
 	localStorage.setItem("iOtabtimestamp",Math.floor(Date.now() / 1000));
     chrome.browserAction.getBadgeText({}, function(result) {
         if(result===""){

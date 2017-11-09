@@ -237,7 +237,7 @@ document.getElementById("offlinetoonline").onclick = function() {
     }
 
     function onlineList() {
-            if (Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")<4){getStatuses();}
+            if (Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")<6){getStatuses();}
             else {
                 document.getElementById("errorMessage").innerHTML=chrome.i18n.getMessage("onetabopen");
             }
