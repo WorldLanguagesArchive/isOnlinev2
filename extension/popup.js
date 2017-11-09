@@ -34,14 +34,25 @@ window.onload = function() {
         return;
     }
 
-    /*document.getElementById("enablefriendlist").onclick = function() {
-        if(document.getElementById("enablefriendlist").checked) {
-            localStorage.setItem("iOfriendlistenabled",1);chrome.storage.sync.set({iOfriendsenabled : "1"},function(){chrome.runtime.sendMessage({friendlist: "refresh"});location.reload();});}
+document.getElementById("offlinetoonline").onclick = function() {
+    if(typeof InstallTrigger !== 'undefined') { // If Firefox
+        if(Notification.permission!=="granted") {
+            window.open(chrome.extension.getURL("enablenotifications.html"));
+			
+        }
         else {
-            chrome.browserAction.getBadgeText({}, function(result) {if(result!==" "){chrome.browserAction.setBadgeText({text: ""});}});localStorage.setItem("iOfriendlistenabled",0);chrome.storage.sync.set({iOfriendsenabled : "0"},function(){chrome.runtime.sendMessage({friendlist: "refresh"});location.reload();});}
-    };*/
-
-    document.getElementById("offlinetoonline").onclick = function() {
+            if(document.getElementById("offlinetoonline").checked) {
+                localStorage.setItem("iOnotifications","1");
+                document.getElementById("awaytoonlinediv").style.display = 'block';
+                document.getElementById("soundnotifdiv").style.display = 'block';
+            }
+            else {
+                localStorage.setItem("iOnotifications","0");
+                document.getElementById("awaytoonlinediv").style.display = 'none';
+                document.getElementById("soundnotifdiv").style.display = 'none';}
+        }
+    }
+    else { // If Chrome
         chrome.permissions.contains({
             permissions: ['notifications'],
         }, function(result) {
@@ -62,8 +73,10 @@ window.onload = function() {
                 });
             }
         }
+
                                    );
-    };
+    }
+};
 
     if(localStorage.getItem("iOnotifications")==="1") {
         document.getElementById("offlinetoonline").checked = true;
@@ -71,8 +84,9 @@ window.onload = function() {
         document.getElementById("soundnotifdiv").style.display = 'block';
     }
 
+	audio = new Audio('sound.wav');
     document.getElementById("soundnotif").onclick = function() {
-        audio = new Audio('sound.mp3');audio.play();
+        audio.play();
         localStorage.setItem("iOfriendlistsound",document.getElementById("soundnotif").checked ? 1 : 0);};
 
     if(localStorage.getItem("iOfriendsawaytoonline")==1) {
@@ -223,12 +237,10 @@ window.onload = function() {
     }
 
     function onlineList() {
-        chrome.tabs.query({url:"https://scratch.mit.edu/*"}, function(tabs) {
-            if (tabs.length!==0){getStatuses();}
+            if (Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")<6){getStatuses();}
             else {
                 document.getElementById("errorMessage").innerHTML=chrome.i18n.getMessage("onetabopen");
             }
-        });
     }
 
 

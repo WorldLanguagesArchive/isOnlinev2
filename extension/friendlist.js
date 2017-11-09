@@ -1,13 +1,15 @@
-audio = new Audio('sound.mp3');
+audio = new Audio('sound.wav');
 friendliststatuses=[0,0,0,0,0,0,0,0,0,0].map(() => "Unknown");
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
         if (request.notifications == "enable") {
+			var done1 = 0;
             setInterval(function(){check();},100);
-            var check = function(){chrome.permissions.contains({
+            var check = function(){if(done1===1){return;}
+			chrome.permissions.contains({
                 permissions: ['notifications'],
-            }, function(result) {if(result){localStorage.setItem("iOnotifications",1);}});
+            }, function(result) {if(result){localStorage.setItem("iOnotifications",1);done1=1;}});
                                   };
 
         }
@@ -59,12 +61,10 @@ function friendlistcode() {
     scratchopen = true;
 
     setInterval(function(){
-        chrome.tabs.query({url:"https://scratch.mit.edu/*"}, function(tabs) {
-            if (scratchopen === false && tabs.length>0){location.reload();}
-            if  (firsttime && tabs.length>0){firsttime=false;docheck();}
-            scratchopen = tabs.length>0;
+            if (scratchopen === false && (Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")<6)){location.reload();}
+            if  (firsttime && (Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")<6)){firsttime=false;docheck();}
+            scratchopen = Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")<6;
             if(scratchopen===false){friendliststatuses=[0,0,0,0,0,0,0,0,0,0].map(() => "Unknown");chrome.browserAction.getBadgeText({}, function(result) {if(result!==" "){chrome.browserAction.setBadgeText({text: ""});}});}
-        });
     }, 3000);
 
 }
@@ -155,7 +155,11 @@ function notification(user) {
                 icon: "https://cdn2.scratch.mit.edu/get_image/user/"+id+"_90x90.png?"+Math.round(new Date().getTime()/1000),
                 body: chrome.i18n.getMessage("isnowonlinebody"),
             });
-            notification.onclick = function(){notification.close();window.open("https://scratch.mit.edu/users/"+user+"/?comments");};
+			notification.onclick = function(event) {
+			  event.preventDefault();
+			  chrome.tabs.create({url: "https://scratch.mit.edu/users/"+user+"/?comments"});
+			  notification.close();
+			}
             setTimeout(function () {
                 notification.close();
             }, 10000);
@@ -187,7 +191,7 @@ function addToFriends(user) {
     amountbefore = friendlist.length;
     friendlist.push(user);
     chrome.storage.sync.set({iOfriendlist : friendlist});
-    if(friendlist.length===1 && amountbefore===0){setTimeout(function(){location.reload();},100);}
+    if(friendlist.length===1 && amountbefore===0){setTimeout(function(){location.reload();},1000);}
     else{check(friendlist.length-1);}
 }
 
