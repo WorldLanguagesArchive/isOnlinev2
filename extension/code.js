@@ -83,7 +83,8 @@ if(location.href.toLowerCase().startsWith("https://scratch.mit.edu/users/isonlin
             "I don't want people knowing when I'm online!" : "You can visit your profile, and next to your location you will see a dropdown menu added by isOnline. Choose your status to be 'Offline' and nobody will find out that you're actually online until you change your status back to Automatic.",
             "I don't want isOnline anymore, how do I get rid of it?" : "We're sorry to see you go. You can uninstall the extension by right clicking on its icon in the top-right corner of the screen and clicking the option that says 'Remove'. You may get a popup asking if you're sure. Click remove.",
             "How do I enable the Discuss Button?" : "You can enable the Discuss button on <a href='https://scratch.mit.edu/users/DiscussButton'>@DiscussButton</a>.",
-            "Who runs the account isOnlineV2?" : "<a href='https://scratch.mit.edu/users/World_Languages/'>@World_Languages</a> does, however you can trust a response if it has been done by an iO developer."
+            "Who runs the account isOnlineV2?" : "<a href='https://scratch.mit.edu/users/World_Languages/'>@World_Languages</a> does, however you can trust a response if it has been done by an iO developer.",
+            "Why can't I add people that are not following me to my friend-list?" : "It would be spammy for popular scratchers if anybody could add them into their friends. Also, if someone is your true friend, they are probably following you."
         };
         let qSelected = null;
         Object.keys(faqQuestions).forEach(question => {
