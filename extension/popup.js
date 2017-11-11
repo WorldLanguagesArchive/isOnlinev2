@@ -8,7 +8,9 @@ window.onload = function() {
     document.getElementById("notifyawayonline").innerHTML=chrome.i18n.getMessage("notifyawayonline");
     document.getElementById("soundnotiftext").innerHTML=chrome.i18n.getMessage("soundnotiftext");
     document.getElementById("notifyofflineonline").innerHTML=chrome.i18n.getMessage("notifyofflineonline");
-    document.getElementById("translationcredits").innerHTML=chrome.i18n.getMessage("translationcredits");
+    //document.getElementById("translationcredits").innerHTML=chrome.i18n.getMessage("translationcredits");
+	document.getElementById("source").onclick=function(){			  chrome.tabs.create({url: "https://github.com/WorldLanguages/isOnlinev2/"});chrome.tabs.create({url: "https://github.com/herohamp/isonline-backend/"});};
+	document.getElementById("uninstall").onclick=function(){chrome.management.uninstallSelf({showConfirmDialog: true});};
     isenglish = chrome.i18n.getUILanguage().startsWith("en");
     //
 
