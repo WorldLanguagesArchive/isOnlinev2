@@ -32,7 +32,6 @@ document.getElementById("offlinetoonline").onclick = function() {
     if(typeof InstallTrigger !== 'undefined') { // If Firefox
         if(Notification.permission!=="granted") {
             window.open(chrome.extension.getURL("enablenotifications.html"));
-			
         }
         else {
             if(document.getElementById("offlinetoonline").checked) {
@@ -94,7 +93,7 @@ document.getElementById("offlinetoonline").onclick = function() {
         document.getElementById("soundnotif").checked = true;
     }
 
-    if(localStorage.getItem("iOfriendsempty")!=="0"){document.getElementById("divonlinefriends").innerHTML+='<b>'+chrome.i18n.getMessage("nofriendshelp")+'</b>';return;}
+    if(localStorage.getItem("iOfriendsempty")!=="0"){document.getElementById("friendstatuseslist").innerHTML='<b>'+chrome.i18n.getMessage("nofriendshelp")+'</b>';return;}
 
     onlineresponse = {"thelist":"0"};
     awayresponse = {"thelist":"0"};
@@ -103,6 +102,8 @@ document.getElementById("offlinetoonline").onclick = function() {
     onlineList();setInterval(onlineList, 2000);
 
     function getStatuses(){
+		document.getElementById("friendstatuseslist").style.display="block";
+
         chrome.runtime.sendMessage({getfriendsbystatus: "Online"}, function (response){
             if(JSON.stringify(response.thelist)===onlineresponse){return;}
             onlineresponse = JSON.stringify(response.thelist);
@@ -234,6 +235,7 @@ document.getElementById("offlinetoonline").onclick = function() {
             if (Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")<6){getStatuses();}
             else {
                 document.getElementById("errorMessage").innerHTML=chrome.i18n.getMessage("onetabopen");
+				document.getElementById("friendstatuseslist").style.display="none";
             }
     }
 
