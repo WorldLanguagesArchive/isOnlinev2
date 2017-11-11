@@ -28,12 +28,6 @@ window.onload = function() {
                 document.getElementById("getmessage").innerText = JSON.parse(getmessage.responseText).message;}
         }}};
 
-    if(chrome.permissions===undefined){
-        document.getElementsByClassName("a")[0].remove();
-        document.getElementById("friendsnote").innerHTML=chrome.i18n.getMessage("friendsnotcompatible");
-        return;
-    }
-
 document.getElementById("offlinetoonline").onclick = function() {
     if(typeof InstallTrigger !== 'undefined') { // If Firefox
         if(Notification.permission!=="granted") {
