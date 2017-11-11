@@ -6,13 +6,13 @@
       "message":"Validation du compte isOnline"
    },
    "success":{
-      "message":"Votre compte Scratch a été validé avec succès.<br>isOnline est maintenant foncionnel.<br>Vous pouvez fermer cet onglet."
+      "message":"Votre compte Scratch a été validé avec succès.<br>isOnline est maintenant fonctionnel.<br>Vous pouvez fermer cet onglet."
    },
    "verifyerror":{
       "message":"Une erreur s'est produite. Contactez <a href='https://scratch.mit.edu/users/isOnlineV2#comments'>@isOnlineV2</a> si vous arrivez depuis la validation de isOnline."
    },
    "validateprofilelink":{
-      "message":"Validez ce compte </a> afin d'y utiliser isOnline"
+      "message":"Validez ce compte </a> afin de l'associer avec isOnline"
    },
    "clickforstatus":{
       "message":"Cliquez pour obtenir le statut"
@@ -27,7 +27,7 @@
       "message":"En ligne"
    },
    "probablyonline":{
-      "message":"Probablement En ligne"
+      "message":"Probablement en ligne"
    },
    "offline":{
       "message":"Hors ligne"
@@ -51,7 +51,7 @@
       "message":"Ooups! On dirait que isOnline ne marche pas sur ce compte Scratch car il n'est pas validé. Voulez vous également utilser isOnline sur ce compte? <a href='https://scratch.mit.edu/isonline-extension/register' target='_blank' >Valider un compte supplémentaire</a>."
    },
    "keywaschanged":{
-      "message":"Ooups! isOnline ne marche pas avec ce compte Scratch car vous l'avez utilsé sur un autre ordinateur. <a href='http://ison.ga/sync' target='_blank'>Synchronizez vos ordinateurs</a> pour éviter cette erreur durablement ou <a href='https://scratch.mit.edu/isonline-extension/register' target='_blank'>re-validez le compte</a> pour réparer ça temporairement."
+      "message":"Ooups! isOnline ne marche pas avec ce compte Scratch car vous l'avez utilsé sur un autre ordinateur. <a href='http://ison.ga/sync' target='_blank'>Synchronizez vos ordinateurs</a> pour éviter cette erreur une bonne fois pour toutes ou <a href='https://scratch.mit.edu/isonline-extension/register' target='_blank'>re-validez le compte</a> pour réparer ça temporairement."
    },
    "isbot":{
       "message":"Ooups! On dirait que vous avez été identifié comme un robot par le serveur isOnline. isOnline ne marche pas. Contactez <a href='https://scratch.mit.edu/users/isOnlineV2/#comments' target='_blank'>isOnlineV2</a> pour débloquer votre compte."
@@ -63,10 +63,10 @@
       "message":"isOnline n'a pas détécté d'activité depuis une semaine. Il se peut que cet utilisateur n'utilise plus isOnline."
    },
    "noiohelp":{
-      "message":"Cet utilisateur doit installer isOnline pour pouvoir afficher son statut."
+      "message":"Cet utilisateur doit installer isOnline pour que son statut soit visible."
    },
    "ownstatushelp":{
-      "message":"Réglez votre statut manuellement, ou laisser le sur automatique."
+      "message":"Réglez votre statut manuellement, ou laissez le sur automatique."
    },
    "help":{
       "message":"Besoin d'aide? Écrivez un commentaire!"
@@ -81,22 +81,22 @@
       "message":"Paramètres de la liste d'amis"
    },
    "notifyawayonline":{
-      "message":"Me Notifier quand un ami est inactif et se rend en ligne"
+      "message":"Me notifier quand un ami est inactif ou se remet en ligne"
    },
    "soundnotiftext":{
-      "message":"Notification Sonore"
+      "message":"Notification sonore"
    },
    "friendlistdescription":{
-      "message":"Soyez informé du statut d'un maximum de 10 amis et recevez des notifications lorsqu'ils se rendent en ligne! "
+      "message":"Soyez informé du statut d'un maximum de 10 amis et recevez des notifications lorsqu'ils sont à nouveau en ligne! "
    },
    "nofriendshelp":{
-      "message":"Vous pouvez ajouter les personnes qui vous suivent en tant qu'amis en cliquant \"+ amis\" sur leurs profils!"
+      "message":"Vous pouvez ajouter les personnes qui vous suivent en tant qu'amis en cliquant sur \"+ amis\" sur leurs profils!"
    },
    "friendserror":{
-      "message":"Erreur: <a href=\"https://scratch.mit.edu/isonline-extension/register\" target=\"_blank\">re-validez</a> pour résoudre le problème."
+      "message":"Erreur: <a href=\"https://scratch.mit.edu/isonline-extension/register\" target=\"_blank\">Re-validez</a> pour résoudre le problème."
    },
    "loadingstatusesfrom":{
-      "message":"Chargement des statuts de..."
+      "message":"Chargement des statuts..."
    },
    "onetabopen":{
       "message":"<img src='sorryneedtabopen.png' style='width:300px;display: absolute;margin: 0 auto;padding:0px;'></img>"
@@ -105,7 +105,7 @@
       "message":"Vous ne receverez pas de notifications lorsque vos amis se renderont en ligne"
    },
    "dndhelp2":{
-      "message":"et les autres vous verrons comme hors-ligne sur leur liste amis."
+      "message":"et les autres vous verrons comme hors-ligne sur leur liste d'amis."
    },
    "dnd":{
       "message":"Ne pas déranger"
@@ -117,13 +117,13 @@
       "message":"Le maximum d'amis fut atteint (10). Vous pouvez retirez des amis en allant sur leur profil."
    },
    "onlyfollowing":{
-      "message":"Vous pouvez ajouter des personnes dans votre liste d'amis, uniquement si ils vous suivent"
+      "message":"Vous pouvez ajouter des personnes dans votre liste d'amis uniquement si ils vous suivent."
    },
    "dndotherhelp":{
-      "message":"Cet utilisateur ne recoit pas de notifications concenant ses amis."
+      "message":"Cet utilisateur ne reçoit pas de notifications concenant ses amis."
    },
    "isnowonline":{
-      "message":"est à présent en ligne"
+      "message":"est à présent en ligne."
    },
    "isnowonlinebody":{
       "message":"Cliquez pour se rendre sur son profil."
@@ -132,7 +132,7 @@
       "message":"isOnline friends marche uniquement sur Chrome 17+ & Firefox 55+"
    },
    "notifyofflineonline":{
-      "message":"Envoyer une notification quand un ami se rend en ligne."
+      "message":"Envoyer une notification quand un ami est ligne."
    },
    "adding":{
       "message":"Ajout en cours..."
