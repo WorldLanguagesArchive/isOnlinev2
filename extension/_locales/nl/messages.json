@@ -1,0 +1,153 @@
+
+{
+   "loadingstatus":{
+      "message":"Status bezig met laden..."
+   },
+   "validating":{
+      "message":"isOnline account bezig met valideren..."
+   },
+   "success":{
+      "message":"Jouw Scratch account werd succesvol gevalideerd.<br>isOnline werkt nu. <br>Jij mag dit tabblad nu afsluiten."
+   },
+   "verifyerror":{
+      "message":"Iets fout is gebeurd. A.u.b. neem contact met <a href='https://scratch.mit.edu/users/isOnlineV2#comments'>@isOnlineV2</a> op als jij voor het valideren van jouw isOnline account komt."
+   },
+   "validateprofilelink":{
+      "message":"Valideer dit account </a> om isOnline te kunnen gebruiken."
+   },
+   "clickforstatus":{
+      "message":"Klik om het status te krijgen."
+   },
+   "onlineauto":{
+      "message":"Automatisch (Online)"
+   },
+   "offlineghost":{
+      "message":"Offline (onzichtbaar)"
+   },
+   "online":{
+      "message":"Online"
+   },
+   "probablyonline":{
+      "message":"Waarschijnlijk Online"
+   },
+   "offline":{
+      "message":"Offline"
+   },
+   "absent":{
+      "message":"Weg"
+   },
+   "unknown":{
+      "message":"Onbekend"
+   },
+   "notiouser":{
+      "message":"Geen iO gebruiker"
+   },
+   "error":{
+      "message":"Fout"
+   },
+   "didnotvalidate":{
+      "message":"Ooeps! Het lijkt alsof jij jouw account nog niet heeft gevalideerd op isOnline. isOnline zal niet werken todat jij jouw account <a href='https://scratch.mit.edu/isonline-extension/register' target='_blank' >valideer</a>. Het neemt maar 20 seconden."
+   },
+   "unvalidatedacc":{
+      "message":"Ooeps! isOnline werkt op deze Scratch account niet omdat het nog niet gevalideerd is. Wil jij isOnline met dit account ook gebruiken? <a href='https://scratch.mit.edu/isonline-extension/register' target='_blank' >Valideer een andere gebruiker dan</a>."
+   },
+   "keywaschanged":{
+      "message":"Ooeps! isOnline werkt met dit Scratch account niet omdat jij gebruik het ook op een andere computer. <a href='http://ison.ga/sync' target='_blank'>Synchroniseer jouw computers</a> om dit probleem voor eens en altijd op te lossen. <a href='https://scratch.mit.edu/isonline-extension/register' target='_blank'>Re-validate</a> om het tijdelijk op te lossen."
+   },
+   "isbot":{
+      "message":"Ooeps! Het lijkt alsof jouw account is als een bot gedetecteerd door de isOnline server. isOnline werkt dus niet. A.u.b. neem contact met <a href='https://scratch.mit.edu/users/isOnlineV2/#comments' target='_blank'>isOnlineV2</a> op om jouw account te deblokkeren."
+   },
+   "absenthelp":{
+      "message":"Deze gebruiker heeft inactieve geopend Scratch tabbladeren."
+   },
+   "unknownhelp":{
+      "message":"isOnline heeft geen activiteit sinds vorige week opgespoord. Deze gebruiker gebruikt mischien isOnline niet meer."
+   },
+   "noiohelp":{
+      "message":"Deze gebruiker moet isOnline installeren zodat jij zijn status kan zien."
+   },
+   "ownstatushelp":{
+      "message":"Stel jouw status manueel, of laat het op automatisch."
+   },
+   "help":{
+      "message":"Hulp nodig or vragen? Laat een bericht achter."
+   },
+   "friendlist":{
+      "message":"isOnline vrienden"
+   },
+   "friendsnote":{
+      "message":"Notitie: Jij kan de notificaties tijdelijk uitschakelen zonder jouw vrienden verwijderen door jouw status op \"Niet storen\" op jouw profiel in te stellen."
+   },
+   "friendsettings":{
+      "message":"Notificatiesinstellingen"
+   },
+   "notifyawayonline":{
+      "message":"Meld me aan wanneer een vrien Online gaat."
+   },
+   "soundnotiftext":{
+      "message":"Geluidsnotificatie"
+   },
+   "friendlistdescription":{
+      "message":"Toont de statussen van maximum 10 vrienden door een simpel klik en je krijg onmiddellijk een bureaublad notificatie wanneer ze Online gaan!"
+   },
+   "nofriendshelp":{
+      "message":"Jij kan vrienden die jij volgen aan jouw vrindenlijst toe te voegen door op \"+ vrienden\" op hun profielen!"
+   },
+   "friendserror":{
+      "message":"Fout: <a href=\"https://scratch.mit.edu/isonline-extension/register\" target=\"_blank\">Valideer opnieuw</a> om het probleem op te lossen"
+   },
+   "loadingstatusesfrom":{
+      "message":"Statussen aan het landen vanaf..."
+   },
+   "onetabopen":{
+      "message":"<img src='sorryneedtabopen.png' style='width:300px;display: absolute;margin: 0 auto;padding:0px;'></img>"
+   },
+   "dndhelp1":{
+      "message":"Jij zal geen notificaties over vrienden krijgen"
+   },
+   "dndhelp2":{
+      "message":"en de anderen zullen ji als offline op hun vriendenlijst zien."
+   },
+   "dnd":{
+      "message":"Niet storen"
+   },
+   "friends":{
+      "message":"vrienden"
+   },
+   "maxreached":{
+      "message":"Maximum van (10) vrienden berreikt."
+   },
+   "onlyfollowing":{
+      "message":"Jij kan alleen gebruikers die jou volgen aan jouw vriendenlijst toe te voegen."
+   },
+   "dndotherhelp":{
+      "message":"Deze gebruiker krijgt geen notificaties voor zijn online vrienden."
+   },
+   "isnowonline":{
+      "message":"is nu online"
+   },
+   "isnowonlinebody":{
+      "message":"Klik om naar het profiel te gaan."
+   },
+   "friendsnotcompatible":{
+      "message":"isOnline vrienden werkt alleen in Chrome 17+ & Firefox 55+"
+   },
+   "notifyofflineonline":{
+      "message":"Stuur een notificatie wanneer een vriend Online wordt."
+   },
+   "adding":{
+      "message":"Aan het toe te voegen..."
+   },
+   "gotocomments":{
+      "message":"Naar de opmerkingen op het profiel."
+   },
+   "removefromfriends":{
+      "message":"Van vriendenlijst verwijderen."
+   },
+   "translationcredits":{
+      "message":"@smrman"
+   },
+   "shiftenter":{
+      "message":"Druk Shift+Enter om te verzenden."
+   }
+}
