@@ -1,198 +1,231 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<script src="popup.js"></script>
-   <style type="text/css">
-	  ::-webkit-scrollbar {
-      width: 12px;
-  }
-  ::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-      background-color: #555;
-  }
-  summary:focus {
-      outline: none;
-  }
-  body {
-      width: 300px;
-      font-family: 'Cabin';
-      font-size: 13px;
-  }
-  li {
-      font-family: 'Cabin';
-  }
-  #title {
-      position: relative;
-  }
-  h1 {
-      font-family: 'Exo';
-  }
-  ul,
-  details {
-      list-style: none;
-  }
-  #errorMessage {
-      padding: 0px;
-  }
-  a {
-      text-decoration: none;
-      color: blue;
-  }
-  a:hover {
-      color: deepskyblue;
-  }
-  .linktouser {
-      font-size: 14px;
-  }
-  #divofflinefriends {
-      display: none;
-  }
-  h1 {
-      padding: 0px;
-  }
-  #titleofonline {
-      font-family: Cabin;
-      font-size: 20px;
-      font-weight: bold;
-  }
-  .switch {
-      position: relative;
-      display: inline-block;
-      width: 35px;
-      height: 17px;
-  }
-  .switch input {
-      display: none;
-  }
-  .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #ccc;
-      -webkit-transition: .4s;
-      transition: .4s;
-      width: 35px;
-      height: 17px;
-  }
-  .slider:before {
-      position: absolute;
-      content: "";
-      height: 15px;
-      width: 15px;
-      left: 4px;
-      bottom: 1px;
-      background-color: white;
-      -webkit-transition: .4s;
-      transition: .4s;
-  }
-  input:checked + .slider {
-      background-color: #2196F3;
-  }
-  input:focus + .slider {
-      box-shadow: 0 0 1px #2196F3;
-  }
-  input:checked + .slider:before {
-      -webkit-transform: translateX(13px);
-      -ms-transform: translateX(13px);
-      transform: translateX(13px);
-  }
-  /* Rounded sliders */
+    <script src="popup.js"></script>
+    <style type="text/css">
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: #555;
+        }
+        
+        summary:focus {
+            outline: none;
+        }
+        
+        body {
+            width: 300px;
+            font-family: 'Cabin';
+            font-size: 13px;
+        }
+        
+        li {
+            font-family: 'Cabin';
+        }
+        
+        #title {
+            position: relative;
+        }
+        
+        h1 {
+            font-family: 'Exo';
+        }
+        
+        ul,
+        details {
+            list-style: none;
+        }
+        
+        #errorMessage {
+            padding: 0px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+        
+        a:hover {
+            color: deepskyblue;
+        }
+        
+        .linktouser {
+            font-size: 14px;
+        }
+        
+        #divofflinefriends {
+            display: none;
+        }
+        
+        h1 {
+            padding: 0px;
+        }
+        
+        #titleofonline {
+            font-family: Cabin;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 35px;
+            height: 17px;
+        }
+        
+        .switch input {
+            display: none;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+            width: 35px;
+            height: 17px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 15px;
+            width: 15px;
+            left: 4px;
+            bottom: 1px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+        
+        input:checked + .slider:before {
+            -webkit-transform: translateX(13px);
+            -ms-transform: translateX(13px);
+            transform: translateX(13px);
+        }
+        /* Rounded sliders */
+        
+        .slider.round {
+            border-radius: 34px;
+        }
+        
+        .slider.round:before {
+            border-radius: 50%;
+        }
+        
+        .a {
+            vertical-align: middle;
+        }
+        
+        #buttons {
+            float: right;
+        }
+    </style>
 
-  .slider.round {
-      border-radius: 34px;
-  }
-  .slider.round:before {
-      border-radius: 50%;
-  }
-  .a {
-      vertical-align: middle;
-  }
-  #buttons {
-	float:right;
-	}
-</style>
-
-<link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet'>
-<link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
 </head>
+
 <body>
-    <center><h1 id="title"><img id="logo" src="isOnlineLogo.png" height="60" width="150"></img></h1>
-	<small><span id="help">Need help or have questions? Go to</span> <a href="https://scratch.mit.edu/users/isOnlineV2/?comments" target="_blank">@isOnlineV2</a>!
+    <center>
+        <h1 id="title"><img id="logo" src="isOnlineLogo.png" height="60" width="150"></img></h1>
+        <small><span id="help">Need help or have questions? Go to</span> <a href="https://scratch.mit.edu/users/isOnlineV2/?comments" target="_blank">@isOnlineV2</a>!
 	<br>
 	<h2 id="getmessage" style="color:red; bold;"></h2>
 	<span id="protip" style="color:darkgreen;"><b>PROTIP: </b></span><small><span id="protiptext"></small></span>
-	</small>
-	</center>
+        </small>
+    </center>
     <hr>
     <div class="a">
-    <p><center style="font-size:17px"><b><u><span id="friendlist">isOnline friends</span></center></b></u></p></div>
+        <p>
+            <center style="font-size:17px"><b><u><span id="friendlist">isOnline friends</span></center></b></u>
+        </p>
+    </div>
     </div>
 
-<ul id="errorMessage"></ul>
+    <ul id="errorMessage"></ul>
 
-<div id="friendstatuseslist">
+    <div id="friendstatuseslist">
 
-<div id="divonlinefriends">
-    <div id="titleonlinefriends"></div>
-    <ul id="onlinefriends"></ul>
+        <div id="divonlinefriends">
+            <div id="titleonlinefriends"></div>
+            <ul id="onlinefriends"></ul>
+        </div>
+
+        <div id="divawayfriends">
+            <div id="titleawayfriends"></div>
+            <ul id="awayfriends"></ul>
+        </div>
+
+        <div id="divofflinefriends">
+            <div id="titleofflinefriends"></div>
+            <details id="offlinefriends">
+            </details>
+        </div>
+
+        <div id="divunknownfriends">
+            <div id="titleunknownfriends"></div>
+            <ul id="unknownfriends">
+            </ul>
+        </div>
+
     </div>
 
-<div id="divawayfriends">
-    <div id="titleawayfriends"></div>
-    <ul id="awayfriends"></ul>
+    <div id="newlines">
+        <br>
+        <br>
     </div>
 
-<div id="divofflinefriends">
-    <div id="titleofflinefriends"></div>
-    <details id="offlinefriends">
+    <details id="settings" open>
+        <summary><span id="friendsettings">Friend list settings</span></summary>
+        <hr>
+        <div class="a">
+            <label style="display:inline;vertical-align:top;" class="switch">
+                <input type="checkbox" id="offlinetoonline"></input>
+                <span class="slider round"></span>
+            </label>
+
+            <p style="color:DarkGreen;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="notifyofflineonline">Notify if a friend is Offline and becomes Online</span></p>
+        </div>
+        <div class="a" id="awaytoonlinediv" style="display:none;">
+            <label style="display:inline;vertical-align:top;" class="switch">
+                <input type="checkbox" id="awaytoonline"></input>
+                <span class="slider round"></span>
+            </label>
+
+            <p style="color:OrangeRed;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="notifyawayonline">Notify if a friend is Away and becomes Online</span></p>
+        </div>
+        <div class="a" id="soundnotifdiv" style="display:none;">
+            <label style="display:inline;vertical-align:top;" class="switch">
+                <input type="checkbox" id="soundnotif"></input>
+                <span class="slider round"></span>
+            </label>
+
+            <p style="color:blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="soundnotiftext">Sound Notification</span></p>
+        </div>
     </details>
-    </div>
-
-<div id="divunknownfriends">
-    <div id="titleunknownfriends"></div>
-    <ul id="unknownfriends">
-    </ul>
-    </div>
-
-
-</div>
-
-<div id="newlines"><br><br></div>
-
-<details id="settings" open>
-<summary><span id="friendsettings">Friend list settings</span></summary>
-<hr>
-<div class="a">
-    <label style="display:inline;vertical-align:top;"class="switch">
-  <input type="checkbox"  id="offlinetoonline" ></input>
-  <span class="slider round"></span>
-</label>
-
-    <p style="color:DarkGreen;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="notifyofflineonline">Notify if a friend is Offline and becomes Online</span></p>
-    </div>
-    <div class="a" id="awaytoonlinediv" style="display:none;">
-    <label style="display:inline;vertical-align:top;"class="switch">
-  <input type="checkbox"  id="awaytoonline" ></input>
-  <span class="slider round"></span>
-</label>
-
-    <p style="color:OrangeRed;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="notifyawayonline">Notify if a friend is Away and becomes Online</span></p>
-    </div>
-<div class="a" id="soundnotifdiv" style="display:none;">
-    <label style="display:inline;vertical-align:top;"class="switch">
-  <input type="checkbox"  id="soundnotif" ></input>
-  <span class="slider round"></span>
-</label>
-
-    <p style="color:blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="soundnotiftext">Sound Notification</span></p>
-    </div>
-</details>
-<hr>
-<small style="font-size:9px;"><a href="/credits.html">Credits</a> <b>|</b> <a href="https://scratch.mit.edu/users/isOnlineV2/" target="_blank">Scratch account</a> <b>|</b> <a href="http://ison.ga/review" target="_blank">Review isOnline in the extension store</a> <b>|</b> <a href="https://isonlineupdate.blogspot.com" target="_blank">Update blog</a><br>
-<a href="https://scratchtools.tk/isonline/register/" target="_blank">Verify a Scratch account</a> <b>|</b> <a style="cursor:pointer;" id="source">Source on GitHub</span> <b>|</b> <a href="https://scratchtools.tk/isonline/privacy/" target="_blank">Privacy Policy</a> <b>|</b> <a style="cursor:pointer;" id="uninstall">Uninstall isOnline</a></small>
+    <hr>
+    <small style="font-size:9px;"><a href="/credits.html">Credits</a> <b>|</b> <a href="https://scratch.mit.edu/users/isOnlineV2/" target="_blank">Scratch account</a> <b>|</b> <a href="http://ison.ga/review" target="_blank">Review isOnline in the extension store</a> <b>|</b> <a href="https://isonlineupdate.blogspot.com" target="_blank">Update blog</a><br>
+<a href="https://scratchtools.tk/isonline/register/" target="_blank">Verify a Scratch account</a> <b>|</b> <a style="cursor:pointer;" id="source">Source on GitHub</a> <b>|</b> <a href="https://scratchtools.tk/isonline/privacy/" target="_blank">Privacy Policy</a> <b>|</b> <a style="cursor:pointer;" id="uninstall">Uninstall isOnline</a></small>
 </body>
+
 </html>

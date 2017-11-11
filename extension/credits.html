@@ -1,177 +1,211 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
     <style type="text/css">
- 	  ::-webkit-scrollbar {
-       width: 12px;
-   }
-   ::-webkit-scrollbar-thumb {
-       border-radius: 10px;
-       -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-       background-color: #555;
-   }
-   summary:focus {
-       outline: none;
-   }
-   body {
-       width: 300px;
-       font-family: 'Cabin';
-       font-size: 13px;
-   }
-   li {
-       font-family: 'Cabin';
-   }
-   #title {
-       position: relative;
-   }
-   h1 {
-       font-family: 'Exo';
-   }
-   ul,
-   details {
-       list-style: none;
-   }
-   #errorMessage {
-       padding: 0px;
-   }
-   a {
-       text-decoration: none;
-       color: blue;
-   }
-   a:hover {
-       color: deepskyblue;
-   }
-   .linktouser {
-       font-size: 14px;
-   }
-   #divofflinefriends {
-       display: none;
-   }
-   h1 {
-       padding: 0px;
-   }
-   #titleofonline {
-       font-family: Cabin;
-       font-size: 20px;
-       font-weight: bold;
-   }
-   .switch {
-       position: relative;
-       display: inline-block;
-       width: 35px;
-       height: 17px;
-   }
-   .switch input {
-       display: none;
-   }
-   .slider {
-       position: absolute;
-       cursor: pointer;
-       top: 0;
-       left: 0;
-       right: 0;
-       bottom: 0;
-       background-color: #ccc;
-       -webkit-transition: .4s;
-       transition: .4s;
-       width: 35px;
-       height: 17px;
-   }
-   .slider:before {
-       position: absolute;
-       content: "";
-       height: 15px;
-       width: 15px;
-       left: 4px;
-       bottom: 1px;
-       background-color: white;
-       -webkit-transition: .4s;
-       transition: .4s;
-   }
-   input:checked + .slider {
-       background-color: #2196F3;
-   }
-   input:focus + .slider {
-       box-shadow: 0 0 1px #2196F3;
-   }
-   input:checked + .slider:before {
-       -webkit-transform: translateX(13px);
-       -ms-transform: translateX(13px);
-       transform: translateX(13px);
-   }
-   /* Rounded sliders */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: #555;
+        }
+        
+        summary:focus {
+            outline: none;
+        }
+        
+        body {
+            width: 300px;
+            font-family: 'Cabin';
+            font-size: 13px;
+        }
+        
+        li {
+            font-family: 'Cabin';
+        }
+        
+        #title {
+            position: relative;
+        }
+        
+        h1 {
+            font-family: 'Exo';
+        }
+        
+        ul,
+        details {
+            list-style: none;
+        }
+        
+        #errorMessage {
+            padding: 0px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+        
+        a:hover {
+            color: deepskyblue;
+        }
+        
+        .linktouser {
+            font-size: 14px;
+        }
+        
+        #divofflinefriends {
+            display: none;
+        }
+        
+        h1 {
+            padding: 0px;
+        }
+        
+        #titleofonline {
+            font-family: Cabin;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 35px;
+            height: 17px;
+        }
+        
+        .switch input {
+            display: none;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+            width: 35px;
+            height: 17px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 15px;
+            width: 15px;
+            left: 4px;
+            bottom: 1px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+        
+        input:checked + .slider:before {
+            -webkit-transform: translateX(13px);
+            -ms-transform: translateX(13px);
+            transform: translateX(13px);
+        }
+        /* Rounded sliders */
+        
+        .slider.round {
+            border-radius: 34px;
+        }
+        
+        .slider.round:before {
+            border-radius: 50%;
+        }
+        
+        .a {
+            vertical-align: middle;
+        }
+        
+        .easter-egg {
+            display: none;
+        }
+        
+        .easter-egg.visible {
+            display: block;
+            font-size: 35px;
+        }
+        
+        #buttons {
+            float: right;
+        }
+        
+        li {
+            font-size: 16px;
+        }
+        
+        #pad {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    </style>
+</head>
 
-   .slider.round {
-       border-radius: 34px;
-   }
-   .slider.round:before {
-       border-radius: 50%;
-   }
-   .a {
-       vertical-align: middle;
-   }
-   .easter-egg {
- 	display: none;
-   }
-   .easter-egg.visible {
- 	display: block;
- 	font-size: 35px;
-   }
-   #buttons {
- 	float:right;
- 	}
-  li {
-    font-size: 16px;
-  }
-  #pad {
-    padding-left: 20px;
-  }
- </style>
-  </head>
-  <body>
+<body>
+    <a href="/popup.html">&larr; Back</a>
+    <hr>
+
     <center>
-      <h1 id="title"><img id="logo" src="isOnlineLogo.png" height="60" width="150"></img></h1>
-      <div class="easter-egg"></div>
-      <small><span id="help">Need help or have questions? Go to</span> <a href="https://scratch.mit.edu/users/isOnlineV2/?comments" target="_blank">@isOnlineV2</a>!
-      <br>
-      </small>
-      <hr>
+        <u><h2 id="title" style="margin-bottom:3px">isOnline Team</h2></u>
+        <small>Users that actively develop and maintain isOnline.</small>
+        <br>
+    </center>
+    <br>
 
-      <u><h2 id="title"> isOnline Team </h2></u>
+    <div id="pad">
+        <img style="vertical-align:middle;height:30px;" src="https://cdn2.scratch.mit.edu/get_image/user/4648559_60x60.png" />&nbsp;&nbsp;&nbsp;<a href="https://scratch.mit.edu/users/World_Languages/" target="_blank" style="display:inline; ">World_Languages</a>
+        <br>
+        <hr style='border: 0;height: 1px;background-image: linear-gradient(to right, rgb(159, 166, 173), rgba(0, 0, 0, 0))'>
+        <img style="vertical-align:middle;height:30px;" src="https://cdn2.scratch.mit.edu/get_image/user/9565102_60x60.png" />&nbsp;&nbsp;&nbsp;<a href="https://scratch.mit.edu/users/herohamp/" target="_blank" style="display:inline; ">herohamp</a>
+        <br>
+        <hr style='border: 0;height: 1px;background-image: linear-gradient(to right, rgb(159, 166, 173), rgba(0, 0, 0, 0))'>
+        <img style="vertical-align:middle;height:30px;" src="https://cdn2.scratch.mit.edu/get_image/user/7680480_60x60.png" />&nbsp;&nbsp;&nbsp;<a href="https://scratch.mit.edu/users/PackersRuleGoPack/" target="_blank" style="display:inline; ">PackersRuleGoPack</a>
+        <br>
+        <hr style='border: 0;height: 1px;background-image: linear-gradient(to right, rgb(159, 166, 173), rgba(0, 0, 0, 0))'>
+        <img style="vertical-align:middle;height:30px;" src="https://cdn2.scratch.mit.edu/get_image/user/2110447_60x60.png" />&nbsp;&nbsp;&nbsp;<a href="https://scratch.mit.edu/users/jookbookservice1/" target="_blank" style="display:inline; ">jokebookservice1</a>
+        <br>
+    </div>
+    <br>
+    <hr>
+    <center>
+        <u><h3 id="title">Code Contributors</h3></u>
+    </center>
+    <div id="pad">
+        Original backend server code: <a href="https://github.com/ed-cooper" target="_blank">Chooper100</a>
+        <br><small style="font-size:10px">Small contributions on GitHub: <a href="https://scratch.mit.edu/users/DeleteThisAcount/" target="_blank">DeleteThisAcount</a>, <a href="https://scratch.mit.edu/users/bob1171/" target="_blank">bob1171</a></small>
+    </div>
+    <br>
+    <hr>
+    <center>
+        <u><h3 id="title">Translators:</h3></u>
+    </center>
+    <div id="pad">
+        Espa&ntilde;ol: <a href="https://scratch.mit.edu/users/World_Languages/" target="_blank">World_Languages</a>
+        <br> French: <a href="https://scratch.mit.edu/users/Nobelix/" target="_blank">Nobelix</a>, <small style="font-size:9px"><a href="https://scratch.mit.edu/users/smrman/" target="_blank">Smrman</a></small>
+        <br> Japanese: <a href="https://scratch.mit.edu/users/kazuta123/" target="_blank">kazuta123</a>
+        <br> Dutch: <a href="https://scratch.mit.edu/users/smrman/" target="_blank">Smrman</a>
+        <br> Vietnamese: <a href="https://scratch.mit.edu/users/EvanKTC/" target="_blank">EvanKTC</a>
+    </div>
+</body>
 
-          </center>
-<div id="pad">
-      <img style="vertical-align:middle;height:30px;" src="https://cdn2.scratch.mit.edu/get_image/user/4648559_60x60.png"/>&nbsp;&nbsp;&nbsp;<a href="https://scratch.mit.edu/users/World_Languages" style="display:inline; ">World_Languages</a>
-      <br>
-      <hr style='border: 0;height: 1px;background-image: linear-gradient(to right, rgb(159, 166, 173), rgba(0, 0, 0, 0))'>
-      <img style="vertical-align:middle;height:30px;" src="https://cdn2.scratch.mit.edu/get_image/user/7680480_60x60.png"/>&nbsp;&nbsp;&nbsp;<a href="https://scratch.mit.edu/users/PackersRuleGoPack" style="display:inline; ">PackersRuleGoPack</a>
-      <br>
-      <hr style='border: 0;height: 1px;background-image: linear-gradient(to right, rgb(159, 166, 173), rgba(0, 0, 0, 0))'>
-      <img style="vertical-align:middle;height:30px;" src="https://cdn2.scratch.mit.edu/get_image/user/9565102_60x60.png"/>&nbsp;&nbsp;&nbsp;<a href="https://scratch.mit.edu/users/herohamp" style="display:inline; ">Herohamp</a>
-      <br>
-      <hr style='border: 0;height: 1px;background-image: linear-gradient(to right, rgb(159, 166, 173), rgba(0, 0, 0, 0))'>
-      <img style="vertical-align:middle;height:30px;" src="https://cdn2.scratch.mit.edu/get_image/user/2110447_60x60.png"/>&nbsp;&nbsp;&nbsp;<a href="https://scratch.mit.edu/users/jookbookservice1" style="display:inline; ">jokebookservice1</a>
-      <br>
-</div>
-<hr>
-  <center>
-    <u><h3 id="title">Code Contributers:</h3></u>
-  </center>
-  <div id="pad">
-    Many people have contributed to isOnline, including: <a href="https://scratch.mit.edu/users/DeleteThisAcount">DeleteThisAcount</a>, <a href="https://scratch.mit.edu/users/chooper100">Choopoer100 (retired iO member)</a>, <a href="https://scratch.mit.edu/users/guy">Code Contributer #3.</a>
-  </div>
-  <hr>
-  <center>
-    <u><h3 id="title">Translators:</h3></u>
-  </center>
-  <div id="pad">
-    The current list of translators are: <a href="https://scratch.mit.edu/users/World_Languages">World_Languages (espanol)</a>, <a href="https://github.com/Smrman">Smrman (dutch, french)</a>, <a href="https://scratch.mit.edu/users/kazuta123">kazuta123 (japanese)</a>
-  </div>
-
-  <hr>
-  <small style="font-size:9px;"><a href="/credits.html">Credits</a> <b>|</b> <a href="https://scratch.mit.edu/users/isOnlineV2/" target="_blank">Scratch account</a> <b>|</b> <a href="http://ison.ga/review" target="_blank">Review isOnline in the extension store</a> <b>|</b> <a href="https://isonlineupdate.blogspot.com" target="_blank">Update blog</a><br>
-  <a href="https://scratchtools.tk/isonline/register/" target="_blank">Verify a Scratch account</a> <b>|</b> <a style="cursor:pointer;" id="source">Source on GitHub</span> <b>|</b> <a href="https://scratchtools.tk/isonline/privacy/" target="_blank">Privacy Policy</a> <b>|</b> <a style="cursor:pointer;" id="uninstall">Uninstall isOnline</a></small>
-  </body>
 </html>
