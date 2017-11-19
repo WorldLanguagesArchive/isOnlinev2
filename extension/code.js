@@ -507,28 +507,41 @@ function time() {return Math.floor(Date.now() / 1000);}
 
 function iOcrown() {
     if(localuser.toUpperCase() !== user.toUpperCase()) {
-        if (document.getElementsByClassName("overview")[0].innerHTML.toLowerCase().includes("isonline.tk") || document.getElementsByClassName("overview")[1].innerHTML.toLowerCase().includes("isonline.tk")) {
+        if (document.getElementsByClassName("overview")[0].innerHTML.toLowerCase().includes("isonline.cf") || document.getElementsByClassName("overview")[1].innerHTML.toLowerCase().includes("isonline.cf")) {
             document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].innerHTML += ' <a href="https://scratch.mit.edu/projects/158291459/" target="_blank" title="isOnline crown - click for more info" style="text-decoration: none;">👑</a>';
             document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].style.color = "orange";}
         if (document.getElementsByClassName("overview")[0].innerHTML.toLowerCase().includes("#lovecookies") || document.getElementsByClassName("overview")[1].innerHTML.toLowerCase().includes("#lovecookies")) {
             document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].innerHTML += ' <span title="isOnline cookie">🍪</a>';}
-        if (document.getElementsByClassName("overview")[0].innerHTML.includes(btoa(user.split``.reverse``.join``).substr(0, 5)) || document.getElementsByClassName("overview")[1].innerHTML.includes(btoa(user.split``.reverse``.join``).substr(0, 5))) {
-            document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].innerHTML += ' <span title="isOnline b">🖌️</a>';}
     } else {
-        if (document.getElementById("bio").innerHTML.toLowerCase().includes("isonline.tk") || document.getElementById("status").innerHTML.toLowerCase().includes("isonline.tk")) {
+        if (document.getElementById("bio").innerHTML.toLowerCase().includes("isonline.cf") || document.getElementById("status").innerHTML.toLowerCase().includes("isonline.cf")) {
             document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].innerHTML += ' <a href="https://scratch.mit.edu/projects/158291459/" target="_blank" title="isOnline crown - click for more info" style="text-decoration: none;">👑</a>';
             document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].style.color = "orange";}
         if (document.getElementById("bio").innerHTML.toLowerCase().includes("#lovecookies") || document.getElementById("status").innerHTML.toLowerCase().includes("#lovecookies")) {
             document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].innerHTML += ' <span title="isOnline cookie">🍪</a>';}
-        if (document.getElementById("bio").innerHTML.includes(btoa(user).substr(0, 5)) || document.getElementById("status").innerHTML.includes(btoa(user).substr(0, 5))) {
-            document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].innerHTML += ' <span title="isOnline cookie">🎃</a>';}
-        if (document.getElementById("bio").innerHTML.includes(btoa(user.split``.reverse``.join``).substr(0, 5)) || document.getElementById("status").innerHTML.includes(btoa(user.split``.reverse``.join``).substr(0, 5))) {
-            document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].innerHTML += ' <span title="isOnline b">🖌️</a>';}
-    }
-
-
-
+        if (document.getElementById("bio").innerHTML.toLowerCase().includes("isonline.tk") || document.getElementById("status").innerHTML.toLowerCase().includes("isonline.tk")) {
+		var crownremovedalert = document.createElement("div");
+		crownremovedalert.style="z-index: 1;position: absolute;top: 85px;left: 70px;right: 70px;padding: 10px;background-color: #37a857;color: white;";
+		crownremovedalert.innerHTML = '<span id="iOclosebutton" style="margin-left: 15px;color: white;font-weight: bold;float: right;font-size: 22px;line-height: 20px;cursor: pointer;" onclick="this.parentElement.style.display=\'none\';">&#xD7;</span>Hello, isOnline user! &#x1F60E; Thanks so much for advertising our extension in your About Me or What I\'m Working On! &#x1F496; We\'re switching from isonline.tk to a new domain, isonline.cf. Because you\'re still advertising the old link, you have lost your isOnline crown. <b><a style="color:white;text-decoration: underline;" id="iOclickhere">Click here</a></b> and we will replace the link and add the crown automatically for you. &#x1F451; You can also do it manually and refresh. &#x1F504; &#x2013; isOnline team';
+		document.body.insertBefore(crownremovedalert,document.getElementById("pagewrapper"));
+		document.getElementById("iOclickhere").onclick = function() {
+			if(document.getElementById("bio").innerHTML.toLowerCase().includes("isonline.tk")){
+			setTimeout(function() {
+			document.getElementsByName("bio")[0].focus();
+			document.getElementsByName("bio")[0].value = document.getElementsByName("bio")[0].value.replace(new RegExp("isonline.tk", 'g'), "isonline.ga");
+			document.getElementsByName("bio")[0].blur();
+			},1000);
+			}
+			if(document.getElementById("status").innerHTML.toLowerCase().includes("isonline.tk")){
+			document.getElementsByName("status")[0].focus();
+			document.getElementsByName("status")[0].value = document.getElementsByName("status")[0].value.replace(new RegExp("isonline.tk", 'g'), "isonline.ga");
+			document.getElementsByName("status")[0].blur();
+			}
+			document.getElementById("iOclosebutton").click();
+			document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].innerHTML += ' <a href="https://scratch.mit.edu/projects/158291459/" target="_blank" title="isOnline crown - click for more info" style="text-decoration: none;">👑</a>';
+            document.getElementsByClassName("header-text")[0].getElementsByTagName("h2")[0].style.color = "orange";
+		}
 }
+}}
 
 function changed() {document.getElementById("ioselect").style.color=opt[document.getElementById("ioselect").selectedIndex].color;localStorage.setItem("iOstatus", opt[document.getElementById("ioselect").selectedIndex].value);document.getElementById("iostatusimage").src="https://scratchtools.tk/isonline/assets/" +opt[document.getElementById("ioselect").selectedIndex].value+".svg";update();}
 
