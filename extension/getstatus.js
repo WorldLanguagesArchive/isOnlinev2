@@ -4,7 +4,7 @@ chrome.runtime.onMessage.addListener(
             statusresult = 0;
             getStatus(request.getstatus[0],request.getstatus[1]);
             var waitforresponse = function(){
-                if(statusresult!==0){sendResponse(statusresult);console.log("sent");}
+                if(statusresult!==0){sendResponse(statusresult);console.log("sent: "+statusresult);}
                 else{setTimeout(waitforresponse,100);}}
             waitforresponse();
             return true; 

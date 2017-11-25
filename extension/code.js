@@ -377,6 +377,8 @@ function showStatus(name,color) {
 		    document.getElementById("iOstatus").innerHTML = chrome.i18n.getMessage("notiouser") + " " + getInfoHTML(chrome.i18n.getMessage("noiohelp"));}
 	if(name==="error"){
 	isError();}
+	if(name==="unknown"){
+	document.getElementById("iOstatus").innerHTML = chrome.i18n.getMessage("unknown") + " " + getInfoHTML(chrome.i18n.getMessage("unknownhelp"));}
 	if(name==="isbot"){
 		showAlert("isbot");
 		isError();
