@@ -1,4 +1,4 @@
-# isOnline BETA
+# isOnline 
 
 ### What is isOnline?
 
