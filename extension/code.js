@@ -9,6 +9,12 @@ chrome.storage.sync.get(["iOaccounts","iOfriendlist"], function (data) {
     else{start();}
 });
 
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        if (request.ping) {
+            sendResponse({respond: "contentscript"});}
+    });
+
 stop = 0;
 
 // Discuss button button and profile
@@ -80,7 +86,7 @@ if(location.href.toLowerCase().startsWith("https://scratch.mit.edu/users/isonlin
             "I don't want isOnline anymore, how do I get rid of it?" : "We're sorry to see you go. You can uninstall the extension by right clicking on its icon in the top-right corner of the screen and clicking the option that says 'Remove'. You may get a popup asking if you're sure. Click remove.",
             "How do I enable the Discuss Button?" : "You can enable the Discuss button on <a href='https://scratch.mit.edu/users/DiscussButton'>@DiscussButton</a>.",
             "Who runs the account isOnlineV2?" : "<a href='https://scratch.mit.edu/users/World_Languages/'>@World_Languages</a> does, however you can trust a response if it has been done by an iO developer.",
-            "Why can't I add people that are not following me to my friend-list?" : "It would be spammy for popular scratchers if anybody could add them into their friends. Also, if someone is your true friend, they are probably following you."
+            "Why can't I add people that are not following me to my friends?" : "It would be spammy for popular scratchers if anybody could add them into their friends. Also, if someone is your true friend, they are probably following you. If they aren't, just ask them to do so (;"
         };
         let qSelected = null;
         Object.keys(faqQuestions).forEach(question => {
@@ -176,7 +182,9 @@ if(location.href.substring(location.href.indexOf('?')+1)==="comments"){
     var iOcomments = function(){if(document.getElementsByClassName("comment ").length>0){
         location.hash="iOc";
         document.getElementsByName("content")[0].focus();
-        document.getElementById("main-post-form").getElementsByClassName("control-group")[0].getElementsByClassName("small-text")[0].innerHTML += " <b>"+chrome.i18n.getMessage("shiftenter")+"</b>";
+		var shiftenterspan = document.createElement("span");
+		shiftenterspan.innerHTML = " <b>"+chrome.i18n.getMessage("shiftenter")+"</b>";
+		document.getElementById("main-post-form").getElementsByClassName("control-group")[0].getElementsByClassName("small-text")[0].appendChild(shiftenterspan);
         document.getElementById("main-post-form").getElementsByClassName("control-group")[0].getElementsByTagName("textarea")[0].addEventListener('keydown', function(event) {
             if(event.key==="Enter" && previouskey==="Shift"){
                 document.getElementsByName("content")[0].blur();
@@ -193,6 +201,7 @@ if(location.href.substring(location.href.indexOf('?')+1)==="comments"){
 
 
 function main() {
+
     /* Data for helping page*/ if(location.href.toLowerCase().startsWith("https://scratch.mit.edu/isonline-extension/helpdata")) {stop="On data page";document.documentElement.innerHTML = "<center><h2><b>ONLY give this information to the official isOnline account, @isOnlineV2.</b></h2></center><br><br><small>" + JSON.stringify(localStorage)+ " / " + JSON.stringify(registeredUsers)+ " / " + navigator.userAgent + " / Version: "+JSON.stringify(chrome.runtime.getManifest().version) + "</small>";}
 
     /* Redirect to verification */ if(location.href.toLowerCase().startsWith("https://scratch.mit.edu/isonline-extension/register")) {window.location = "https://scratchtools.tk/isonline/register/#"+localuser;}
@@ -220,12 +229,12 @@ function main() {
 
     if(registeredUsers.find(user => user.name === localuser)) {
         key = registeredUsers.find(user => user.name === localuser).key;
-        if (key == "changed") {keyWasChanged("y");stop="Key was changed";}
+        if (key == "changed") {showAlert("keywaschanged");stop="Key was changed";}
     }
-
-    if(stop!==0){console.error("isOnline was stopped: "+stop);return;}
-
-    if ((time()-localStorage.getItem("iOlastOn") > 10 || time()-localStorage.getItem("iOlastOn") < -1) && localstatus() == "online") {setOnline();}
+	
+	if(stop!==0){console.error("isOnline was stopped: "+stop);return;}
+	
+	chrome.runtime.sendMessage({keyinfo: { key, localuser }});
 
     /* Manage statuses */ update();setInterval(update, 3000);
 
@@ -238,9 +247,6 @@ function main() {
             localStorage.setItem("iOlastprofile", time());
         }
     }
-
-    chrome.runtime.sendMessage({keyinfo: { key, localuser }});
-
 
 } // main function
 
@@ -312,33 +318,14 @@ iONotify.setup();
 function update() {
     if (stop !== 0 || window.location.href.startsWith("https://scratch.mit.edu/isonline-extension")) {return;}
     if (localstatus() == "online") {
-        updateStatus("");
-        if (time()-localStorage.getItem("iOlastOn") > 240 && time()-localStorage.getItem("iOlastAbs") > 120) {
-            absentrequest = new XMLHttpRequest();
-            absentrequest.open("POST", 'https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + '/set/absent', true);
-            absentrequest.send();
-            checkResponse(absentrequest);
-            localStorage.setItem("iOlastAbs", time());
-            iOlog("Sent away request");}}
+	updateStatus("");}
+//
     if (localstatus() == "absent"){
-        updateStatus("orange");
-        if (time()-localStorage.getItem("iOlastAbs") > 120) {
-            absentrequest = new XMLHttpRequest();
-            absentrequest.open("POST", 'https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + '/set/absent', true);
-            absentrequest.send();
-            checkResponse(absentrequest);
-            localStorage.setItem("iOlastAbs", time());
-            iOlog("Sent away request");}}
+	updateStatus("orange");}
+//
     if (localstatus() == "dnd") {
-        updateStatus("gray");
-        if (time()-localStorage.getItem("iOlastAbs") > 120) {
-            dndrequest = new XMLHttpRequest();
-            dndrequest.open("POST", 'https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + '/set/dnd', true);
-            dndrequest.send();
-            checkResponse(dndrequest);
-            localStorage.setItem("iOlastAbs", time());
-        }
-    }
+	updateStatus("gray");}
+//
     if (localstatus() == "offline") {
         updateStatus("red");}
 }
@@ -354,56 +341,14 @@ function status() {
     document.getElementById("iOstatus").innerHTML=chrome.i18n.getMessage("loadingstatus");
 
     try{
-        a = document.getElementsByClassName("activity-stream")[0].getElementsByClassName("time")[0].innerText;
+        var a = document.getElementsByClassName("activity-stream")[0].getElementsByClassName("time")[0].innerText;
     }catch(err){a="notimestamp";}
-
-    getstatus = new XMLHttpRequest();getstatus.open("GET", ' https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + "/get/" + user, true);getstatus.send();
-
-    getstatus.onreadystatechange = function() {
-        if (getstatus.readyState === 4) {
-            if (getstatus.status === 200) {
-
-                response  = getstatus.responseText;
-                timestamp = JSON.parse(response).timestamp;
-                var status = JSON.parse(response).status;
-
-                if (status == "online") {
-                    if (time() - timestamp < 300) {
-                        showStatus("online","green");} 
-                    else{
-                        showStatus("offline","red");}
-                    friendListButtons();
-                }
-
-                if (status == "absent") {
-                    if (time() - timestamp < 180) {
-                        showStatus("absent", "orange");}
-                    else{
-                        showStatus("offline","red");}
-                    friendListButtons();
-                }
-
-                if (status == "dnd") {
-                    if (time() - timestamp < 180) {isDND();friendListButtons();} else{isOffline();friendListButtons();}}
-
-                if (time()-timestamp>604800) {
-                    if (a !== "notimestamp"){if (!(a.includes("week") || a.includes("month") || a.includes("year"))){isUnknown();}}}
-
-            } // if 200
-
-            if (getstatus.status === 404) {noiO();}
-
-            if (getstatus.status === 403) {
-                isError();
-                var status = JSON.parse(getstatus.responseText).status;
-                if (status=="incorrect key") {stop = "Key was changed";keyWasChanged("n");}
-                if (status=="bot") {stop = "User is a bot";showAlert("isbot");}
-            }
-
-            if (getstatus.status === 500) {isError();}
+	
+    chrome.runtime.sendMessage({getstatus: [user,a]}, function (response){
+		showStatus(response[0], response[1]);
+		});
 
 
-        }}; // on ready
 
 }
 
@@ -420,21 +365,24 @@ function isOwn(){
 
 }
 
+
 function showStatus(name,color) {
-    document.getElementById("iOstatus").innerHTML = '<img src="https://scratchtools.tk/isonline/assets/'+name+'.svg" height="12" width="12"> <span id="iOstatustext" style="color:'+color+'">' + chrome.i18n.getMessage(name) + '</span>' ;
+	if(name==="online"||name==="offline"){
+    document.getElementById("iOstatus").innerHTML = '<img src="https://scratchtools.tk/isonline/assets/'+name+'.svg" height="12" width="12"> <span id="iOstatustext" style="color:'+color+'">' + chrome.i18n.getMessage(name) + '</span>';}
+	if(name==="absent"){
+		    document.getElementById("iOstatus").innerHTML = '<img src="https://scratchtools.tk/isonline/assets/absent.svg" height="12" width="12"> <span id="iOstatustext" style="color:orange">' + chrome.i18n.getMessage("absent") + '</span> ' + getInfoHTML(chrome.i18n.getMessage("absenthelp"));}
+	if(name==="dnd"){
+		    document.getElementById("iOstatus").innerHTML = '<img src="https://scratchtools.tk/isonline/assets/dnd.svg" height="12" width="12"> <span id="iOstatustext" style="color:gray">' + "Do Not Disturb" + "</span> " + getInfoHTML(chrome.i18n.getMessage("dndotherhelp"));}
+	if(name==="noio"){
+		    document.getElementById("iOstatus").innerHTML = chrome.i18n.getMessage("notiouser") + " " + getInfoHTML(chrome.i18n.getMessage("noiohelp"));}
+	if(name==="error"){
+	isError();}
+	if(name==="isbot"){
+		showAlert("isbot");
+		isError();
+	}
+		
 }
-
-function isUnknown() {
-    iOlog("Detected that the user status is unknown");
-    document.getElementById("iOstatus").innerHTML = chrome.i18n.getMessage("unknown") + " " + getInfoHTML(chrome.i18n.getMessage("unknownhelp"));}
-
-function isDND() {
-    iOlog("Detected that the user status is DND");
-    document.getElementById("iOstatus").innerHTML = '<img src="https://scratchtools.tk/isonline/assets/dnd.svg" height="12" width="12"> <span id="iOstatustext" style="color:gray">' + "Do Not Disturb" + "</span> " + getInfoHTML(chrome.i18n.getMessage("dndotherhelp"));}
-
-function noiO() {
-    iOlog("Detected that the user didn't install isOnline");
-    document.getElementById("iOstatus").innerHTML = chrome.i18n.getMessage("notiouser") + " " + getInfoHTML(chrome.i18n.getMessage("noiohelp"));}
 
 function isError() { try{
     if (user==="DiscussButton") {return;}
@@ -450,42 +398,13 @@ function showAlert(name) {
     document.body.insertBefore(alert,document.getElementById("pagewrapper"));
 }
 
-function keyWasChanged(stored) {
-    if(location.href.startsWith("https://scratch.mit.edu/studios/4100062/comments/")){return;}
-    if (stored === "n") {
-        chrome.storage.sync.get("iOaccounts", function (data) {
-            oldkey = JSON.parse(data.iOaccounts).find(user => user.name === localuser).key;
-            if(oldkey==key){
-                stop = "Key was changed";isError();
-                console.error("isOnline was stopped: Key was changed");showAlert("keywaschanged");
-                indx = registeredUsers.findIndex(k => k.name === localuser);
-                chrome.storage.sync.set({"iOaccounts" : JSON.stringify(registeredUsers.slice(0, indx).concat({
-                    "name": localuser,
-                    "key": "changed"
-                }).concat(registeredUsers.slice(indx + 1)))});
-            }});
-    } //if n
-    if (stored === "y") {
-        stop = "Key was changed";isError();
-        showAlert("keywaschanged");
-    } //if y
-}
-
 function iOlog(x) {
     /*console.log("isOnline log @ " + new Date().toLocaleTimeString() + ": " + x);*/}
 
-function setOnline() {
-    iOlog("Sent online request");
-    onlinerequest = new XMLHttpRequest();
-    onlinerequest.open("POST", 'https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + '/set/online', true);
-    onlinerequest.send();
-    checkResponse(onlinerequest);
-    localStorage.setItem("iOlastOn", time());}
-
 function updateStatus(color) {
     chrome.runtime.sendMessage({color});
-    try {document.getElementsByClassName("user-name dropdown-toggle")[0].style.backgroundColor=color;}
-    catch(err) {try{document.getElementsByClassName("link right account-nav")[0].style.backgroundColor=color;}catch(err){}}
+    try {document.getElementsByClassName("user-name dropdown-toggle")[0].style.color=color==="gray"?"lightgray":color;}
+    catch(err) {try{document.getElementsByClassName("user-info")[0].style.color=color==="gray"?"lightgray":color;}catch(err){}}
     color = color === "" ? "green" : color;
     if(document.getElementById("ioselect")===null){return;}
     if(localuser===user && document.getElementById("ioselect").style.color !== color){
@@ -543,14 +462,6 @@ function iOcrown() {
     }}
 
 function changed() {document.getElementById("ioselect").style.color=opt[document.getElementById("ioselect").selectedIndex].color;localStorage.setItem("iOstatus", opt[document.getElementById("ioselect").selectedIndex].value);document.getElementById("iostatusimage").src="https://scratchtools.tk/isonline/assets/" +opt[document.getElementById("ioselect").selectedIndex].value+".svg";update();}
-
-function checkResponse(request) {
-    request.onreadystatechange = function() {if (request.readyState === 4){
-        if (request.status !== 200) {
-            result = JSON.parse(request.responseText).result;
-            if (result=="incorrect key") {keyWasChanged("n");}
-            if (result=="bot") {stop = "User is a bot";isError();showAlert("isbot");}
-        }}};}
 
 function validateAccount(){
     document.documentElement.innerHTML = "<!DOCTYPE html><html><head><style>body{background: #f0f0f0;margin: 0;}#vcenter{position: absolute;top: 50%;width: 100%;margin-top: -100px;}h1{text-align: center;font-family: trebuchet ms, courier new, sans-serif;font-size: 2em;}#loader,#loader:before,#loader:after{border-radius: 50%;width: 2.5em;height: 2.5em;-webkit-animation-fill-mode: both;animation-fill-mode: both;-webkit-animation: load7 1.8s infinite ease-in-out;animation: load7 1.8s infinite ease-in-out;}#loader{color: #098e8b;font-size: 10px;margin: 80px auto;position: relative;text-indent: -9999em;-webkit-transform: translateZ(0);-ms-transform: translateZ(0);transform: translateZ(0);-webkit-animation-delay: -0.16s;animation-delay: -0.16s;}#loader:before,#loader:after{content: '';position: absolute;top: 0;}#loader:before{left: -3.5em;-webkit-animation-delay: -0.32s;animation-delay: -0.32s;}#loader:after{left: 3.5em;}@-webkit-keyframes load7{0%,80%,100%{box-shadow: 0 2.5em 0 -1.3em;}40%{box-shadow: 0 2.5em 0 0;}}@keyframes load7{0%,80%,100%{box-shadow: 0 2.5em 0 -1.3em;}40%{box-shadow: 0 2.5em 0 0;}}</style></head><body><div id='vcenter'><h1 id='header'>" + chrome.i18n.getMessage("validating") + "...</h1><div id='loader'></div></div></body></html>";

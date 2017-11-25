@@ -1,6 +1,6 @@
 chrome.runtime.onInstalled.addListener(function(details){
     if(details.reason == "install"){
-        chrome.tabs.create({url:"https://scratchtools.tk/isonline/register/"});}
+        chrome.tabs.create({url:"https://scratch.mit.edu/isonline-extension/register"});}
     if(details.reason == "update"){
         //chrome.tabs.create({url: "https://scratch.mit.edu/isonline-extension/update"});
         chrome.storage.sync.get("iOfriendsenabled", function (data) {
@@ -11,7 +11,7 @@ chrome.runtime.onInstalled.addListener(function(details){
 }
                                       );
 
-let key, user;
+let keyctx, localuserctx;
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
@@ -39,13 +39,14 @@ chrome.runtime.onMessage.addListener(
 
         if(request.keyinfo){
             console.log(request.keyinfo);
+			if(userisonscratch===false) isUserOnScratch();
             keyctx = request.keyinfo.key;
             localuserctx = request.keyinfo.localuser;
         }
     });
 
 setInterval(function(){
-        if (Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")>6){chrome.browserAction.setBadgeText({text: ""});}
+        if (time()-localStorage.getItem("iOtabtimestamp")>6){chrome.browserAction.setBadgeText({text: ""});}
 }, 5000);
 
 
