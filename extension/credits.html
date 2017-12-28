@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
+    <style type="text/css">
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: #555;
+        }
+        
+        summary:focus {
+            outline: none;
+        }
+        
+        body {
+            width: 300px;
+            font-family: 'Cabin';
+            font-size: 13px;
+        }
+        
+        li {
+            font-family: 'Cabin';
+        }
+        
+        #title {
+            position: relative;
+        }
+        
+        h1 {
+            font-family: 'Exo';
+        }
+        
+        ul,
+        details {
+            list-style: none;
+        }
+        
+        #errorMessage {
+            padding: 0px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+        
+        a:hover {
+            color: deepskyblue;
+        }
+        
+        .linktouser {
+            font-size: 14px;
+        }
+        
+        #divofflinefriends {
+            display: none;
+        }
+        
+        h1 {
+            padding: 0px;
+        }
+        
+        #titleofonline {
+            font-family: Cabin;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 35px;
+            height: 17px;
+        }
+        
+        .switch input {
+            display: none;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+            width: 35px;
+            height: 17px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 15px;
+            width: 15px;
+            left: 4px;
+            bottom: 1px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+        
+        input:checked + .slider:before {
+            -webkit-transform: translateX(13px);
+            -ms-transform: translateX(13px);
+            transform: translateX(13px);
+        }
+        /* Rounded sliders */
+        
+        .slider.round {
+            border-radius: 34px;
+        }
+        
+        .slider.round:before {
+            border-radius: 50%;
+        }
+        
+        .a {
+            vertical-align: middle;
+        }
+        
+        .easter-egg {
+            display: none;
+        }
+        
+        .easter-egg.visible {
+            display: block;
+            font-size: 35px;
+        }
+        
+        #buttons {
+            float: right;
+        }
+        
+        li {
+            font-size: 16px;
+        }
+        
+        #pad {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/popup.html">&larr; Back</a>
+    <hr>
+
+    <center>
+        <u><h2 id="title" style="margin-bottom:3px">isOnline Team</h2></u>
+        <small>Users that actively develop and maintain isOnline.</small>
+        <br>
+    </center>
+    <br>
+
+    <div id="pad">
+        <img style="vertical-align:middle;height:30px;" src="https://cdn2.scratch.mit.edu/get_image/user/4648559_60x60.png" />&nbsp;&nbsp;&nbsp;<a href="https://scratch.mit.edu/users/World_Languages/" target="_blank" style="display:inline; ">World_Languages</a>
+        <br>
+        <hr style='border: 0;height: 1px;background-image: linear-gradient(to right, rgb(159, 166, 173), rgba(0, 0, 0, 0))'>
+        <img style="vertical-align:middle;height:30px;" src="https://cdn2.scratch.mit.edu/get_image/user/9565102_60x60.png" />&nbsp;&nbsp;&nbsp;<a href="https://scratch.mit.edu/users/herohamp/" target="_blank" style="display:inline; ">herohamp</a>
+        <br>
+        <hr style='border: 0;height: 1px;background-image: linear-gradient(to right, rgb(159, 166, 173), rgba(0, 0, 0, 0))'>
+        <img style="vertical-align:middle;height:30px;" src="https://cdn2.scratch.mit.edu/get_image/user/7680480_60x60.png" />&nbsp;&nbsp;&nbsp;<a href="https://scratch.mit.edu/users/PackersRuleGoPack/" target="_blank" style="display:inline; ">PackersRuleGoPack</a>
+        <br>
+        <hr style='border: 0;height: 1px;background-image: linear-gradient(to right, rgb(159, 166, 173), rgba(0, 0, 0, 0))'>
+        <img style="vertical-align:middle;height:30px;" src="https://cdn2.scratch.mit.edu/get_image/user/6297150_60x60.png" />&nbsp;&nbsp;&nbsp;<a href="https://scratch.mit.edu/users/DatOneLefty/" target="_blank" style="display:inline; ">DatOneLefty</a>
+        <br>
+    </div>
+    <br>
+    <hr>
+    <center>
+        <u><h3 id="title">Contributors</h3></u>
+    </center>
+    <div id="pad" style="font-size:10px">
+        <b>Previous team members:</b> chooper100, jokebookservice1
+        <br><b>Small contributions:</b> DeleteThisAcount, bob1171, 290Scratcher
+    </div>
+    <br>
+    <hr>
+    <center>
+        <u><h3 id="title">Translators:</h3></u>
+    </center>
+    <div id="pad">
+        Espa&ntilde;ol: <a href="https://scratch.mit.edu/users/World_Languages/" target="_blank">World_Languages</a>
+        <br> French: <a href="https://scratch.mit.edu/users/Nobelix/" target="_blank">Nobelix</a>, <small style="font-size:9px"><a href="https://scratch.mit.edu/users/smrman/" target="_blank">Smrman</a></small>
+        <br> Japanese: <a href="https://scratch.mit.edu/users/kazuta123/" target="_blank">kazuta123</a>
+        <br> Dutch: <a href="https://scratch.mit.edu/users/smrman/" target="_blank">Smrman</a>
+        <br> Vietnamese: <a href="https://scratch.mit.edu/users/EvanKTC/" target="_blank">EvanKTC</a>
+    </div>
+</body>
+
+</html>

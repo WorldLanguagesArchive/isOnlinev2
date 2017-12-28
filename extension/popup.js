@@ -8,7 +8,9 @@ window.onload = function() {
     document.getElementById("notifyawayonline").innerHTML=chrome.i18n.getMessage("notifyawayonline");
     document.getElementById("soundnotiftext").innerHTML=chrome.i18n.getMessage("soundnotiftext");
     document.getElementById("notifyofflineonline").innerHTML=chrome.i18n.getMessage("notifyofflineonline");
-    document.getElementById("translationcredits").innerHTML=chrome.i18n.getMessage("translationcredits");
+    //document.getElementById("translationcredits").innerHTML=chrome.i18n.getMessage("translationcredits");
+	document.getElementById("source").onclick=function(){			  chrome.tabs.create({url: "https://github.com/WorldLanguages/isOnlinev2/"});chrome.tabs.create({url: "https://github.com/herohamp/isonline-backend/"});};
+	document.getElementById("uninstall").onclick=function(){chrome.management.uninstallSelf({showConfirmDialog: true});};
     isenglish = chrome.i18n.getUILanguage().startsWith("en");
     //
 
@@ -28,17 +30,10 @@ window.onload = function() {
                 document.getElementById("getmessage").innerText = JSON.parse(getmessage.responseText).message;}
         }}};
 
-    if(chrome.permissions===undefined){
-        document.getElementsByClassName("a")[0].remove();
-        document.getElementById("friendsnote").innerHTML=chrome.i18n.getMessage("friendsnotcompatible");
-        return;
-    }
-
 document.getElementById("offlinetoonline").onclick = function() {
     if(typeof InstallTrigger !== 'undefined') { // If Firefox
         if(Notification.permission!=="granted") {
             window.open(chrome.extension.getURL("enablenotifications.html"));
-			
         }
         else {
             if(document.getElementById("offlinetoonline").checked) {
@@ -100,7 +95,7 @@ document.getElementById("offlinetoonline").onclick = function() {
         document.getElementById("soundnotif").checked = true;
     }
 
-    if(localStorage.getItem("iOfriendsempty")!=="0"){document.getElementById("divonlinefriends").innerHTML+='<b>'+chrome.i18n.getMessage("nofriendshelp")+'</b>';return;}
+    if(localStorage.getItem("iOfriendsempty")!=="0"){document.getElementById("friendstatuseslist").innerHTML='<b>'+chrome.i18n.getMessage("nofriendshelp")+'</b>';return;}
 
     onlineresponse = {"thelist":"0"};
     awayresponse = {"thelist":"0"};
@@ -109,6 +104,8 @@ document.getElementById("offlinetoonline").onclick = function() {
     onlineList();setInterval(onlineList, 2000);
 
     function getStatuses(){
+		document.getElementById("friendstatuseslist").style.display="block";
+
         chrome.runtime.sendMessage({getfriendsbystatus: "Online"}, function (response){
             if(JSON.stringify(response.thelist)===onlineresponse){return;}
             onlineresponse = JSON.stringify(response.thelist);
@@ -240,6 +237,7 @@ document.getElementById("offlinetoonline").onclick = function() {
             if (Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")<6){getStatuses();}
             else {
                 document.getElementById("errorMessage").innerHTML=chrome.i18n.getMessage("onetabopen");
+				document.getElementById("friendstatuseslist").style.display="none";
             }
     }
 

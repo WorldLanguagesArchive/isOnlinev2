@@ -4,12 +4,12 @@ friendliststatuses=[0,0,0,0,0,0,0,0,0,0].map(() => "Unknown");
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
         if (request.notifications == "enable") {
-			var done1 = 0;
+            var done1 = 0;
             setInterval(function(){check();},100);
             var check = function(){if(done1===1){return;}
-			chrome.permissions.contains({
-                permissions: ['notifications'],
-            }, function(result) {if(result){localStorage.setItem("iOnotifications",1);done1=1;}});
+                                   chrome.permissions.contains({
+                                       permissions: ['notifications'],
+                                   }, function(result) {if(result){localStorage.setItem("iOnotifications",1);done1=1;}});
                                   };
 
         }
@@ -24,7 +24,7 @@ chrome.runtime.onMessage.addListener(
         if (request.addfriend) {
             if(friendlist.length==10){sendResponse({result: "maxreached"});}
             else {
-                done = 0;
+                var done = 0;
                 checkfollowing(0,request.addfriend[0],request.addfriend[1]);
                 function checkifdone(){
                     if(done===1){sendResponse({result: "ok"});}
@@ -42,34 +42,35 @@ chrome.runtime.onMessage.addListener(
     });
 
 chrome.storage.sync.get(["iOaccounts", "iOfriendlist"], function (data) {
-    registeredUsers = JSON.stringify(data.iOaccounts) === "{}" || typeof(data.iOaccounts)==="undefined" ? [] : JSON.parse(data.iOaccounts);
     friendlist = typeof(data.iOfriendlist)==="undefined" ? [] : data.iOfriendlist;
-    if(friendlist.length===0){localStorage.setItem("iOfriendsempty","1");}else{localStorage.setItem("iOfriendsempty","0");}
-    for (i = 0; i < registeredUsers.length; i++) {
-        if(registeredUsers[i].key !== "changed"){localuser = registeredUsers[i].name;key = registeredUsers[i].key;friendlistcode();}
-    }
+    friendlistcode();
 });
 
+
+x = 0;
+firsttime = true;
+interval = 2000;
+scratchopen = true;
+
 function friendlistcode() {
-
-    if (friendlist.length===0){return;}
-    time = function(){return Math.floor(Date.now() / 1000);};
-
-    x = 0;
-    firsttime = true;
-    interval = 2000;
-    scratchopen = true;
-
     setInterval(function(){
-            if (scratchopen === false && (Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")<6)){location.reload();}
-            if  (firsttime && (Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")<6)){firsttime=false;docheck();}
-            scratchopen = Math.floor(Date.now() / 1000)-localStorage.getItem("iOtabtimestamp")<6;
-            if(scratchopen===false){friendliststatuses=[0,0,0,0,0,0,0,0,0,0].map(() => "Unknown");chrome.browserAction.getBadgeText({}, function(result) {if(result!==" "){chrome.browserAction.setBadgeText({text: ""});}});}
+        if(localuserctx===undefined){return;}
+        if (scratchopen === false && time()-localStorage.getItem("iOtabtimestamp")<6){    
+            x = 0;
+            firsttime = true;
+            interval = 2000;
+            scratchopen = true;
+            docheck();}
+        if  (firsttime && (time()-localStorage.getItem("iOtabtimestamp")<6)){firsttime=false;docheck();}
+        scratchopen = time()-localStorage.getItem("iOtabtimestamp")<6;
+        if(scratchopen===false){friendliststatuses=[0,0,0,0,0,0,0,0,0,0].map(() => "Unknown");chrome.browserAction.getBadgeText({}, function(result) {if(result!==" "){chrome.browserAction.setBadgeText({text: ""});}});}
     }, 3000);
 
 }
 
 function docheck(){
+    console.log(interval);
+    if (friendlist.length===0){setTimeout(docheck, 5000);return;}
     max = friendlist.length-1;
     if(x>max){interval=180000/(max+1);x=0;check(x);}
     else{check(x);}
@@ -83,7 +84,7 @@ function check(i) {
     if(!scratchopen){return;}
     x++;
     console.log("Checking #"+(i+1)+": @"+friendlist[i]);
-    getstatus = new XMLHttpRequest();getstatus.open("GET", ' https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + "/get/" + friendlist[i], true);getstatus.send();
+    getstatus = new XMLHttpRequest();getstatus.open("GET", ' https://scratchtools.tk/isonline/api/v1/' + localuserctx + '/' + keyctx + "/get/" + friendlist[i], true);getstatus.send();
     getstatus.onreadystatechange = function() {
         if (getstatus.readyState === 4) {
             if (getstatus.status === 200) {
@@ -121,17 +122,7 @@ function check(i) {
 
             }
             if (getstatus.status === 403 && JSON.parse(getstatus.responseText).status==="incorrect key") {
-                chrome.storage.sync.get("iOaccounts", function (data) {
-                    oldkey = JSON.parse(data.iOaccounts).find(user => user.name === localuser).key;
-                    if(oldkey==key){
-                        indx = registeredUsers.findIndex(k => k.name === localuser);
-                        chrome.storage.sync.set({"iOaccounts" : JSON.stringify(registeredUsers.slice(0, indx).concat({
-                            "name": localuser,
-                            "key": "changed"
-                        }).concat(registeredUsers.slice(indx + 1)))},function(){location.reload();});
-                    }
-                    else{location.reload();}
-                });
+                keyWasChanged();
             }
             if (getstatus.status === 404) {
                 removeFromFriends(friendlist[i]);
@@ -155,11 +146,11 @@ function notification(user) {
                 icon: "https://cdn2.scratch.mit.edu/get_image/user/"+id+"_90x90.png?"+Math.round(new Date().getTime()/1000),
                 body: chrome.i18n.getMessage("isnowonlinebody"),
             });
-			notification.onclick = function(event) {
-			  event.preventDefault();
-			  chrome.tabs.create({url: "https://scratch.mit.edu/users/"+user+"/?comments"});
-			  notification.close();
-			}
+            notification.onclick = function(event) {
+                event.preventDefault();
+                chrome.tabs.create({url: "https://scratch.mit.edu/users/"+user+"/?comments"});
+                notification.close();
+            }
             setTimeout(function () {
                 notification.close();
             }, 10000);
@@ -191,8 +182,7 @@ function addToFriends(user) {
     amountbefore = friendlist.length;
     friendlist.push(user);
     chrome.storage.sync.set({iOfriendlist : friendlist});
-    if(friendlist.length===1 && amountbefore===0){setTimeout(function(){location.reload();},1000);}
-    else{check(friendlist.length-1);}
+    check(friendlist.length-1);
 }
 
 function removeFromFriends(user){
@@ -208,5 +198,5 @@ function removeFromFriends(user){
     }
     else {
         chrome.browserAction.setBadgeText({text: String(friendliststatuses.toString().match(/Online/g).length)});}
-    if(friendlist.length===0){localStorage.setItem("iOfriendsempty","1");location.reload();}else{localStorage.setItem("iOfriendsempty","0");}
+    if(friendlist.length===0){localStorage.setItem("iOfriendsempty","1");}else{localStorage.setItem("iOfriendsempty","0");}
 }
