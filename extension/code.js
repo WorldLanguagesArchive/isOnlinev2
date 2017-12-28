@@ -78,8 +78,6 @@ if(location.href.toLowerCase().startsWith("https://scratch.mit.edu/users/isonlin
         let br3 = document.createElement("BR");
         faq.appendChild(br3);
         let faqQuestions = {
-            "How do I get a  👑 next to my username on my profile?" : "To get a  👑 next to your username on your profile, you will need to advertise isOnline using a special link, http://isonline.cf. You need to put that link either in your 'About Me' or 'What I'm working on' section of your profile. Please note that the crown is automatically added. That means it has to be spelled correctly for it to work. You may need to reload the page to show the crown.",
-            "What are the isOnline emojis?" : "The isOnline emojis are _online_, _offline_, _away_, _dnd_, _isonline_, _crown_ & _cookie_. They are only visible to other isOnline users, and they only work in the comments section.",
             "What does the Do Not Disturb status do?" : "The status displays as a normal status, but from the friend list menu, other people seeing you will think you are Offline. Nobody will get friend list notifications about you when you are on Do Not Disturb.",
             "Can I get the status of somebody when I'm not on their profile?" : "Yes, you can. Right click a link to their profile anywhere on the page, and click 'Click to get status'.",
             "I don't want people knowing when I'm online!" : "You can visit your profile, and next to your location you will see a dropdown menu added by isOnline. Choose your status to be 'Offline' and nobody will find out that you're actually online until you change your status back to Automatic.",
@@ -139,12 +137,12 @@ let emojis = {
     "offline": '<img src="https://scratchtools.tk/isonline/assets/offline.svg" alt="_offline_" title="_offline_" class="easter-egg">',
     "dnd": '<img src="https://scratchtools.tk/isonline/assets/dnd.svg" alt="_dnd_" title="_dnd_" class="easter-egg">',
     "away": '<img src="https://scratchtools.tk/isonline/assets/absent.svg" alt="_away_" title="_away_" class="easter-egg">',
-    "isonline": '<img src="https://scratchtools.tk/isonline/isonline-logo.png" alt="_isonline_" title="_isonline_" class="easter-egg">',
     "crown": '<span class="easter-egg" title="_crown_">&#x1F451;</span>',
     "cookie": '<span class="easter-egg" title="_cookie_">&#x1F36A;</span>'
 };
 
-trustedDevTeam = ["World_Languages","PackersRuleGoPack", "isOnlineV2", "herohamp"];
+
+trustedDevTeam = ["World_Languages","PackersRuleGoPack", "herohamp", "DatOneLefty"];
 
 // Emojis & iOdev in @isOnlineV2
 let handleEmojis = () => {
