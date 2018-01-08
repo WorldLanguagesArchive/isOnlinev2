@@ -83,7 +83,7 @@ function check(i) {
     if(!scratchopen){return;}
     x++;
     console.log("Checking #"+(i+1)+": @"+friendlist[i]);
-    getstatus = new XMLHttpRequest();getstatus.open("GET", ' https://scratchtools.tk/isonline/api/v1/' + localuser + '/' + key + "/get/" + friendlist[i], true);getstatus.send();
+    getstatus = new XMLHttpRequest();getstatus.open("GET", ' https://scratchtools.pw/isonline/api/v1/' + localuser + '/' + key + "/get/" + friendlist[i], true);getstatus.send();
     getstatus.onreadystatechange = function() {
         if (getstatus.readyState === 4) {
             if (getstatus.status === 200) {

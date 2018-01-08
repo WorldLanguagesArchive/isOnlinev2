@@ -1,12 +1,12 @@
 chrome.runtime.onInstalled.addListener(function(details){
     if(details.reason == "install"){
-        chrome.tabs.create({url:"https://scratchtools.tk/isonline/register/"});}
+        chrome.tabs.create({url:"https://scratchtools.pw/isonline/register/"});}
     if(details.reason == "update"){
-        chrome.tabs.create({url: "https://scratch.mit.edu/isonline-extension/update"});
+        /*chrome.tabs.create({url: "https://scratch.mit.edu/isonline-extension/update"});
         chrome.storage.sync.get("iOfriendsenabled", function (data) {
             if(data.iOfriendsenabled==1){localStorage.setItem("iOnotifications","1");}});
         chrome.storage.sync.remove("iOfriendsenabled");
-        localStorage.removeItem("iOfriendlistenabled");
+        localStorage.removeItem("iOfriendlistenabled");*/
     }
 }
                                       );
@@ -18,7 +18,7 @@ chrome.runtime.onMessage.addListener(
         if (request.action == "reload") {
             location.reload();}
         if (request.setuninstallurl) {
-            chrome.runtime.setUninstallURL("https://scratchtools.tk/isonline/uninstall/?user="+request.setuninstallurl.name+"&key="+request.setuninstallurl.key);}
+            chrome.runtime.setUninstallURL("https://scratchtools.pw/isonline/uninstall/?user="+request.setuninstallurl.name+"&key="+request.setuninstallurl.key);}
         if(request.color === ""){
 			localStorage.setItem("iOtabtimestamp",Math.floor(Date.now() / 1000));
             localStorage.setItem("iOstatus","online");
@@ -65,10 +65,10 @@ chrome.contextMenus.removeAll(() => {
         targetUrlPatterns: ["*://scratch.mit.edu/users/*"],
         documentUrlPatterns: ["*://scratch.mit.edu/*"],
         onclick: function(info, tab){
-            let offlineMsg = "<img src='https://scratchtools.tk/isonline/assets/offline.svg' height='20' width='20'/> " + chrome.i18n.getMessage("offline");
+            let offlineMsg = "<img src='https://scratchtools.pw/isonline/assets/offline.svg' height='20' width='20'/> " + chrome.i18n.getMessage("offline");
             let username = info.linkUrl.replace(/.+\/users\//, "").replace(/[^a-zA-Z0-9_-].*/, "");
             let internet = new XMLHttpRequest();
-            internet.open("GET", "https://scratchtools.tk/isonline/api/v1/" + localuserctx + "/" + keyctx + "/get/" + username + "/");
+            internet.open("GET", "https://scratchtools.pw/isonline/api/v1/" + localuserctx + "/" + keyctx + "/get/" + username + "/");
             internet.onreadystatechange = function(){
                 if(internet.readyState === 4){
                     if(internet.status === 200) {
@@ -80,7 +80,7 @@ chrome.contextMenus.removeAll(() => {
                                         ctxmenu: true,
                                         call: "update",
                                         user: username,
-                                        content: "<img src='https://scratchtools.tk/isonline/assets/online.svg' height='20' width='20'/> " + chrome.i18n.getMessage("online"),
+                                        content: "<img src='https://scratchtools.pw/isonline/assets/online.svg' height='20' width='20'/> " + chrome.i18n.getMessage("online"),
                                         color: "green"
                                     });
                                 } else {
@@ -99,7 +99,7 @@ chrome.contextMenus.removeAll(() => {
                                         ctxmenu: true,
                                         call: "update",
                                         user: username,
-                                        content: "<img src='https://scratchtools.tk/isonline/assets/absent.svg' height='20' width='20'/> " + chrome.i18n.getMessage("absent"),
+                                        content: "<img src='https://scratchtools.pw/isonline/assets/absent.svg' height='20' width='20'/> " + chrome.i18n.getMessage("absent"),
                                         color: "orange"
                                     });
                                 } else {
@@ -118,7 +118,7 @@ chrome.contextMenus.removeAll(() => {
                                         ctxmenu: true,
                                         call: "update",
                                         user: username,
-                                        content: "<img src='https://scratchtools.tk/isonline/assets/dnd.svg' height='20' width='20'/> " + chrome.i18n.getMessage("dnd"),
+                                        content: "<img src='https://scratchtools.pw/isonline/assets/dnd.svg' height='20' width='20'/> " + chrome.i18n.getMessage("dnd"),
                                         color: "grey"
                                     });
                                 } else {

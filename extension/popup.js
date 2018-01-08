@@ -20,7 +20,7 @@ window.onload = function() {
     }
 
     getmessage = new XMLHttpRequest();
-    getmessage.open("GET", "https://scratchtools.tk/api/getmessage.php", true);
+    getmessage.open("GET", "https://scratchtools.pw/api/getmessage.php", true);
     getmessage.send();
     getmessage.onreadystatechange = function() {if (getmessage.readyState === 4){
         if (getmessage.status === 200) {
@@ -38,7 +38,7 @@ document.getElementById("offlinetoonline").onclick = function() {
     if(typeof InstallTrigger !== 'undefined') { // If Firefox
         if(Notification.permission!=="granted") {
             window.open(chrome.extension.getURL("enablenotifications.html"));
-			
+
         }
         else {
             if(document.getElementById("offlinetoonline").checked) {

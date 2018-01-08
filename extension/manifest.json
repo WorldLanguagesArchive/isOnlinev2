@@ -1,37 +1,37 @@
-{  
+{
    "manifest_version":2,
    "name":"isOnline",
    "short_name":"iO",
    "description":"Know who is online on Scratch!",
    "default_locale": "en",
-   "content_scripts":[  
-      {  
-         "matches":[  
+   "content_scripts":[
+      {
+         "matches":[
             "https://scratch.mit.edu/*"
          ],
 		 "css":[
 			"inject-styles.css"
 		 ],
-         "js":[  
+         "js":[
             "code.js"
          ],
          "run_at":"document_idle"
       }
    ],
-   "version":"1.5.1",
+   "version":"1.5.2",
   "background": {
     "scripts": ["background.js", "friendlist.js"]
   },
-   "browser_action":{  
+   "browser_action":{
       "default_popup":"popup.html",
       "default_icon":"icon.png"
    },
-   "icons":{  
+   "icons":{
       "16":"icon.png",
       "48":"icon.png",
       "128":"icon.png"
    },
-   "permissions":[  
+   "permissions":[
       "https://scratchtools.tk/*",
       "https://scratch.mit.edu/*",
       "storage",
